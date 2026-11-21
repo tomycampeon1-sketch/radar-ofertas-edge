@@ -202,6 +202,7 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 footer { padding: 24px 16px 40px; }
 
 /* arreglos y agregados */
+.part.ya { opacity: .72; box-shadow: none; border-style: dashed; }
 .part > div { min-width: 0; }
 .part .n { overflow-wrap: anywhere; }
 .part .chip, .plan .chip, td .chip { white-space: normal; text-align: left; }

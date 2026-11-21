@@ -125,6 +125,7 @@ export function buildDb(prev, config, { resultados, estado }, now = new Date()) 
       nombre: p.nombre,
       grupo: p.grupo,
       pieza: p.pieza || null,
+      yaTengo: !!p.yaTengo,
       busqueda: p.busqueda,
       filtro: { debeTener: p.debeTener || [], excluir: p.excluir || [], minimo: p.minimo || null, maximo: p.maximo || null },
       extra: (p.extra || []).filter((e) => /^https:\/\//.test(e.url)),

@@ -427,6 +427,7 @@
       "nombre": "Fuente 750 W 80 Plus",
       "grupo": "pc",
       "pieza": "fuente",
+      "yaTengo": true,
       "busqueda": "Fuente 750W 80 Plus",
       "debeTener": [
         "fuente",
