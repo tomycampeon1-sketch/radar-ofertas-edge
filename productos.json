@@ -2,16 +2,46 @@
   "_ayuda": "Lista de productos que sigue el radar. Para agregar uno, copiá un bloque y cambiá id, nombre, busqueda, debeTener, excluir y los precios minimo/maximo (sirven para descartar accesorios y errores). Guardá el archivo en GitHub y en la próxima actualización aparece en la página y en la extensión.",
   "inflacionMensual": 2.0,
   "tiendas": [
-    { "id": "mercadolibre", "nombre": "Mercado Libre" },
-    { "id": "fravega", "nombre": "Frávega" },
-    { "id": "garbarino", "nombre": "Garbarino" },
-    { "id": "musimundo", "nombre": "Musimundo" },
-    { "id": "megatone", "nombre": "Megatone" },
-    { "id": "cetrohogar", "nombre": "Cetrohogar" },
-    { "id": "compragamer", "nombre": "Compra Gamer" },
-    { "id": "venex", "nombre": "Venex" },
-    { "id": "fullh4rd", "nombre": "Full H4rd" },
-    { "id": "mexx", "nombre": "Mexx" }
+    {
+      "id": "mercadolibre",
+      "nombre": "Mercado Libre"
+    },
+    {
+      "id": "fravega",
+      "nombre": "Frávega"
+    },
+    {
+      "id": "garbarino",
+      "nombre": "Garbarino"
+    },
+    {
+      "id": "musimundo",
+      "nombre": "Musimundo"
+    },
+    {
+      "id": "megatone",
+      "nombre": "Megatone"
+    },
+    {
+      "id": "cetrohogar",
+      "nombre": "Cetrohogar"
+    },
+    {
+      "id": "compragamer",
+      "nombre": "Compra Gamer"
+    },
+    {
+      "id": "venex",
+      "nombre": "Venex"
+    },
+    {
+      "id": "fullh4rd",
+      "nombre": "Full H4rd"
+    },
+    {
+      "id": "mexx",
+      "nombre": "Mexx"
+    }
   ],
   "productos": [
     {
@@ -19,17 +49,78 @@
       "nombre": "PS5 Slim Digital 1 TB",
       "grupo": "consola",
       "busqueda": "PlayStation 5 Slim Digital",
-      "debeTener": ["ps5|playstation 5|playstation5", "digital"],
-      "excluir": ["joystick", "control", "dualsense", "funda", "juego", "soporte", "cable", "lectora", "skin", "cargador", "base"],
+      "debeTener": [
+        "ps5|playstation 5|playstation5",
+        "digital"
+      ],
+      "excluir": [
+        "joystick",
+        "control",
+        "dualsense",
+        "funda",
+        "juego",
+        "soporte",
+        "cable",
+        "lectora",
+        "skin",
+        "cargador",
+        "base"
+      ],
       "minimo": 800000,
       "maximo": 4000000,
       "nota": "Recomendada en la investigación: 1 TB y rendimiento confirmado.",
-      "extra": [{ "tienda": "mercadolibre", "url": "https://mejorescompras.com.ar/precio/MLA42097103--sony-playstation-5-slim-edicion-digital-1tb-blanco" }],
+      "extra": [
+        {
+          "tienda": "mercadolibre",
+          "url": "https://mejorescompras.com.ar/precio/MLA42097103--sony-playstation-5-slim-edicion-digital-1tb-blanco"
+        }
+      ],
       "referencia": [
-        { "tienda": "Sony Store", "contado": 1599999, "cuotas": 6, "cuotaMonto": 316667, "total": 1899999, "sinInteres": true, "fecha": "2026-11-19", "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/" },
-        { "tienda": "Frávega", "contado": null, "cuotas": 12, "cuotaMonto": 155833, "total": 1869999, "sinInteres": true, "fecha": "2026-11-19", "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/" },
-        { "tienda": "Cetrohogar", "contado": null, "cuotas": 18, "cuotaMonto": 105556, "total": 1899999, "sinInteres": true, "fecha": "2026-11-19", "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/" },
-        { "tienda": "Mercado Libre", "contado": 1050000, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-19", "fuente": "https://examedia.com.ar/portada/post/88268013", "aviso": "Vendedores particulares: revisá garantía y reputación.", "particular": true }
+        {
+          "tienda": "Sony Store",
+          "contado": 1599999,
+          "cuotas": 6,
+          "cuotaMonto": 316667,
+          "total": 1899999,
+          "sinInteres": true,
+          "fecha": "2026-11-19",
+          "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
+          "medios": "6 cuotas sin interés sobre el precio de lista ($1.899.999), más caro que el contado"
+        },
+        {
+          "tienda": "Frávega",
+          "contado": null,
+          "cuotas": 12,
+          "cuotaMonto": 155833,
+          "total": 1869999,
+          "sinInteres": true,
+          "fecha": "2026-11-19",
+          "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
+          "medios": "Hasta 12 cuotas con Banco Patagonia"
+        },
+        {
+          "tienda": "Cetrohogar",
+          "contado": null,
+          "cuotas": 18,
+          "cuotaMonto": 105556,
+          "total": 1899999,
+          "sinInteres": true,
+          "fecha": "2026-11-19",
+          "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
+          "medios": "9, 12 o 18 cuotas sin interés según el banco"
+        },
+        {
+          "tienda": "Mercado Libre",
+          "contado": 1050000,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-19",
+          "fuente": "https://examedia.com.ar/portada/post/88268013",
+          "aviso": "Vendedores particulares: revisá garantía y reputación.",
+          "particular": true
+        }
       ]
     },
     {
@@ -37,12 +128,37 @@
       "nombre": "PS5 Slim con lectora 1 TB",
       "grupo": "consola",
       "busqueda": "PlayStation 5 Slim",
-      "debeTener": ["ps5|playstation 5|playstation5", "slim"],
-      "excluir": ["digital", "joystick", "control", "dualsense", "funda", "juego", "soporte", "cable", "lectora externa", "skin", "cargador", "base"],
+      "debeTener": [
+        "ps5|playstation 5|playstation5",
+        "slim"
+      ],
+      "excluir": [
+        "digital",
+        "joystick",
+        "control",
+        "dualsense",
+        "funda",
+        "juego",
+        "soporte",
+        "cable",
+        "lectora externa",
+        "skin",
+        "cargador",
+        "base"
+      ],
       "minimo": 900000,
       "maximo": 4500000,
       "referencia": [
-        { "tienda": "Precio oficial", "contado": 2099999, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-19", "fuente": "https://examedia.com.ar/portada/post/88268013" }
+        {
+          "tienda": "Precio oficial",
+          "contado": 2099999,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-19",
+          "fuente": "https://examedia.com.ar/portada/post/88268013"
+        }
       ]
     },
     {
@@ -50,12 +166,36 @@
       "nombre": "PS5 Pro 2 TB",
       "grupo": "consola",
       "busqueda": "PlayStation 5 Pro",
-      "debeTener": ["ps5|playstation 5|playstation5", "pro"],
-      "excluir": ["joystick", "control", "dualsense", "funda", "juego", "soporte", "cable", "skin", "cargador", "base", "lectora"],
+      "debeTener": [
+        "ps5|playstation 5|playstation5",
+        "pro"
+      ],
+      "excluir": [
+        "joystick",
+        "control",
+        "dualsense",
+        "funda",
+        "juego",
+        "soporte",
+        "cable",
+        "skin",
+        "cargador",
+        "base",
+        "lectora"
+      ],
       "minimo": 1800000,
       "maximo": 6000000,
       "referencia": [
-        { "tienda": "Sony Store", "contado": 2799999, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-18", "fuente": "https://www.iprofesional.com/actualidad/469488-queres-jugar-al-gta-vi-esto-cuesta-una-playstation-5-en-argentina" }
+        {
+          "tienda": "Sony Store",
+          "contado": 2799999,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-18",
+          "fuente": "https://www.iprofesional.com/actualidad/469488-queres-jugar-al-gta-vi-esto-cuesta-una-playstation-5-en-argentina"
+        }
       ]
     },
     {
@@ -63,15 +203,55 @@
       "nombre": "Xbox Series S 512 GB",
       "grupo": "consola",
       "busqueda": "Xbox Series S",
-      "debeTener": ["xbox", "series s"],
-      "excluir": ["joystick", "control", "funda", "juego", "soporte", "cable", "skin", "cargador", "1tb", "1 tb", "game pass"],
+      "debeTener": [
+        "xbox",
+        "series s"
+      ],
+      "excluir": [
+        "joystick",
+        "control",
+        "funda",
+        "juego",
+        "soporte",
+        "cable",
+        "skin",
+        "cargador",
+        "1tb",
+        "1 tb",
+        "game pass"
+      ],
       "minimo": 500000,
       "maximo": 3000000,
       "nota": "La más barata, pero 512 GB para un juego de 212 GB.",
-      "extra": [{ "tienda": "mercadolibre", "url": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco" }],
+      "extra": [
+        {
+          "tienda": "mercadolibre",
+          "url": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco"
+        }
+      ],
       "referencia": [
-        { "tienda": "GameShop", "contado": 836190, "cuotas": null, "cuotaMonto": null, "total": 929100, "sinInteres": false, "fecha": "2026-11-19", "fuente": "https://examedia.com.ar/portada/post/88268013" },
-        { "tienda": "Mercado Libre", "contado": 1450000, "cuotas": 12, "cuotaMonto": 141667, "total": 1699999, "sinInteres": true, "fecha": "2026-11-08", "fuente": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco" }
+        {
+          "tienda": "GameShop",
+          "contado": 836190,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": 929100,
+          "sinInteres": false,
+          "fecha": "2026-11-19",
+          "fuente": "https://examedia.com.ar/portada/post/88268013",
+          "medios": "Precio de lista $929.100; plan de cuotas sin detalle"
+        },
+        {
+          "tienda": "Mercado Libre",
+          "contado": 1450000,
+          "cuotas": 12,
+          "cuotaMonto": 141667,
+          "total": 1699999,
+          "sinInteres": true,
+          "fecha": "2026-11-08",
+          "fuente": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco",
+          "medios": "12 cuotas sin interés en otra publicación ($1.699.999)"
+        }
       ]
     },
     {
@@ -79,12 +259,34 @@
       "nombre": "Xbox Series X 1 TB",
       "grupo": "consola",
       "busqueda": "Xbox Series X",
-      "debeTener": ["xbox", "series x"],
-      "excluir": ["joystick", "control", "funda", "juego", "soporte", "cable", "skin", "cargador", "game pass"],
+      "debeTener": [
+        "xbox",
+        "series x"
+      ],
+      "excluir": [
+        "joystick",
+        "control",
+        "funda",
+        "juego",
+        "soporte",
+        "cable",
+        "skin",
+        "cargador",
+        "game pass"
+      ],
       "minimo": 1000000,
       "maximo": 5000000,
       "referencia": [
-        { "tienda": "Varias", "contado": 1890500, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-19", "fuente": "https://examedia.com.ar/portada/post/88268013" }
+        {
+          "tienda": "Varias",
+          "contado": 1890500,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-19",
+          "fuente": "https://examedia.com.ar/portada/post/88268013"
+        }
       ]
     },
     {
@@ -93,13 +295,36 @@
       "grupo": "pc",
       "pieza": "procesador",
       "busqueda": "Ryzen 7 7800X3D",
-      "debeTener": ["7800x3d"],
-      "excluir": ["notebook", "pc armada", "combo", "kit", "cooler para"],
+      "debeTener": [
+        "7800x3d"
+      ],
+      "excluir": [
+        "notebook",
+        "pc armada",
+        "combo",
+        "kit",
+        "cooler para"
+      ],
       "minimo": 300000,
       "maximo": 2000000,
-      "extra": [{ "tienda": "mercadolibre", "url": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia" }],
+      "extra": [
+        {
+          "tienda": "mercadolibre",
+          "url": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia"
+        }
+      ],
       "referencia": [
-        { "tienda": "Mercado Libre", "contado": 710399, "cuotas": 12, "cuotaMonto": 59200, "total": 710399, "sinInteres": true, "fecha": "2026-11-21", "fuente": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia" }
+        {
+          "tienda": "Mercado Libre",
+          "contado": 710399,
+          "cuotas": 12,
+          "cuotaMonto": 59200,
+          "total": 710399,
+          "sinInteres": true,
+          "fecha": "2026-11-21",
+          "fuente": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia",
+          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+        }
       ]
     },
     {
@@ -108,12 +333,32 @@
       "grupo": "pc",
       "pieza": "procesador-barato",
       "busqueda": "Ryzen 5 7600",
-      "debeTener": ["7600"],
-      "excluir": ["7600x3d", "rx 7600", "rx7600", "notebook", "pc armada", "combo", "kit", "placa de video"],
+      "debeTener": [
+        "7600"
+      ],
+      "excluir": [
+        "7600x3d",
+        "rx 7600",
+        "rx7600",
+        "notebook",
+        "pc armada",
+        "combo",
+        "kit",
+        "placa de video"
+      ],
       "minimo": 150000,
       "maximo": 1200000,
       "referencia": [
-        { "tienda": "Mercado Libre", "contado": 399228, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-21", "fuente": "https://mejorescompras.com.ar/computacion" }
+        {
+          "tienda": "Mercado Libre",
+          "contado": 399228,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-21",
+          "fuente": "https://mejorescompras.com.ar/computacion"
+        }
       ]
     },
     {
@@ -122,13 +367,38 @@
       "grupo": "pc",
       "pieza": "placa de video",
       "busqueda": "RX 9070 XT",
-      "debeTener": ["9070 xt|9070xt"],
-      "excluir": ["notebook", "pc armada", "combo", "soporte", "cable", "backplate", "waterblock"],
+      "debeTener": [
+        "9070 xt|9070xt"
+      ],
+      "excluir": [
+        "notebook",
+        "pc armada",
+        "combo",
+        "soporte",
+        "cable",
+        "backplate",
+        "waterblock"
+      ],
       "minimo": 900000,
       "maximo": 5000000,
-      "extra": [{ "tienda": "mercadolibre", "url": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50" }],
+      "extra": [
+        {
+          "tienda": "mercadolibre",
+          "url": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50"
+        }
+      ],
       "referencia": [
-        { "tienda": "Mercado Libre", "contado": 2308500, "cuotas": 12, "cuotaMonto": 192375, "total": 2308500, "sinInteres": true, "fecha": "2026-11-21", "fuente": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50" }
+        {
+          "tienda": "Mercado Libre",
+          "contado": 2308500,
+          "cuotas": 12,
+          "cuotaMonto": 192375,
+          "total": 2308500,
+          "sinInteres": true,
+          "fecha": "2026-11-21",
+          "fuente": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50",
+          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+        }
       ]
     },
     {
@@ -137,13 +407,35 @@
       "grupo": "pc",
       "pieza": "motherboard",
       "busqueda": "Motherboard B650M AM5",
-      "debeTener": ["b650m"],
-      "excluir": ["combo", "kit", "notebook", "pc armada"],
+      "debeTener": [
+        "b650m"
+      ],
+      "excluir": [
+        "combo",
+        "kit",
+        "notebook",
+        "pc armada"
+      ],
       "minimo": 200000,
       "maximo": 1500000,
-      "extra": [{ "tienda": "mercadolibre", "url": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro" }],
+      "extra": [
+        {
+          "tienda": "mercadolibre",
+          "url": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro"
+        }
+      ],
       "referencia": [
-        { "tienda": "Mercado Libre", "contado": 496999, "cuotas": 12, "cuotaMonto": 41417, "total": 496999, "sinInteres": true, "fecha": "2026-10-24", "fuente": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro" }
+        {
+          "tienda": "Mercado Libre",
+          "contado": 496999,
+          "cuotas": 12,
+          "cuotaMonto": 41417,
+          "total": 496999,
+          "sinInteres": true,
+          "fecha": "2026-10-24",
+          "fuente": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro",
+          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+        }
       ]
     },
     {
@@ -152,13 +444,37 @@
       "grupo": "pc",
       "pieza": "memoria",
       "busqueda": "Memoria DDR5 32GB 6000",
-      "debeTener": ["ddr5", "32gb|32 gb|2x16"],
-      "excluir": ["notebook", "sodimm", "so-dimm", "pc armada", "combo"],
+      "debeTener": [
+        "ddr5",
+        "32gb|32 gb|2x16"
+      ],
+      "excluir": [
+        "notebook",
+        "sodimm",
+        "so-dimm",
+        "pc armada",
+        "combo"
+      ],
       "minimo": 250000,
       "maximo": 2500000,
-      "extra": [{ "tienda": "mercadolibre", "url": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra" }],
+      "extra": [
+        {
+          "tienda": "mercadolibre",
+          "url": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra"
+        }
+      ],
       "referencia": [
-        { "tienda": "Mercado Libre", "contado": 1136441, "cuotas": 12, "cuotaMonto": 94703, "total": 1136441, "sinInteres": true, "fecha": "2026-11-21", "fuente": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra" }
+        {
+          "tienda": "Mercado Libre",
+          "contado": 1136441,
+          "cuotas": 12,
+          "cuotaMonto": 94703,
+          "total": 1136441,
+          "sinInteres": true,
+          "fecha": "2026-11-21",
+          "fuente": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra",
+          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+        }
       ]
     },
     {
@@ -167,12 +483,33 @@
       "grupo": "pc",
       "pieza": "disco",
       "busqueda": "SSD NVMe 1TB M.2",
-      "debeTener": ["ssd|nvme", "1tb|1 tb", "nvme|m.2|m2"],
-      "excluir": ["externo", "carry", "adaptador", "notebook", "usb", "gabinete"],
+      "debeTener": [
+        "ssd|nvme",
+        "1tb|1 tb",
+        "nvme|m.2|m2"
+      ],
+      "excluir": [
+        "externo",
+        "carry",
+        "adaptador",
+        "notebook",
+        "usb",
+        "gabinete"
+      ],
       "minimo": 60000,
       "maximo": 900000,
       "referencia": [
-        { "tienda": "Estimado", "contado": 280000, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-21", "fuente": null, "aviso": "Estimación, sin cotizar." }
+        {
+          "tienda": "Estimado",
+          "contado": 280000,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-21",
+          "fuente": null,
+          "aviso": "Estimación, sin cotizar."
+        }
       ]
     },
     {
@@ -181,12 +518,31 @@
       "grupo": "pc",
       "pieza": "fuente",
       "busqueda": "Fuente 750W 80 Plus",
-      "debeTener": ["fuente", "750"],
-      "excluir": ["notebook", "cargador", "cable", "combo", "gabinete con"],
+      "debeTener": [
+        "fuente",
+        "750"
+      ],
+      "excluir": [
+        "notebook",
+        "cargador",
+        "cable",
+        "combo",
+        "gabinete con"
+      ],
       "minimo": 60000,
       "maximo": 900000,
       "referencia": [
-        { "tienda": "Estimado", "contado": 180000, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-21", "fuente": null, "aviso": "Estimación, sin cotizar." }
+        {
+          "tienda": "Estimado",
+          "contado": 180000,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-21",
+          "fuente": null,
+          "aviso": "Estimación, sin cotizar."
+        }
       ]
     },
     {
@@ -195,12 +551,31 @@
       "grupo": "pc",
       "pieza": "gabinete",
       "busqueda": "Gabinete gamer mesh ATX",
-      "debeTener": ["gabinete"],
-      "excluir": ["pc armada", "computadora", "ryzen", "intel core", "rtx", "fuente incluida"],
+      "debeTener": [
+        "gabinete"
+      ],
+      "excluir": [
+        "pc armada",
+        "computadora",
+        "ryzen",
+        "intel core",
+        "rtx",
+        "fuente incluida"
+      ],
       "minimo": 50000,
       "maximo": 800000,
       "referencia": [
-        { "tienda": "Estimado", "contado": 180000, "cuotas": null, "cuotaMonto": null, "total": null, "sinInteres": false, "fecha": "2026-11-21", "fuente": null, "aviso": "Estimación, sin cotizar." }
+        {
+          "tienda": "Estimado",
+          "contado": 180000,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
+          "fecha": "2026-11-21",
+          "fuente": null,
+          "aviso": "Estimación, sin cotizar."
+        }
       ]
     }
   ]

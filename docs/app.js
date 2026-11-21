@@ -20,17 +20,36 @@
 
   let db = null;
 
-  // ---------- cálculos ----------
+  // ---------- imágenes ----------
+  const iconName = (p) => (window.RADAR_ICON_FOR ? window.RADAR_ICON_FOR(p) : "cpu");
+  const iconSvg = (name) => (window.RADAR_ICONS || {})[name] || "";
+  // Foto de la tienda si la hay; si no hay o no carga, queda la ilustración.
+  function media(p, cls, extra = "") {
+    const img = safe(p.imagen);
+    const name = iconName(p);
+    if (!img) return `<div class="${cls}">${extra}${iconSvg(name)}</div>`;
+    return `<div class="${cls}" data-fallback="${esc(name)}">${extra}<img src="${esc(img)}" alt="${esc(p.nombre)}" loading="lazy" referrerpolicy="no-referrer"></div>`;
+  }
+  document.addEventListener("error", (e) => {
+    const el = e.target;
+    if (el.tagName === "IMG" && el.parentElement && el.parentElement.dataset.fallback) {
+      el.outerHTML = iconSvg(el.parentElement.dataset.fallback);
+    }
+  }, true);
+
+  // ---------- datos ----------
   // Todas las opciones de un producto: lo leído por el radar y las referencias de la investigación.
   function opciones(p) {
     const auto = (p.ofertas || []).map((o) => ({
       tienda: o.tienda, url: o.url, contado: o.contado, lista: o.lista,
-      cuotas: o.cuotas, fuente: o.viejo ? "viejo" : "auto", fecha: o.fecha, titulo: o.titulo, via: o.via
+      cuotas: o.cuotas, fuente: o.viejo ? "viejo" : "auto", fecha: o.fecha, titulo: o.titulo, via: o.via,
+      medios: o.cuotas && o.cuotas.medios ? "Tarjetas: " + o.cuotas.medios.join(", ") : null
     }));
     const ref = (p.referencia || []).map((r) => ({
       tienda: r.tienda, url: r.fuente, contado: r.contado, lista: null,
       cuotas: r.cuotas ? { n: r.cuotas, monto: r.cuotaMonto, total: r.total, sinInteres: r.sinInteres } : null,
-      fuente: "nota", fecha: r.fecha, aviso: r.aviso, particular: !!r.particular, totalLista: !r.cuotas ? r.total : null
+      fuente: "nota", fecha: r.fecha, aviso: r.aviso, particular: !!r.particular, medios: r.medios || null,
+      totalLista: !r.cuotas ? r.total : null
     }));
     return { auto, ref, todas: [...auto, ...ref] };
   }
@@ -49,34 +68,20 @@
   }
 
   // Valor de hoy de n cuotas de "monto", descontando inflación mensual i
-  function valorActual(monto, n, i) {
-    if (!i) return monto * n;
-    return monto * (1 - Math.pow(1 + i, -n)) / i;
-  }
-
+  const valorActual = (monto, n, i) => (!i ? monto * n : monto * (1 - Math.pow(1 + i, -n)) / i);
   const inflacion = () => (Number($("inflacion").value) || 0) / 100;
   const tag = (f) => `<span class="tag ${f}">${f === "auto" ? "al día" : f}</span>`;
 
-  // ---------- comparador GTA 6 ----------
-  function cardConsola(p) {
-    const m = mejores(p);
-    const c = m.contado, q = m.cuotas;
-    let html = `<div class="card"><h3>${esc(p.nombre)}</h3>${p.nota ? `<p class="nota">${esc(p.nota)}</p>` : ""}<dl class="kv">`;
-    html += `<dt>Mejor contado</dt><dd>${c ? `${linkOr(money(c.contado), c.url)}<span class="sub">${esc(c.tienda)} ${tag(c.fuente)} ${fecha(c.fecha)}</span>` : "—"}</dd>`;
-    html += `<dt>Mejor en cuotas sin interés</dt><dd>${q ? `${linkOr(`${q.cuotas.n} × ${money(q.cuotas.monto)}`, q.url)}<span class="sub">total ${money(q.cuotas.total)} · ${esc(q.tienda)} ${tag(q.fuente)}</span>` : "—"}</dd>`;
-    let verdict = "";
-    if (c && q) {
-      const recargo = q.cuotas.total / c.contado - 1;
-      const va = valorActual(q.cuotas.monto, q.cuotas.n, inflacion());
-      html += `<dt>Recargo por pagar en cuotas</dt><dd>${pct(recargo)}<span class="sub">${c.tienda === q.tienda ? "en la misma tienda" : `contra el contado de ${esc(c.tienda)}`}</span></dd>`;
-      html += `<dt>Valor de hoy de esas cuotas</dt><dd>${money(va)}<span class="sub">con ${($("inflacion").value || 0)}% de inflación mensual</span></dd>`;
-      verdict = va < c.contado
-        ? `<div class="verdict good">Conviene en cuotas: con la inflación, pagar ${q.cuotas.n} cuotas equivale a ${money(va)} de hoy, menos que ${money(c.contado)} de contado.</div>`
-        : `<div class="verdict warn">Conviene de contado: ahorrás ${money(q.cuotas.total - c.contado)} y, aun descontando la inflación, las cuotas valen ${money(va - c.contado)} más.</div>`;
-    }
-    html += `</dl>${verdict}${linksTiendas(p)}</div>`;
-    return { html, contado: c && c.contado, nombre: p.nombre };
+  // ¿Qué tipo de cuotas son? Compara contra el contado de la misma tienda o, si no hay, el mejor contado.
+  function tipoCuotas(o, mejorContado) {
+    if (!o || !o.cuotas) return null;
+    if (!o.cuotas.sinInteres) return { cls: "con", label: "Con interés", rec: null };
+    const base = o.contado || mejorContado;
+    const rec = base && o.cuotas.total ? o.cuotas.total / base - 1 : null;
+    if (rec != null && rec > 0.01) return { cls: "lista", label: `Sin interés, ${pct(rec)} sobre ${o.contado ? "su contado" : "el mejor contado"}`, rec };
+    return { cls: "sin", label: "Sin interés real", rec };
   }
+  const chip = (t) => (t ? `<span class="chip ${t.cls}">${esc(t.label)}</span>` : "");
 
   function linkOr(text, url) {
     const u = safe(url);
@@ -89,35 +94,101 @@
     return links.length ? `<div class="links">${links.join("")}</div>` : "";
   }
 
-  function renderGta() {
-    const consolas = db.productos.filter((p) => p.grupo === "consola").map(cardConsola);
-    $("consolas").innerHTML = consolas.map((c) => c.html).join("");
+  // Todas las formas de pagar sin interés que conocemos, de la más barata a la más cara
+  function planesSinInteres(p, mejorContado) {
+    const planes = opciones(p).todas.filter((o) => o.cuotas && o.cuotas.sinInteres && o.cuotas.total)
+      .sort((a, b) => a.cuotas.total - b.cuotas.total || b.cuotas.n - a.cuotas.n);
+    if (!planes.length) return `<div class="empty-plans">Todavía no encontramos planes sin interés para este producto. Buscalo en cada tienda con los botones de abajo.</div>`;
+    return planes.map((o) => {
+      const t = tipoCuotas(o, mejorContado);
+      return `<div class="plan"><span class="st">${linkOr(esc(o.tienda), o.url)}</span><span class="amt">${o.cuotas.n} × ${money(o.cuotas.monto)}</span>
+        <span class="meta">${chip(t)}<span>total ${money(o.cuotas.total)}</span>${o.medios ? `<span>· ${esc(o.medios)}</span>` : ""}${tag(o.fuente)}<span>${fecha(o.fecha)}</span></span></div>`;
+    }).join("");
+  }
 
-    // PC: suma de piezas
+  // ---------- comparador GTA 6 ----------
+  function cardConsola(p, destacado) {
+    const m = mejores(p);
+    const c = m.contado, q = m.cuotas;
+    const mejorC = c && c.contado;
+    let cuotaHtml = `<div class="cuota-box"><div class="line"><span class="price-label">En cuotas sin interés</span><span class="muted small">Sin dato todavía</span></div></div>`;
+    let verdict = "";
+    if (q) {
+      const t = tipoCuotas(q, mejorC);
+      cuotaHtml = `<div class="cuota-box"><div class="price-label">Mejor plan en cuotas</div><div class="line"><span class="big">${linkOr(`${q.cuotas.n} × ${money(q.cuotas.monto)}`, q.url)}</span>${chip(t)}</div>
+        <div class="sub">Total ${money(q.cuotas.total)} en ${esc(q.tienda)} ${tag(q.fuente)}${q.medios ? ` · ${esc(q.medios)}` : ""}</div></div>`;
+      if (mejorC) {
+        const va = valorActual(q.cuotas.monto, q.cuotas.n, inflacion());
+        verdict = va < mejorC
+          ? `<div class="verdict good"><b>Conviene en cuotas.</b> Con ${esc($("inflacion").value || 0)}% de inflación mensual, esas ${q.cuotas.n} cuotas equivalen a ${money(va)} de hoy, menos que ${money(mejorC)} de contado.</div>`
+          : `<div class="verdict warn"><b>Conviene de contado.</b> Ahorrás ${money(q.cuotas.total - mejorC)}. Aun descontando la inflación, las cuotas valen ${money(va - mejorC)} más.</div>`;
+      }
+    }
+    const nPlanes = opciones(p).todas.filter((o) => o.cuotas && o.cuotas.sinInteres).length;
+    return `<article class="card ${destacado ? "top-pick" : ""}">
+      ${media(p, "media", destacado ? `<span class="ribbon">Recomendada</span>` : "")}
+      <div class="card-body">
+        <h3>${esc(p.nombre)}</h3>${p.nota ? `<p class="nota">${esc(p.nota)}</p>` : ""}
+        <div><div class="price-label">De contado</div>
+          <div class="price-row"><span class="price-big">${c ? linkOr(money(c.contado), c.url) : "—"}</span>${c ? tag(c.fuente) : ""}</div>
+          ${c ? `<div class="where">en ${esc(c.tienda)} · ${fecha(c.fecha)}</div>` : ""}</div>
+        ${cuotaHtml}
+        ${verdict}
+        <details class="opts"><summary>Opciones para pagar sin interés (${nPlanes})</summary>${planesSinInteres(p, mejorC)}</details>
+        <details class="opts"><summary>Buscar en cada tienda</summary><div style="padding-top:8px">${linksTiendas(p)}</div></details>
+      </div></article>`;
+  }
+
+  function piezasPc() {
     const barato = $("cpuBarato").checked;
-    const piezas = db.productos.filter((p) => p.grupo === "pc" && (barato ? p.pieza !== "procesador" : p.pieza !== "procesador-barato"));
-    let total = 0, totalCuotas = 0, faltan = 0, estimadas = 0;
-    const filas = piezas.map((p) => {
-      const m = mejores(p);
-      const c = m.contado;
-      if (c) total += c.contado; else faltan++;
-      if (c && c.tienda === "Estimado") estimadas++;
-      const cuotaTotal = m.cuotas ? m.cuotas.cuotas.total : c ? c.contado : 0;
-      totalCuotas += cuotaTotal;
-      return `<tr><td>${esc(p.nombre)}</td><td class="r">${c ? linkOr(money(c.contado), c.url) : "—"}</td><td>${c ? `${esc(c.tienda)} ${tag(c.fuente)}` : ""}</td>
-        <td class="r">${m.cuotas ? `${m.cuotas.cuotas.n} × ${money(m.cuotas.cuotas.monto)}` : "—"}</td></tr>`;
-    });
-    filas.push(`<tr><th>Total</th><th class="r">${money(total)}</th><th>${estimadas ? `${estimadas} pieza(s) estimadas` : ""}</th><th class="r">${totalCuotas ? `≈ 12 × ${money(totalCuotas / 12)}` : ""}</th></tr>`);
-    $("pc").innerHTML = `<div class="tablewrap"><table><thead><tr><th>Pieza</th><th class="r">Contado</th><th>Dónde</th><th class="r">Cuotas sin interés</th></tr></thead><tbody>${filas.join("")}</tbody></table></div>
-      <p class="muted small">No incluye monitor 1440p ni Windows. GTA 6 todavía no tiene versión de PC ni requisitos oficiales: este armado es una estimación basada en cómo corre en PS5.</p>`;
+    return db.productos.filter((p) => p.grupo === "pc" && (barato ? p.pieza !== "procesador" : p.pieza !== "procesador-barato"));
+  }
 
-    // Veredicto
-    const ps5 = consolas.find((c) => /PS5 Slim Digital/i.test(c.nombre));
-    const masBarata = consolas.filter((c) => c.contado).sort((a, b) => a.contado - b.contado)[0];
-    const veces = ps5 && ps5.contado ? total / ps5.contado : null;
-    $("veredicto").innerHTML = `<p class="big">La forma más barata de jugar GTA 6 hoy: ${esc(ps5 ? ps5.nombre : "una consola")}${ps5 && ps5.contado ? ` desde ${money(ps5.contado)}` : ""}.</p>
-      <p>GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. La PC para 2K sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces una PS5` : ""}, y todavía no hay versión de PC anunciada.</p>
-      ${masBarata && ps5 && masBarata.nombre !== ps5.nombre ? `<p class="muted small">La más barata de todas es ${esc(masBarata.nombre)} (${money(masBarata.contado)}), pero con 512 GB queda justa para un juego de 212 GB.</p>` : ""}`;
+  function totalPc() {
+    let total = 0, cuotasTotal = 0, estimadas = 0;
+    for (const p of piezasPc()) {
+      const m = mejores(p);
+      if (m.contado) total += m.contado.contado;
+      if (m.contado && m.contado.tienda === "Estimado") estimadas++;
+      cuotasTotal += m.cuotas ? m.cuotas.cuotas.total : m.contado ? m.contado.contado : 0;
+    }
+    return { total, cuotasTotal, estimadas };
+  }
+
+  function renderGta() {
+    const consolas = db.productos.filter((p) => p.grupo === "consola");
+    $("consolas").innerHTML = consolas.map((p) => cardConsola(p, p.id === "ps5-slim-digital")).join("");
+
+    const parts = piezasPc().map((p) => {
+      const m = mejores(p);
+      const c = m.contado, q = m.cuotas;
+      const t = q ? tipoCuotas(q, c && c.contado) : null;
+      return `<div class="part">${media(p, "thumb")}<div><div class="n">${esc(p.nombre)}</div>
+        <div class="p">${c ? linkOr(money(c.contado), c.url) : "—"}</div>
+        <div class="w">${c ? `${esc(c.tienda)} ${tag(c.fuente)}` : ""}</div>
+        ${q ? `<div class="w">${q.cuotas.n} × ${money(q.cuotas.monto)} ${chip(t)}</div>` : `<div class="w">Sin plan sin interés conocido</div>`}</div></div>`;
+    });
+    const { total, cuotasTotal, estimadas } = totalPc();
+    $("pc").innerHTML = `<div class="pc-grid">${parts.join("")}</div>
+      <div class="pc-total"><div><div class="k">Total de contado</div><div class="v">${money(total)}</div></div>
+        <div><div class="k">En 12 cuotas</div><div class="v">≈ 12 × ${money(cuotasTotal / 12)}</div></div>
+        <div class="muted small" style="flex:1;min-width:220px">${estimadas ? `${estimadas} pieza(s) son estimaciones. ` : ""}No incluye monitor 1440p ni Windows. GTA 6 todavía no tiene versión de PC ni requisitos oficiales: el armado es una estimación basada en cómo corre en PS5.</div></div>`;
+    renderHero();
+  }
+
+  function renderHero() {
+    const ps5 = db.productos.find((p) => p.id === "ps5-slim-digital");
+    const m = ps5 ? mejores(ps5) : {};
+    const { total } = totalPc();
+    const veces = m.contado ? total / m.contado.contado : null;
+    $("titular").textContent = `La forma más barata de jugar GTA 6: ${ps5 ? ps5.nombre : "una consola"}${m.contado ? ` desde ${money(m.contado.contado)}` : ""}`;
+    $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. Una PC para 2K sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
+    const t = m.cuotas ? tipoCuotas(m.cuotas, m.contado && m.contado.contado) : null;
+    $("stats").innerHTML = [
+      { k: "PS5 Slim Digital de contado", v: m.contado ? money(m.contado.contado) : "—", s: m.contado ? `en ${m.contado.tienda}` : "" },
+      { k: "PS5 en cuotas sin interés", v: m.cuotas ? `${m.cuotas.cuotas.n} × ${money(m.cuotas.cuotas.monto)}` : "—", s: m.cuotas ? `total ${money(m.cuotas.cuotas.total)} en ${m.cuotas.tienda}${t && t.rec > 0.01 ? ` (${pct(t.rec)} vs contado)` : ""}` : "" },
+      { k: "PC para 2K completa", v: money(total), s: "sin monitor ni Windows" }
+    ].map((x) => `<div class="stat"><div class="k">${esc(x.k)}</div><div class="v">${esc(x.v)}</div><div class="s">${esc(x.s)}</div></div>`).join("");
   }
 
   // ---------- ofertas nuevas ----------
@@ -127,8 +198,9 @@
     const nuevas = visto ? list.filter((a) => a.fecha > visto).length : list.length;
     $("badge").hidden = !nuevas;
     $("badge").textContent = nuevas;
+    const prod = Object.fromEntries(db.productos.map((p) => [p.id, p]));
     $("alertas").innerHTML = list.length
-      ? list.map((a) => `<a class="alert" href="${esc(safe(a.url) || "#")}" target="_blank" rel="noopener"><div><div class="t">${esc(a.titulo)}</div><div>${esc(a.mensaje)}</div><div class="muted small">${hace(a.fecha)}</div></div></a>`).join("")
+      ? list.map((a) => `<a class="alert" href="${esc(safe(a.url) || "#")}" target="_blank" rel="noopener">${prod[a.productoId] ? media(prod[a.productoId], "thumb") : ""}<div><div class="t">${esc(a.titulo)}</div><div>${esc(a.mensaje)}</div><div class="muted small">${hace(a.fecha)}</div></div></a>`).join("")
       : `<div class="empty">Todavía no se detectaron ofertas nuevas. El radar compara cada lectura con la anterior, así que las primeras aparecen después de un par de actualizaciones.</div>`;
   }
 
@@ -136,7 +208,7 @@
   function spark(hist) {
     if (!hist || hist.length < 2) return "";
     const vals = hist.map((h) => h[1]);
-    const min = Math.min(...vals), max = Math.max(...vals), w = 120, h = 28;
+    const min = Math.min(...vals), max = Math.max(...vals), w = 110, h = 28;
     const d = vals.map((v, i) => `${i ? "L" : "M"}${((i / (vals.length - 1)) * w).toFixed(1)},${(h - 3 - ((v - min) / (max - min || 1)) * (h - 6)).toFixed(1)}`).join("");
     return `<svg class="spark" viewBox="0 0 ${w} ${h}" aria-label="Historial: mínimo ${money(min)}, máximo ${money(max)}"><path d="${d}"/></svg>`;
   }
@@ -148,30 +220,29 @@
     const list = db.productos.filter((p) => (!g || p.grupo === g) && (!f || p.nombre.toLowerCase().includes(f)));
     $("productos").innerHTML = list.map((p) => {
       const m = mejores(p);
-      const { todas } = opciones(p);
-      const filas = todas
+      const mejorC = m.contado && m.contado.contado;
+      const filas = opciones(p).todas
         .sort((a, b) => (a.contado || a.cuotas?.total || 1e12) - (b.contado || b.cuotas?.total || 1e12))
         .map((o) => {
-          const rec = o.contado && o.cuotas && o.cuotas.total ? o.cuotas.total / o.contado - 1 : null;
+          const t = tipoCuotas(o, mejorC);
           return `<tr><td>${linkOr(esc(o.tienda), o.url)}${o.titulo ? `<div class="muted small">${esc(o.titulo.slice(0, 70))}</div>` : ""}${o.via === "tu compu" ? `<div class="muted small">leído desde tu compu</div>` : ""}${o.aviso ? `<div class="muted small">${esc(o.aviso)}</div>` : ""}</td>
             <td class="r">${money(o.contado)}${o.lista ? `<div class="muted small"><s>${money(o.lista)}</s></div>` : ""}</td>
-            <td class="r">${o.cuotas ? `${o.cuotas.n} × ${money(o.cuotas.monto)}<div class="muted small">${o.cuotas.sinInteres ? "sin interés" : "con interés"} · total ${money(o.cuotas.total)}</div>` : o.totalLista ? `<span class="muted small">lista ${money(o.totalLista)}</span>` : "—"}</td>
-            <td class="r">${pct(rec)}</td><td>${tag(o.fuente)} <span class="muted small">${fecha(o.fecha)}</span></td></tr>`;
+            <td>${o.cuotas ? `<b>${o.cuotas.n} × ${money(o.cuotas.monto)}</b> <span class="muted small">total ${money(o.cuotas.total)}</span><div style="margin-top:4px">${chip(t)}</div>${o.medios ? `<div class="muted small">${esc(o.medios)}</div>` : ""}` : o.totalLista ? `<span class="muted small">precio de lista ${money(o.totalLista)}</span>` : `<span class="muted">—</span>`}</td>
+            <td>${tag(o.fuente)} <span class="muted small">${fecha(o.fecha)}</span></td></tr>`;
         });
-      return `<details class="prod" data-id="${esc(p.id)}" ${abiertos.includes(p.id) ? "open" : ""}><summary><span class="name">${esc(p.nombre)}</span>${spark(p.historia)}
+      return `<details class="prod" data-id="${esc(p.id)}" ${abiertos.includes(p.id) ? "open" : ""}><summary>${media(p, "thumb")}<span class="name">${esc(p.nombre)}</span>${spark(p.historia)}
           <span class="price">${m.contado ? money(m.contado.contado) : "—"}</span>${m.contado ? tag(m.contado.fuente) : ""}</summary>
-        <div class="body"><div class="tablewrap"><table><thead><tr><th>Tienda</th><th class="r">Contado</th><th class="r">Cuotas</th><th class="r">Recargo</th><th>Dato</th></tr></thead><tbody>${filas.join("") || `<tr><td colspan="5" class="muted">Sin precios todavía.</td></tr>`}</tbody></table></div>
-        ${linksTiendas(p)}</div></details>`;
+        <div class="body"><div class="tablewrap"><table><thead><tr><th>Tienda</th><th class="r">Contado</th><th>Cuotas</th><th>Dato</th></tr></thead><tbody>${filas.join("") || `<tr><td colspan="4" class="muted">Sin precios todavía.</td></tr>`}</tbody></table></div>
+        <div style="margin-top:10px">${linksTiendas(p)}</div></div></details>`;
     }).join("") || `<div class="empty">No hay productos con ese nombre.</div>`;
     $("productos").querySelectorAll("details").forEach((d) => d.addEventListener("toggle", () => {
-      const ids = [...$("productos").querySelectorAll("details[open]")].map((x) => x.dataset.id);
-      LS.set("radar-abiertos", ids);
+      LS.set("radar-abiertos", [...$("productos").querySelectorAll("details[open]")].map((x) => x.dataset.id));
     }));
   }
 
   function renderTiendas() {
     $("tiendas").innerHTML = `<div class="stores">${Object.values(db.tiendas || {}).map((t) =>
-      `<div class="store"><span class="dot ${t.ok ? "ok" : t.ultimaOk ? "" : "bad"}"></span><b>${esc(t.nombre)}</b><div class="muted small">${t.ok ? `${t.ofertas} precio(s) leídos` : esc(t.error || "Todavía sin lectura")}${t.ultimaOk && !t.ok ? ` · última lectura buena ${hace(t.ultimaOk)}` : ""}</div></div>`).join("")}</div>
+      `<div class="store"><span class="dot ${t.ok ? "ok" : t.ultimaOk ? "" : "bad"}"></span><b>${esc(t.nombre)}</b><div class="muted small">${t.ok ? `${t.ofertas} precio(s) leídos${t.metodo === "desde tu compu" ? " desde tu compu" : ""}` : esc(t.error || "Todavía sin lectura")}${t.ultimaOk && !t.ok ? ` · última lectura buena ${hace(t.ultimaOk)}` : ""}</div></div>`).join("")}</div>
       <p class="muted small">Las tiendas sin lectura automática igual aparecen como botones para buscar el producto ahí.</p>`;
   }
 

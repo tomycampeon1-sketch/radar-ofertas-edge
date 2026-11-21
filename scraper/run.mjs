@@ -30,7 +30,7 @@ export function mergeAportes(scraped, aportes, config, now = new Date()) {
       const p = prods[pid];
       if (!p || scraped.resultados[pid]?.[tid]) continue; // GitHub ya tiene dato propio
       const buenas = (ofertas || []).filter((o) => o && typeof o.titulo === "string" && /^https:\/\//.test(o.url || "") && matches(o.titulo, p) && inRange(o.contado, p))
-        .map((o) => ({ titulo: o.titulo, url: o.url, contado: Number(o.contado), lista: Number(o.lista) || null, cuotas: o.cuotas || null, via: "tu compu", fecha: ap.fecha }));
+        .map((o) => ({ titulo: o.titulo, url: o.url, contado: Number(o.contado), lista: Number(o.lista) || null, cuotas: o.cuotas || null, imagen: /^https:\/\//.test(o.imagen || "") ? o.imagen : null, via: "tu compu", fecha: ap.fecha }));
       if (buenas.length) {
         (scraped.resultados[pid] ||= {})[tid] = buenas;
         usadas += buenas.length;
@@ -80,7 +80,7 @@ export function buildDb(prev, config, { resultados, estado }, now = new Date()) 
         const mc = mejorCuotas(orden);
         if (mc && mc !== orden[0]) elegidas.push(mc);
         for (const o of elegidas)
-          ofertas.push({ tienda: nombreTienda[t.id], tiendaId: t.id, titulo: o.titulo, url: o.url, contado: o.contado, lista: o.lista || null, cuotas: o.cuotas || null, via: o.via || null, fuente: "auto", fecha: o.fecha || iso });
+          ofertas.push({ tienda: nombreTienda[t.id], tiendaId: t.id, titulo: o.titulo, url: o.url, contado: o.contado, lista: o.lista || null, cuotas: o.cuotas || null, via: o.via || null, imagen: o.imagen || null, fuente: "auto", fecha: o.fecha || iso });
       } else {
         // la tienda falló esta vez: conservar lo último que vimos si tiene menos de 3 días
         for (const o of (antes.ofertas || []).filter((x) => x.tiendaId === t.id && x.fuente === "auto")) {
@@ -128,6 +128,7 @@ export function buildDb(prev, config, { resultados, estado }, now = new Date()) 
       busqueda: p.busqueda,
       filtro: { debeTener: p.debeTener || [], excluir: p.excluir || [], minimo: p.minimo || null, maximo: p.maximo || null },
       nota: p.nota || null,
+      imagen: (ofertas.find((o) => o.imagen) || {}).imagen || (antes.imagen && /^https:\/\//.test(antes.imagen) ? antes.imagen : null) || p.imagen || null,
       ofertas,
       referencia: p.referencia || [],
       mejor: {

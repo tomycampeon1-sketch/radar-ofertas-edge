@@ -22,6 +22,15 @@ export function toNumber(txt) {
   return Number.isFinite(n) ? n : null;
 }
 
+export function imageOf(v) {
+  if (!v) return null;
+  if (Array.isArray(v)) return imageOf(v[0]);
+  if (typeof v === "object") return imageOf(v.url || v.contentUrl || v.imageUrl || v.src);
+  const u = String(v);
+  if (u.startsWith("//")) return "https:" + u;
+  return /^https:\/\//.test(u) ? u : null;
+}
+
 export function decode(s) {
   return String(s || "")
     .replace(/<[^>]+>/g, " ")
@@ -58,21 +67,25 @@ export function parseVtex(json, base) {
     const co = seller && seller.commertialOffer;
     if (!co || !co.Price || co.AvailableQuantity === 0) continue;
     let best = null;
+    const medios = {}; // n de cuotas sin interés -> tarjetas que lo ofrecen
     for (const ins of co.Installments || []) {
       const n = ins.NumberOfInstallments;
       if (!n || n < 2) continue;
       const total = ins.TotalValuePlusInterestRate || ins.Value * n;
       const sinInteres = ins.InterestRate === 0 || Math.abs(total - co.Price) < 2;
+      if (sinInteres && ins.PaymentSystemName) (medios[n] ||= new Set()).add(ins.PaymentSystemName);
       if (!best || (sinInteres && !best.sinInteres) || (sinInteres === best.sinInteres && n > best.n)) {
-        best = { n, monto: Math.round(ins.Value), total: Math.round(total), sinInteres, medio: ins.PaymentSystemName || null };
+        best = { n, monto: Math.round(ins.Value), total: Math.round(total), sinInteres };
       }
     }
+    if (best && best.sinInteres && medios[best.n]) best.medios = [...medios[best.n]].slice(0, 8);
     out.push({
       titulo: p.productName,
       url: p.link ? (p.link.startsWith("http") ? p.link : base + p.link) : base,
       contado: co.Price,
       lista: co.ListPrice && co.ListPrice > co.Price ? co.ListPrice : null,
-      cuotas: best
+      cuotas: best,
+      imagen: imageOf(item.images && item.images[0] && item.images[0].imageUrl)
     });
   }
   return out;
@@ -94,7 +107,7 @@ export function parseJsonLd(html, base) {
         if (price && cur === "ARS" && !/OutOfStock/i.test(o.availability || "")) {
           let url = node.url || o.url || base;
           if (url && !/^https?:/.test(url)) url = new URL(url, base).href;
-          out.push({ titulo: decode(node.name), url, contado: price, lista: null, cuotas: null });
+          out.push({ titulo: decode(node.name), url, contado: price, lista: null, cuotas: null, imagen: imageOf(node.image) });
           break;
         }
       }
@@ -151,7 +164,7 @@ export function parseNextData(html, base) {
       if (!seen.has(key)) {
         seen.add(key);
         const lista = typeof o.listPrice === "number" && o.listPrice > price ? o.listPrice : null;
-        out.push({ titulo: decode(title), url, contado: price, lista, cuotas: null });
+        out.push({ titulo: decode(title), url, contado: price, lista, cuotas: null, imagen: imageOf(o.image || o.images || o.imageUrl || o.thumbnail) });
       }
     }
     for (const v of Object.values(o)) walk(v, depth + 1);
@@ -182,6 +195,7 @@ export function parseMercadoLibre(html) {
       contado,
       lista: lista && lista > contado ? lista : null,
       cuotas: cuotasFromText(text, contado),
+      imagen: imageOf((chunk.match(/<img[^>]+(?:data-src|src)="(https:[^"]+)"/) || [])[1]),
       tiendaOficial: /tienda oficial|vendido por/i.test(text)
     });
   }
@@ -215,6 +229,7 @@ export function parseMejoresCompras(html, url) {
   }
   const meta = html.match(/itemprop=["']price["'][^>]*content=["']([\d.,]+)/i) || html.match(/property=["']product:price:amount["'][^>]*content=["']([\d.,]+)/i);
   const title = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1];
-  if (meta && title) return [{ titulo: decode(title), url, contado: toNumber(meta[1]), lista: null, cuotas: null }];
+  const img = (html.match(/property=["']og:image["'][^>]*content=["']([^"']+)/i) || [])[1];
+  if (meta && title) return [{ titulo: decode(title), url, contado: toNumber(meta[1]), lista: null, cuotas: null, imagen: imageOf(img) }];
   return [];
 }
