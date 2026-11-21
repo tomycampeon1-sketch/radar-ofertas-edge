@@ -1,5 +1,5 @@
 // Cómo se busca en cada tienda. Cada tienda prueba sus métodos en orden y usa el primero que da resultados.
-import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, parseMejoresCompras } from "./parse.js";
+import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, parseMejoresCompras, parseVenex, parseFullH4rd, parseFravega, parseCompraGamer } from "./parse.js";
 
 const slug = (q) => q.trim().toLowerCase().replace(/\s+/g, "-");
 const enc = encodeURIComponent;
@@ -44,7 +44,10 @@ export const SOURCES = {
   },
   fravega: {
     busqueda: (q) => `https://www.fravega.com/l/?keyword=${enc(q)}`,
-    metodos: [html((q) => `https://www.fravega.com/l/?keyword=${enc(q)}`, "https://www.fravega.com")]
+    metodos: [
+      { nombre: "fravega", url: (q) => `https://www.fravega.com/l/?keyword=${enc(q)}`, accept: "text/html", parse: (body) => parseFravega(body) },
+      html((q) => `https://www.fravega.com/l/?keyword=${enc(q)}`, "https://www.fravega.com")
+    ]
   },
   garbarino: {
     busqueda: (q) => `https://www.garbarino.com/shop/sort-by-price-low-to-high?search=${enc(q)}`,
@@ -64,15 +67,16 @@ export const SOURCES = {
   },
   compragamer: {
     busqueda: (q) => `https://compragamer.com/productos?criterio=${enc(q)}`,
-    metodos: [] // sitio hecho 100% con JavaScript: por ahora solo enlace (la extensión revisa su portada)
+    // El sitio es 100% JavaScript, pero publica su catálogo completo en un JSON (se baja una vez por revisión)
+    metodos: [{ nombre: "catalogo", url: () => "https://static.compragamer.com/productos", accept: "application/json", cache: true, parse: (body) => { try { return parseCompraGamer(JSON.parse(body)); } catch { return []; } } }]
   },
   venex: {
     busqueda: (q) => `https://www.venex.com.ar/resultado-busqueda.htm?keywords=${enc(q)}`,
-    metodos: [html((q) => `https://www.venex.com.ar/resultado-busqueda.htm?keywords=${enc(q)}`, "https://www.venex.com.ar")]
+    metodos: [{ nombre: "venex", url: (q) => `https://www.venex.com.ar/resultado-busqueda.htm?keywords=${enc(q)}`, accept: "text/html", parse: (body) => parseVenex(body) }]
   },
   fullh4rd: {
     busqueda: (q) => `https://www.fullh4rd.com.ar/cat/search/${enc(q)}`,
-    metodos: [html((q) => `https://www.fullh4rd.com.ar/cat/search/${enc(q)}`, "https://www.fullh4rd.com.ar")]
+    metodos: [{ nombre: "fullh4rd", url: (q) => `https://www.fullh4rd.com.ar/cat/search/${enc(q)}`, accept: "text/html", parse: (body) => parseFullH4rd(body) }]
   },
   mexx: {
     busqueda: (q) => `https://www.mexx.com.ar/buscar/?p=${enc(q)}`,

@@ -233,3 +233,109 @@ export function parseMejoresCompras(html, url) {
   if (meta && title) return [{ titulo: decode(title), url, contado: toNumber(meta[1]), lista: null, cuotas: null, imagen: imageOf(img) }];
   return [];
 }
+
+// ---------- Lectores específicos por tienda (revisados en las páginas reales, nov. 2026) ----------
+
+// Venex: listado armado en el servidor; cada producto trae enhancedClick({"name","price"}).
+export function parseVenex(html) {
+  const out = [];
+  const seen = new Set();
+  const blocks = html.split(/class="product-box(?:\s|")/).slice(1);
+  for (const b of blocks) {
+    const m = b.match(/<h3 class="product-box-title">\s*<a href="([^"]+)"[^>]*enhancedClick\((\{[^)]*?\})\)/);
+    if (!m) continue;
+    let data;
+    try {
+      data = JSON.parse(m[2]);
+    } catch {
+      continue;
+    }
+    const url = m[1].split("?")[0];
+    if (seen.has(url)) continue;
+    seen.add(url);
+    const shown = (b.match(/class="current-price"[^>]*>\s*\$\s*([\d.,]+)/) || [])[1];
+    const contado = toNumber(shown) || toNumber(data.price);
+    if (!contado || /SIN STOCK/i.test(b.slice(0, 4000))) continue;
+    const img = (b.match(/<img[^>]+src="([^"]+)"/) || [])[1];
+    out.push({ titulo: decode(data.name), url: url.startsWith("http") ? url : "https://www.venex.com.ar/" + url.replace(/^\//, ""), contado, lista: null, cuotas: null, imagen: img ? imageOf(img.startsWith("http") ? img : "https://www.venex.com.ar/" + img.replace(/^\//, "")) : null });
+  }
+  return out;
+}
+
+// Full H4rd: <div class="item product-list"> con <h3> y <div class="price">$contado <span class="price-promo">$lista</span>
+export function parseFullH4rd(html) {
+  const out = [];
+  for (const b of html.split(/class="item product-list"/).slice(1)) {
+    const href = (b.match(/<a href="(\/prod\/[^"]+)"/) || [])[1];
+    const titulo = (b.match(/<h3>([\s\S]*?)<\/h3>/) || [])[1];
+    const priceBlock = (b.match(/<div class="price">([\s\S]*?)<\/div>/) || [])[1];
+    if (!href || !titulo || !priceBlock) continue;
+    const contado = toNumber((priceBlock.match(/^\s*\$\s*([\d.,]+)/) || [])[1]);
+    const lista = toNumber((priceBlock.match(/price-promo[^>]*>\s*\$\s*([\d.,]+)/) || [])[1]);
+    if (!contado) continue;
+    const img = (b.match(/<img[^>]+src="(\/img\/[^"]+)"/) || [])[1];
+    out.push({ titulo: decode(titulo), url: "https://www.fullh4rd.com.ar" + href, contado, lista: lista && lista > contado ? lista : null, cuotas: null, imagen: img ? "https://www.fullh4rd.com.ar" + img : null });
+  }
+  return out;
+}
+
+// Frávega: __NEXT_DATA__ con resultados SkuItem { code, item{title,slug,images}, pricing{salePrice,listPrice}, collections }
+export function parseFravega(html) {
+  const m = html.match(/<script[^>]+id=["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script>/i);
+  if (!m) return [];
+  let data;
+  try {
+    data = JSON.parse(m[1]);
+  } catch {
+    return [];
+  }
+  const out = [];
+  const seen = new Set();
+  const walk = (o, depth) => {
+    if (!o || typeof o !== "object" || depth > 20) return;
+    if (Array.isArray(o)) return o.forEach((x) => walk(x, depth + 1));
+    if (o.__typename === "SkuItem" && o.item && o.pricing && o.pricing.salePrice) {
+      const code = o.code;
+      if (!seen.has(code)) {
+        seen.add(code);
+        const price = o.pricing.salePrice;
+        const coll = (o.collections || []).map((c) => c && c.name).find((n) => /(\d+)\s*cuotas sin inter/i.test(n || ""));
+        const n = coll ? Number(coll.match(/(\d+)/)[1]) : null;
+        const img = (o.item.images || o.images || [])[0];
+        out.push({
+          titulo: o.item.title,
+          url: `https://www.fravega.com/p/${o.item.slug}-${code}/`,
+          contado: price,
+          lista: o.pricing.listPrice && o.pricing.listPrice > price ? o.pricing.listPrice : null,
+          cuotas: n ? { n, monto: Math.round(price / n), total: price, sinInteres: true } : null,
+          imagen: img ? `https://images.fravega.com/f300/${img}` : null,
+          vendedor: o.seller && o.seller.commercialName
+        });
+      }
+      return;
+    }
+    for (const v of Object.values(o)) walk(v, depth + 1);
+  };
+  walk(data, 0);
+  return out;
+}
+
+// Compra Gamer: catálogo público completo en static.compragamer.com/productos.
+// precioEspecial = efectivo/transferencia; precioLista = con tarjeta (3 cuotas sin interés sobre ese precio).
+export function parseCompraGamer(json) {
+  const arr = Array.isArray(json) ? json : [];
+  return arr
+    .filter((p) => p && p.vendible && p.stock > 0 && p.precioEspecial)
+    .map((p) => {
+      const slug = String(p.nombre).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^A-Za-z0-9]+/g, "_").replace(/^_|_$/g, "");
+      const lista = p.precioLista || null;
+      return {
+        titulo: p.nombre,
+        url: `https://compragamer.com/producto/${slug}_${p.id_producto}`,
+        contado: p.precioEspecial,
+        lista: lista && lista > p.precioEspecial ? lista : null,
+        cuotas: lista ? { n: 3, monto: Math.round(lista / 3), total: Math.round(lista), sinInteres: true, medios: ["Tarjetas de crédito (precio de lista)"] } : null,
+        imagen: null
+      };
+    });
+}

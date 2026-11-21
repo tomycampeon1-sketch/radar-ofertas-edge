@@ -6,18 +6,36 @@ const UA = "RadarOfertasPersonal/1.0 (uso personal; +https://github.com/tomycamp
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const money = (n) => (n == null ? "?" : "$" + Math.round(n).toLocaleString("es-AR"));
 
+// Mercado Libre pide iniciar sesión para ver precios: en la extensión se manda la sesión de Edge.
+const CON_SESION = /^https:\/\/([a-z]+\.)?mercadolibre\.com\.ar\//;
+
 export async function fetchText(url, accept, fetchImpl = fetch) {
   const res = await fetchImpl(url, {
     headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "es-AR,es;q=0.9" },
     redirect: "follow",
-    signal: AbortSignal.timeout(20000)
+    credentials: CON_SESION.test(url) ? "include" : "omit",
+    signal: AbortSignal.timeout(25000)
   });
   if (!res.ok) {
     const e = new Error(`HTTP ${res.status}`);
     e.status = res.status;
     throw e;
   }
-  return res.text();
+  if (res.url && /account-verification|\/login/.test(res.url)) throw new Error("pide iniciar sesión");
+  // Algunas tiendas (Venex) usan ISO-8859-1: decodificar según el charset
+  if (typeof res.arrayBuffer !== "function") return res.text();
+  const buf = await res.arrayBuffer();
+  const ct = (res.headers && res.headers.get && res.headers.get("content-type")) || "";
+  let charset = (ct.match(/charset=([\w-]+)/i) || [])[1];
+  if (!charset) {
+    const head = new TextDecoder("latin1").decode(buf.slice(0, 3000));
+    charset = (head.match(/<meta[^>]+charset=["']?([\w-]+)/i) || [])[1] || "utf-8";
+  }
+  try {
+    return new TextDecoder(/8859-1|latin1|1252/i.test(charset) ? "windows-1252" : charset).decode(buf);
+  } catch {
+    return new TextDecoder("utf-8").decode(buf);
+  }
 }
 
 // Lee una tienda para todos los productos. Devuelve { porProducto: {id: [ofertas]}, estado }.
@@ -32,15 +50,20 @@ export async function scrapeStore(tienda, productos, { fetchImpl = fetch, log = 
   }
   let fallas = 0;
   let metodoBueno = null; // una vez que un método anda, se usa ese
+  const cache = new Map(); // métodos con catálogo completo: se baja una sola vez
   for (const p of productos) {
     if (fallas >= 3) break; // la tienda nos está bloqueando: no insistir
     const metodos = metodoBueno ? [metodoBueno] : src.metodos;
     let lista = null;
     for (const m of metodos) {
       try {
-        await sleep(pausaMs);
-        const body = await fetchText(m.url(p.busqueda), m.accept, fetchImpl);
-        const parsed = m.parse(body);
+        const u = m.url(p.busqueda);
+        let parsed = m.cache ? cache.get(u) : null;
+        if (!parsed) {
+          await sleep(pausaMs);
+          parsed = m.parse(await fetchText(u, m.accept, fetchImpl));
+          if (m.cache) cache.set(u, parsed);
+        }
         if (parsed.length) {
           lista = parsed;
           metodoBueno = m;
