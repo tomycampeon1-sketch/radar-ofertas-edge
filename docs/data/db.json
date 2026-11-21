@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-21T06:00:44.538Z",
+ "actualizado": "2026-11-21T06:09:08.913Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -10,7 +10,7 @@
    "ofertas": 4,
    "error": null,
    "aporte": null,
-   "ultimaOk": "2026-11-21T06:00:44.538Z"
+   "ultimaOk": "2026-11-21T06:09:08.913Z"
   },
   "fravega": {
    "nombre": "Frávega",
@@ -123,6 +123,7 @@
     "maximo": 4000000
    },
    "nota": "Recomendada en la investigación: 1 TB y rendimiento confirmado.",
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -133,7 +134,8 @@
      "total": 1899999,
      "sinInteres": true,
      "fecha": "2026-11-19",
-     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/"
+     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
+     "medios": "6 cuotas sin interés sobre el precio de lista ($1.899.999), más caro que el contado"
     },
     {
      "tienda": "Frávega",
@@ -143,7 +145,8 @@
      "total": 1869999,
      "sinInteres": true,
      "fecha": "2026-11-19",
-     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/"
+     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
+     "medios": "Hasta 12 cuotas con Banco Patagonia"
     },
     {
      "tienda": "Cetrohogar",
@@ -153,7 +156,8 @@
      "total": 1899999,
      "sinInteres": true,
      "fecha": "2026-11-19",
-     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/"
+     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
+     "medios": "9, 12 o 18 cuotas sin interés según el banco"
     },
     {
      "tienda": "Mercado Libre",
@@ -215,6 +219,7 @@
     "maximo": 4500000
    },
    "nota": null,
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -274,6 +279,7 @@
     "maximo": 6000000
    },
    "nota": null,
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -333,6 +339,7 @@
     "maximo": 3000000
    },
    "nota": "La más barata, pero 512 GB para un juego de 212 GB.",
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -343,7 +350,8 @@
      "total": 929100,
      "sinInteres": false,
      "fecha": "2026-11-19",
-     "fuente": "https://examedia.com.ar/portada/post/88268013"
+     "fuente": "https://examedia.com.ar/portada/post/88268013",
+     "medios": "Precio de lista $929.100; plan de cuotas sin detalle"
     },
     {
      "tienda": "Mercado Libre",
@@ -353,7 +361,8 @@
      "total": 1699999,
      "sinInteres": true,
      "fecha": "2026-11-08",
-     "fuente": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco"
+     "fuente": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco",
+     "medios": "12 cuotas sin interés en otra publicación ($1.699.999)"
     }
    ],
    "mejor": {
@@ -400,6 +409,7 @@
     "maximo": 5000000
    },
    "nota": null,
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -452,6 +462,7 @@
     "maximo": 2000000
    },
    "nota": null,
+   "imagen": "https://http2.mlstatic.com/D_NQ_NP_754241-MLA108239681477_032026-F.jpg",
    "ofertas": [
     {
      "tienda": "Mercado Libre",
@@ -467,8 +478,9 @@
       "sinInteres": true
      },
      "via": "mejorescompras.com.ar",
+     "imagen": "https://http2.mlstatic.com/D_NQ_NP_754241-MLA108239681477_032026-F.jpg",
      "fuente": "auto",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    ],
    "referencia": [
@@ -480,7 +492,8 @@
      "total": 710399,
      "sinInteres": true,
      "fecha": "2026-11-21",
-     "fuente": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia"
+     "fuente": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia",
+     "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
     }
    ],
    "mejor": {
@@ -488,7 +501,7 @@
      "precio": 710399.36,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     },
     "cuotas": {
      "n": 12,
@@ -496,10 +509,14 @@
      "total": 710400,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    },
    "historia": [
+    [
+     "2026-11-21T06",
+     710399.36
+    ],
     [
      "2026-11-21T06",
      710399.36
@@ -542,6 +559,7 @@
     "maximo": 1200000
    },
    "nota": null,
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -596,6 +614,7 @@
     "maximo": 5000000
    },
    "nota": null,
+   "imagen": "https://http2.mlstatic.com/D_NQ_NP_993259-MLA99499698400_112025-F.jpg",
    "ofertas": [
     {
      "tienda": "Mercado Libre",
@@ -611,8 +630,9 @@
       "sinInteres": true
      },
      "via": "mejorescompras.com.ar",
+     "imagen": "https://http2.mlstatic.com/D_NQ_NP_993259-MLA99499698400_112025-F.jpg",
      "fuente": "auto",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    ],
    "referencia": [
@@ -624,7 +644,8 @@
      "total": 2308500,
      "sinInteres": true,
      "fecha": "2026-11-21",
-     "fuente": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50"
+     "fuente": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50",
+     "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
     }
    ],
    "mejor": {
@@ -632,7 +653,7 @@
      "precio": 2113580,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     },
     "cuotas": {
      "n": 12,
@@ -640,7 +661,7 @@
      "total": 2113584,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    },
    "historia": [
@@ -650,6 +671,10 @@
     ],
     [
      "2026-11-21T05",
+     2113580
+    ],
+    [
+     "2026-11-21T06",
      2113580
     ],
     [
@@ -690,6 +715,7 @@
     "maximo": 1500000
    },
    "nota": null,
+   "imagen": "https://http2.mlstatic.com/D_NQ_NP_874435-MLA99508600998_112025-F.jpg",
    "ofertas": [
     {
      "tienda": "Mercado Libre",
@@ -705,8 +731,9 @@
       "sinInteres": true
      },
      "via": "mejorescompras.com.ar",
+     "imagen": "https://http2.mlstatic.com/D_NQ_NP_874435-MLA99508600998_112025-F.jpg",
      "fuente": "auto",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    ],
    "referencia": [
@@ -718,7 +745,8 @@
      "total": 496999,
      "sinInteres": true,
      "fecha": "2026-10-24",
-     "fuente": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro"
+     "fuente": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro",
+     "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
     }
    ],
    "mejor": {
@@ -726,7 +754,7 @@
      "precio": 567699,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     },
     "cuotas": {
      "n": 12,
@@ -734,7 +762,7 @@
      "total": 567696,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    },
    "historia": [
@@ -744,6 +772,10 @@
     ],
     [
      "2026-11-21T05",
+     567699
+    ],
+    [
+     "2026-11-21T06",
      567699
     ],
     [
@@ -786,6 +818,7 @@
     "maximo": 2500000
    },
    "nota": null,
+   "imagen": "https://http2.mlstatic.com/D_NQ_NP_895826-MLA117096062821_092026-F.jpg",
    "ofertas": [
     {
      "tienda": "Mercado Libre",
@@ -801,8 +834,9 @@
       "sinInteres": true
      },
      "via": "mejorescompras.com.ar",
+     "imagen": "https://http2.mlstatic.com/D_NQ_NP_895826-MLA117096062821_092026-F.jpg",
      "fuente": "auto",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    ],
    "referencia": [
@@ -814,7 +848,8 @@
      "total": 1136441,
      "sinInteres": true,
      "fecha": "2026-11-21",
-     "fuente": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra"
+     "fuente": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra",
+     "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
     }
    ],
    "mejor": {
@@ -822,7 +857,7 @@
      "precio": 1136441,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     },
     "cuotas": {
      "n": 12,
@@ -830,7 +865,7 @@
      "total": 1136436,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T06:00:44.538Z"
+     "fecha": "2026-11-21T06:09:08.913Z"
     }
    },
    "historia": [
@@ -840,6 +875,10 @@
     ],
     [
      "2026-11-21T05",
+     1136441
+    ],
+    [
+     "2026-11-21T06",
      1136441
     ],
     [
@@ -884,6 +923,7 @@
     "maximo": 900000
    },
    "nota": null,
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -938,6 +978,7 @@
     "maximo": 900000
    },
    "nota": null,
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -992,6 +1033,7 @@
     "maximo": 800000
    },
    "nota": null,
+   "imagen": null,
    "ofertas": [],
    "referencia": [
     {
@@ -1075,5 +1117,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 1
+ "nuevasEstaVez": 0
 }
