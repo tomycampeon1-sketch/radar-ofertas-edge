@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-21T13:17:28.439Z",
+ "actualizado": "2026-11-21T18:36:52.163Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -43,10 +43,10 @@
    "nombre": "Compra Gamer",
    "ok": true,
    "metodo": "catalogo",
-   "ofertas": 137,
+   "ofertas": 138,
    "error": null,
    "aporte": null,
-   "ultimaOk": "2026-11-21T13:17:28.439Z"
+   "ultimaOk": "2026-11-21T18:36:52.163Z"
   },
   "venex": {
    "nombre": "Venex",
@@ -416,7 +416,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [
@@ -436,7 +436,7 @@
      "precio": 704282,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 12,
@@ -470,6 +470,10 @@
     ],
     [
      "2026-11-21T13",
+     704282
+    ],
+    [
+     "2026-11-21T18",
      704282
     ]
    ],
@@ -530,7 +534,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [],
@@ -539,7 +543,7 @@
      "precio": 389224,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 3,
@@ -547,7 +551,7 @@
      "total": 432471,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    },
    "historia": [
@@ -561,6 +565,10 @@
     ],
     [
      "2026-11-21T13",
+     389224
+    ],
+    [
+     "2026-11-21T18",
      389224
     ]
    ],
@@ -648,7 +656,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [
@@ -668,7 +676,7 @@
      "precio": 1818150,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 3,
@@ -676,7 +684,7 @@
      "total": 2020167,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    },
    "historia": [
@@ -706,6 +714,10 @@
     ],
     [
      "2026-11-21T13",
+     1818150
+    ],
+    [
+     "2026-11-21T18",
      1818150
     ]
    ],
@@ -790,7 +802,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [
@@ -810,7 +822,7 @@
      "precio": 207650,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 3,
@@ -818,7 +830,7 @@
      "total": 230722,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    },
    "historia": [
@@ -852,6 +864,10 @@
     ],
     [
      "2026-11-21T13",
+     207650
+    ],
+    [
+     "2026-11-21T18",
      207650
     ]
    ],
@@ -922,14 +938,14 @@
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Memoria KLEVV DDR5 32GB (2x16GB) 6000MHz FIT V CL30 IC Hynix White ",
-     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
-     "contado": 973500,
-     "lista": 1081667,
+     "titulo": "Memoria Patriot DDR5 32GB (2x16GB) 6000MHz Viper Venom CL36 XMP 3.0/AMD EXPO - OUTLET",
+     "url": "https://compragamer.com/producto/Memoria_Patriot_DDR5_32GB_2x16GB_6000MHz_Viper_Venom_CL36_XMP_3_0_AMD_EXPO_OUTLET_22627",
+     "contado": 697250,
+     "lista": 774722,
      "cuotas": {
       "n": 3,
-      "monto": 360556,
-      "total": 1081667,
+      "monto": 258241,
+      "total": 774722,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -938,7 +954,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [
@@ -955,18 +971,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 973500,
+     "precio": 697250,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "url": "https://compragamer.com/producto/Memoria_Patriot_DDR5_32GB_2x16GB_6000MHz_Viper_Venom_CL36_XMP_3_0_AMD_EXPO_OUTLET_22627",
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 360556,
-     "total": 1081667,
+     "monto": 258241,
+     "total": 774722,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "url": "https://compragamer.com/producto/Memoria_Patriot_DDR5_32GB_2x16GB_6000MHz_Viper_Venom_CL36_XMP_3_0_AMD_EXPO_OUTLET_22627",
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    },
    "historia": [
@@ -1001,6 +1017,10 @@
     [
      "2026-11-21T13",
      973500
+    ],
+    [
+     "2026-11-21T18",
+     697250
     ]
    ],
    "enlaces": {
@@ -1060,7 +1080,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [
@@ -1081,7 +1101,7 @@
      "precio": 282900,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 3,
@@ -1089,7 +1109,7 @@
      "total": 314333,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    },
    "historia": [
@@ -1103,6 +1123,10 @@
     ],
     [
      "2026-11-21T13",
+     282900
+    ],
+    [
+     "2026-11-21T18",
      282900
     ]
    ],
@@ -1161,7 +1185,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [
@@ -1182,7 +1206,7 @@
      "precio": 75050,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 3,
@@ -1190,7 +1214,7 @@
      "total": 83389,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    },
    "historia": [
@@ -1204,6 +1228,10 @@
     ],
     [
      "2026-11-21T13",
+     75050
+    ],
+    [
+     "2026-11-21T18",
      75050
     ]
    ],
@@ -1262,7 +1290,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    ],
    "referencia": [
@@ -1283,7 +1311,7 @@
      "precio": 50950,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     },
     "cuotas": {
      "n": 3,
@@ -1291,7 +1319,7 @@
      "total": 56611,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
-     "fecha": "2026-11-21T13:17:28.439Z"
+     "fecha": "2026-11-21T18:36:52.163Z"
     }
    },
    "historia": [
@@ -1305,6 +1333,10 @@
     ],
     [
      "2026-11-21T13",
+     50950
+    ],
+    [
+     "2026-11-21T18",
      50950
     ]
    ],
@@ -1321,6 +1353,18 @@
   }
  ],
  "alertas": [
+  {
+   "id": "9qm4ae",
+   "fecha": "2026-11-21T18:36:52.163Z",
+   "productoId": "ram-32-ddr5",
+   "producto": "Memoria 32 GB DDR5 6000 (2x16)",
+   "tipo": "baja",
+   "titulo": "📉 Memoria 32 GB DDR5 6000 (2x16): $697.250",
+   "mensaje": "Bajó de $973.500 a $697.250 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Memoria_Patriot_DDR5_32GB_2x16GB_6000MHz_Viper_Venom_CL36_XMP_3_0_AMD_EXPO_OUTLET_22627",
+   "tienda": "Compra Gamer",
+   "precio": 697250
+  },
   {
    "id": "66ipe4",
    "fecha": "2026-11-21T07:10:20.533Z",
@@ -1418,5 +1462,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 0
+ "nuevasEstaVez": 1
 }
