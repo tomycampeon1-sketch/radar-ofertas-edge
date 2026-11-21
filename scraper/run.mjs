@@ -81,6 +81,10 @@ export async function scrapeAll(config, { fetchImpl = fetch, log = console.log }
       }
       if (!lista) continue;
       const buenas = lista.filter((o) => matches(o.titulo, p) && inRange(o.contado, p));
+      if (!buenas.length) {
+        const ej = lista.slice(0, 2).map((o) => `"${o.titulo.slice(0, 60)}" ${money(o.contado)}`).join(" · ");
+        log(`  ${t.nombre} / ${p.id}: ${lista.length} resultado(s) descartado(s), ej.: ${ej}`);
+      }
       if (buenas.length) {
         (resultados[p.id] ||= {})[t.id] = buenas;
         estado[t.id].ok = true;
