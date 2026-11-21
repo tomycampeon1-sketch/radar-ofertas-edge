@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radar de Ofertas</title>
+  <meta name="description" content="Comparador personal: la forma más barata de jugar GTA 6 en Argentina y ofertas de tecnología, contado contra cuotas.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-in">
+      <div>
+        <h1>🎯 Radar de Ofertas</h1>
+        <p class="muted" id="actualizado">Cargando datos…</p>
+      </div>
+      <nav class="tabs" role="tablist">
+        <button data-tab="gta" class="on">¿Consola o PC?</button>
+        <button data-tab="ofertas">Ofertas nuevas <span id="badge" class="badge" hidden></span></button>
+        <button data-tab="precios">Todos los precios</button>
+        <button data-tab="info">Cómo funciona</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="tab-gta" class="tab on">
+      <div class="hero" id="veredicto"></div>
+      <div class="controls">
+        <label>Inflación mensual esperada
+          <input type="number" id="inflacion" min="0" max="20" step="0.1"> %
+        </label>
+        <span class="muted small">Se usa para saber si conviene pagar en cuotas: cada cuota futura vale menos que la plata de hoy.</span>
+      </div>
+      <h2>Consolas</h2>
+      <div class="cards" id="consolas"></div>
+      <h2>PC para 2K (1440p)</h2>
+      <div class="controls">
+        <label><input type="checkbox" id="cpuBarato"> Usar Ryzen 5 7600 en lugar del 7800X3D (más barato, menos fps)</label>
+      </div>
+      <div id="pc"></div>
+    </section>
+
+    <section id="tab-ofertas" class="tab">
+      <p class="muted">Ofertas que el radar detectó en los últimos 30 días: bajas de precio, mínimos históricos, descuentos de 15% o más y planes de 12 cuotas sin interés o más. La extensión de Edge te avisa de estas mismas.</p>
+      <div id="alertas"></div>
+    </section>
+
+    <section id="tab-precios" class="tab">
+      <div class="controls">
+        <input type="search" id="filtro" placeholder="Buscar producto…">
+        <select id="grupo"><option value="">Todo</option><option value="consola">Consolas</option><option value="pc">Piezas de PC</option></select>
+      </div>
+      <div id="productos"></div>
+    </section>
+
+    <section id="tab-info" class="tab prose">
+      <h2>Cómo funciona</h2>
+      <ol>
+        <li><b>Base de datos compartida.</b> Es el archivo <code>docs/data/db.json</code> de este repositorio. Guarda el último precio de cada producto en cada tienda, el historial y las ofertas detectadas.</li>
+        <li><b>Actualización automática.</b> Cada 6 horas GitHub revisa las tiendas y actualiza la base (en Argentina: 3:17, 9:17, 15:17 y 21:17, con algunos minutos de demora).</li>
+        <li><b>Esta página</b> lee la base y muestra el comparador, las ofertas y todos los precios.</li>
+        <li><b>La extensión de Edge</b> lee la misma base cada hora y te avisa con una notificación cuando hay una oferta nueva. Además revisa desde tu compu las portadas de las tiendas por eventos (Hot Sale, CyberMonday, cuotas).</li>
+      </ol>
+      <h3>De dónde salen los precios</h3>
+      <p>Los marcados <span class="tag auto">al día</span> los leyó el radar en la tienda. Los marcados <span class="tag nota">nota</span> vienen de la investigación (notas periodísticas del 8 al 21 de noviembre de 2026) y quedan como referencia hasta que el radar consiga un precio real. Los <span class="tag viejo">viejo</span> son de una lectura anterior porque la tienda no respondió esta vez.</p>
+      <h3>Contado contra cuotas</h3>
+      <p>"Sin interés" casi siempre se cobra sobre un precio más alto que el de contado. El <b>recargo</b> es cuánto más pagás en total en cuotas comparado con el mejor precio de contado. El <b>valor actual</b> de las cuotas descuenta la inflación: si es menor que el contado, las cuotas te convienen aunque sumen más.</p>
+      <h3>Tiendas</h3>
+      <div id="tiendas"></div>
+      <h3>Cambiar los productos</h3>
+      <p>Editá <code>productos.json</code> en GitHub (botón del lápiz). Al guardar, la base se actualiza sola en unos minutos.</p>
+    </section>
+  </main>
+
+  <footer class="wrap muted small">Uso personal. Los precios cambian todo el tiempo: verificá en la tienda antes de comprar.</footer>
+  <script src="app.js"></script>
+</body>
+</html>

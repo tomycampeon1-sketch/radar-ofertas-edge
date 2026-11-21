@@ -1,0 +1,230 @@
+// Actualiza la base de datos compartida (docs/data/db.json).
+// La corre GitHub Actions cada 6 horas; también se puede correr a mano: node scraper/run.mjs
+import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+import { SOURCES } from "./sources.mjs";
+import { matches, inRange } from "./parse.mjs";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const DB_PATH = path.join(ROOT, "docs/data/db.json");
+const UA = "RadarOfertasPersonal/1.0 (uso personal; +https://github.com/tomycampeon1-sketch/radar-ofertas-edge)";
+const PAUSA_MS = Number(process.env.PAUSA_MS ?? 1500);
+const MAX_ALERTAS = 150;
+const MAX_HISTORIA = 240; // ~60 días a 4 lecturas por día
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const money = (n) => (n == null ? "?" : "$" + Math.round(n).toLocaleString("es-AR"));
+
+// ---------- lectura de tiendas ----------
+export async function fetchText(url, accept, fetchImpl = fetch) {
+  const res = await fetchImpl(url, {
+    headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "es-AR,es;q=0.9" },
+    redirect: "follow",
+    signal: AbortSignal.timeout(20000)
+  });
+  if (!res.ok) {
+    const e = new Error(`HTTP ${res.status}`);
+    e.status = res.status;
+    throw e;
+  }
+  return res.text();
+}
+
+export async function scrapeAll(config, { fetchImpl = fetch, log = console.log } = {}) {
+  const resultados = {}; // productoId -> tiendaId -> [ofertas]
+  const estado = {}; // tiendaId -> {ok, metodo, ofertas, error}
+  for (const t of config.tiendas) {
+    const src = SOURCES[t.id];
+    estado[t.id] = { nombre: t.nombre, ok: false, metodo: null, ofertas: 0, error: null };
+    if (!src) continue;
+    if (!src.metodos.length && !src.extra) {
+      estado[t.id].error = "Sin lectura automática (solo enlace)";
+      continue;
+    }
+    let fallas = 0;
+    let metodoBueno = null; // una vez que un método anda, se usa ese
+    for (const p of config.productos) {
+      if (fallas >= 3) break; // la tienda nos está bloqueando: no insistir
+      const metodos = metodoBueno ? [metodoBueno] : src.metodos;
+      let lista = null;
+      for (const m of metodos) {
+        try {
+          await sleep(PAUSA_MS);
+          const body = await fetchText(m.url(p.busqueda), m.accept, fetchImpl);
+          const parsed = m.parse(body);
+          if (parsed.length) {
+            lista = parsed;
+            metodoBueno = m;
+            estado[t.id].metodo = m.nombre;
+            break;
+          }
+        } catch (e) {
+          estado[t.id].error = `${m.nombre}: ${e.message}`;
+          fallas++;
+        }
+      }
+      // Fuentes extra (ej. Mejores Compras para Mercado Libre)
+      if (src.extra) {
+        for (const ex of (p.extra || []).filter((x) => x.tienda === t.id)) {
+          try {
+            await sleep(PAUSA_MS);
+            const body = await fetchText(ex.url, src.extra.accept, fetchImpl);
+            const parsed = src.extra.parse(body, ex.url).map((o) => ({ ...o, via: new URL(ex.url).hostname }));
+            if (parsed.length) {
+              lista = [...(lista || []), ...parsed];
+              estado[t.id].metodo = estado[t.id].metodo || "extra";
+            }
+          } catch (e) {
+            estado[t.id].error = `extra: ${e.message}`;
+          }
+        }
+      }
+      if (!lista) continue;
+      const buenas = lista.filter((o) => matches(o.titulo, p) && inRange(o.contado, p));
+      if (buenas.length) {
+        (resultados[p.id] ||= {})[t.id] = buenas;
+        estado[t.id].ok = true;
+        estado[t.id].ofertas += buenas.length;
+      }
+    }
+    if (estado[t.id].ok) estado[t.id].error = null;
+    log(`${t.nombre}: ${estado[t.id].ok ? `${estado[t.id].ofertas} ofertas (${estado[t.id].metodo})` : `sin datos (${estado[t.id].error || "nada coincidió"})`}`);
+  }
+  return { resultados, estado };
+}
+
+// ---------- armado de la base ----------
+function hash(s) {
+  let h = 0;
+  for (const c of s) h = (Math.imul(31, h) + c.charCodeAt(0)) | 0;
+  return (h >>> 0).toString(36);
+}
+
+const mejorContado = (ofertas) => ofertas.filter((o) => o.contado).sort((a, b) => a.contado - b.contado)[0] || null;
+const mejorCuotas = (ofertas) =>
+  ofertas
+    .filter((o) => o.cuotas && o.cuotas.sinInteres && o.cuotas.n >= 3)
+    .sort((a, b) => a.cuotas.total - b.cuotas.total || b.cuotas.n - a.cuotas.n)[0] || null;
+
+export function buildDb(prev, config, { resultados, estado }, now = new Date()) {
+  const iso = now.toISOString();
+  const prevProd = Object.fromEntries((prev?.productos || []).map((p) => [p.id, p]));
+  const nombreTienda = Object.fromEntries(config.tiendas.map((t) => [t.id, t.nombre]));
+  const alertas = [];
+  const productos = [];
+
+  for (const p of config.productos) {
+    const antes = prevProd[p.id] || {};
+    const ofertas = [];
+    for (const t of config.tiendas) {
+      const nuevas = resultados[p.id]?.[t.id];
+      if (nuevas) {
+        // la más barata de contado y, si es otra, la de mejores cuotas
+        const orden = [...nuevas].sort((a, b) => a.contado - b.contado);
+        const elegidas = [orden[0]];
+        const mc = mejorCuotas(orden);
+        if (mc && mc !== orden[0]) elegidas.push(mc);
+        for (const o of elegidas)
+          ofertas.push({ tienda: nombreTienda[t.id], tiendaId: t.id, titulo: o.titulo, url: o.url, contado: o.contado, lista: o.lista || null, cuotas: o.cuotas || null, via: o.via || null, fuente: "auto", fecha: iso });
+      } else {
+        // la tienda falló esta vez: conservar lo último que vimos si tiene menos de 3 días
+        for (const o of (antes.ofertas || []).filter((x) => x.tiendaId === t.id && x.fuente === "auto")) {
+          if (now - new Date(o.fecha) < 3 * 86400000) ofertas.push({ ...o, viejo: true });
+        }
+      }
+    }
+
+    const mc = mejorContado(ofertas);
+    const mq = mejorCuotas(ofertas);
+    const historia = [...(antes.historia || [])];
+    const nuevasHoy = ofertas.filter((o) => !o.viejo);
+    const minHoy = mejorContado(nuevasHoy);
+    if (minHoy) historia.push([iso.slice(0, 13), minHoy.contado]);
+    while (historia.length > MAX_HISTORIA) historia.shift();
+
+    // ---- detección de ofertas nuevas ----
+    const add = (tipo, titulo, mensaje, o) => {
+      const id = hash(`${p.id}|${tipo}|${o.tiendaId}|${o.contado}|${o.cuotas?.n || ""}`);
+      alertas.push({ id, fecha: iso, productoId: p.id, producto: p.nombre, tipo, titulo, mensaje, url: o.url, tienda: o.tienda, precio: o.contado });
+    };
+    const prevMejor = antes.mejor?.contado?.precio;
+    const minHist = (antes.historia || []).reduce((m, [, v]) => Math.min(m, v), Infinity);
+    if (minHoy) {
+      if (prevMejor && minHoy.contado <= prevMejor * 0.97) {
+        add("baja", `📉 ${p.nombre}: ${money(minHoy.contado)}`, `Bajó de ${money(prevMejor)} a ${money(minHoy.contado)} en ${minHoy.tienda}.`, minHoy);
+      } else if (Number.isFinite(minHist) && (antes.historia || []).length >= 3 && minHoy.contado < minHist) {
+        add("minimo", `🏆 ${p.nombre}: mínimo histórico`, `${money(minHoy.contado)} en ${minHoy.tienda} (antes el mínimo era ${money(minHist)}).`, minHoy);
+      }
+      for (const o of nuevasHoy) {
+        const desc = o.lista ? Math.round((1 - o.contado / o.lista) * 100) : 0;
+        const yaEstaba = (antes.ofertas || []).some((x) => x.url === o.url && x.contado <= o.contado);
+        if (desc >= 15 && !yaEstaba) add("descuento", `🔥 ${p.nombre}: ${desc}% OFF`, `${money(o.contado)} (antes ${money(o.lista)}) en ${o.tienda}.`, o);
+        const cuotasAntes = (antes.ofertas || []).some((x) => x.tiendaId === o.tiendaId && x.cuotas?.sinInteres && x.cuotas.n >= (o.cuotas?.n || 0));
+        if (o.cuotas?.sinInteres && o.cuotas.n >= 12 && !cuotasAntes)
+          add("cuotas", `💳 ${p.nombre}: ${o.cuotas.n} cuotas sin interés`, `${o.cuotas.n} × ${money(o.cuotas.monto)} (total ${money(o.cuotas.total)}) en ${o.tienda}.`, o);
+      }
+    }
+
+    productos.push({
+      id: p.id,
+      nombre: p.nombre,
+      grupo: p.grupo,
+      pieza: p.pieza || null,
+      busqueda: p.busqueda,
+      nota: p.nota || null,
+      ofertas,
+      referencia: p.referencia || [],
+      mejor: {
+        contado: mc ? { precio: mc.contado, tienda: mc.tienda, url: mc.url, fecha: mc.fecha } : null,
+        cuotas: mq ? { n: mq.cuotas.n, monto: mq.cuotas.monto, total: mq.cuotas.total, tienda: mq.tienda, url: mq.url, fecha: mq.fecha } : null
+      },
+      historia,
+      enlaces: Object.fromEntries(config.tiendas.filter((t) => SOURCES[t.id]).map((t) => [t.id, SOURCES[t.id].busqueda(p.busqueda)]))
+    });
+  }
+
+  const conocidas = new Set((prev?.alertas || []).map((a) => a.id));
+  const todas = [...alertas.filter((a) => !conocidas.has(a.id)), ...(prev?.alertas || [])]
+    .filter((a) => now - new Date(a.fecha) < 30 * 86400000)
+    .slice(0, MAX_ALERTAS);
+
+  const tiendas = {};
+  for (const t of config.tiendas) {
+    const e = estado[t.id] || {};
+    const antes = prev?.tiendas?.[t.id] || {};
+    tiendas[t.id] = { nombre: t.nombre, ok: !!e.ok, metodo: e.metodo || null, ofertas: e.ofertas || 0, error: e.error || null, ultimaOk: e.ok ? iso : antes.ultimaOk || null };
+  }
+
+  return {
+    version: 1,
+    actualizado: iso,
+    inflacionMensual: config.inflacionMensual ?? 2,
+    tiendas,
+    productos,
+    alertas: todas,
+    nuevasEstaVez: alertas.filter((a) => !conocidas.has(a.id)).length
+  };
+}
+
+// ---------- programa principal ----------
+async function main() {
+  const config = JSON.parse(await readFile(path.join(ROOT, "productos.json"), "utf8"));
+  let prev = null;
+  try {
+    prev = JSON.parse(await readFile(DB_PATH, "utf8"));
+  } catch {
+    /* primera vez */
+  }
+  const scraped = process.argv.includes("--sin-red") ? { resultados: {}, estado: {} } : await scrapeAll(config);
+  const db = buildDb(prev, config, scraped);
+  await mkdir(path.dirname(DB_PATH), { recursive: true });
+  await writeFile(DB_PATH, JSON.stringify(db, null, 1));
+  console.log(`Listo: ${db.productos.length} productos, ${db.nuevasEstaVez} ofertas nuevas.`);
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opciones · Radar de Ofertas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="options">
+  <h1>🎯 Radar de Ofertas Tech AR</h1>
+  <p class="muted">Elegí qué seguir y cuándo querés que te avise. Los cambios se guardan al tocar <b>Guardar</b>.</p>
+
+  <h2>Base compartida con la página</h2>
+  <section>
+    <p class="muted small">La página del radar guarda los precios de todas las tiendas en una base que GitHub actualiza cada 6 horas. La extensión la lee cada vez que revisa y te avisa de las ofertas nuevas que encuentre (bajas de precio, mínimos históricos, descuentos y cuotas sin interés). <a href="https://tomycampeon1-sketch.github.io/radar-ofertas-edge/" target="_blank">Abrir la página</a></p>
+    <div class="row"><label><input type="checkbox" id="useSharedDb"> Leer la base compartida (recomendado)</label></div>
+    <div class="row"><label style="flex:1">Dirección de la base <input id="dbUrl" style="width:100%" placeholder="https://…/data/db.json"></label></div>
+  </section>
+
+  <h2>Productos que sigo desde esta compu (Mercado Libre)</h2>
+  <section>
+    <p class="muted small">Te aviso cuando un producto baja de tu precio tope, tiene el descuento mínimo que elegiste, se puede pagar en cuotas sin interés o baja más de 5% respecto del mínimo visto. Las palabras a excluir sirven para sacar accesorios (por ejemplo "joystick" o "funda").</p>
+    <table>
+      <thead><tr><th style="width:30%">Producto</th><th>Precio tope ($)</th><th>Descuento mín. (%)</th><th style="width:30%">Excluir palabras</th><th></th></tr></thead>
+      <tbody id="watch"></tbody>
+    </table>
+    <div class="row"><button id="add">+ Agregar producto</button></div>
+  </section>
+
+  <h2>Tiendas</h2>
+  <section>
+    <div class="grid" id="stores"></div>
+  </section>
+
+  <h2>Avisos</h2>
+  <section>
+    <div class="row"><label>Revisar cada <select id="intervalMinutes">
+      <option value="30">30 minutos</option><option value="60">1 hora</option><option value="120">2 horas</option><option value="240">4 horas</option><option value="720">12 horas</option>
+    </select></label></div>
+    <div class="row"><label><input type="checkbox" id="notifyWatchlist"> Revisar también "Productos que sigo" en Mercado Libre desde esta compu</label></div>
+    <div class="row"><label><input type="checkbox" id="notifyStoreBanners"> Eventos y cuotas en las portadas de las tiendas</label></div>
+    <div class="row"><label><input type="checkbox" id="notifyEvents"> Calendario (Hot Sale, CyberMonday, Black Friday…)</label>
+      <label>avisar <input type="number" id="daysBeforeEvent" min="0" max="14" style="width:60px"> días antes</label></div>
+    <div class="row"><label>Cuotas sin interés: avisar desde <input type="number" id="minInstallmentsSinInteres" min="1" max="24" style="width:60px"> cuotas</label></div>
+    <div class="row"><label><input type="checkbox" id="onlyNewCondition"> Solo productos nuevos en Mercado Libre</label></div>
+  </section>
+
+  <h2>Mercado Libre (opcional)</h2>
+  <section>
+    <p class="muted small">La extensión usa la API pública de Mercado Libre. Si la API pide autorización, lee la página pública de resultados. Si tenés una app en <a href="https://developers.mercadolibre.com.ar/" target="_blank">developers.mercadolibre.com.ar</a>, podés pegar acá un token de acceso para usar siempre la API. Se guarda solo en este navegador.</p>
+    <div class="row"><input type="password" id="mlAccessToken" placeholder="APP_USR-..." style="flex:1;min-width:240px"></div>
+  </section>
+
+  <div class="row" style="margin-top:20px">
+    <button class="primary" id="save">Guardar</button>
+    <button id="test">Guardar y verificar ahora</button>
+    <span id="msg" class="saved"></span>
+  </div>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+// Lectores de páginas: convierten HTML o JSON de cada tienda en una lista de ofertas
+// con el mismo formato: { titulo, url, contado, lista, cuotas: {n, monto, total, sinInteres} }.
+
+export const norm = (s) =>
+  String(s || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+export function toNumber(txt) {
+  if (txt == null) return null;
+  if (typeof txt === "number") return Number.isFinite(txt) ? txt : null;
+  let s = String(txt).replace(/[^\d.,]/g, "");
+  if (!s) return null;
+  // "1.599.999,00" -> 1599999.00 ; "1599999.00" -> 1599999
+  if (/,\d{1,2}$/.test(s)) s = s.replace(/\./g, "").replace(",", ".");
+  else if (/\.\d{1,2}$/.test(s) && (s.match(/\./g) || []).length === 1) s = s.replace(/,/g, "");
+  else s = s.replace(/[.,]/g, "");
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
+
+export function decode(s) {
+  return String(s || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&nbsp;|&#160;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// ¿El título corresponde al producto y no a un accesorio?
+export function matches(titulo, prod) {
+  const t = norm(titulo);
+  const groups = prod.debeTener || [];
+  if (!groups.every((g) => g.split("|").some((alt) => t.includes(norm(alt))))) return false;
+  return !(prod.excluir || []).some((w) => t.includes(norm(w)));
+}
+
+export function inRange(precio, prod) {
+  if (!precio) return false;
+  if (prod.minimo && precio < prod.minimo) return false;
+  if (prod.maximo && precio > prod.maximo) return false;
+  return true;
+}
+
+// ---------- VTEX (muchas tiendas argentinas usan esta plataforma) ----------
+export function parseVtex(json, base) {
+  if (!Array.isArray(json)) return [];
+  const out = [];
+  for (const p of json) {
+    const item = (p.items || [])[0];
+    const seller = item && (item.sellers || []).find((s) => s.sellerDefault) || (item && item.sellers || [])[0];
+    const co = seller && seller.commertialOffer;
+    if (!co || !co.Price || co.AvailableQuantity === 0) continue;
+    let best = null;
+    for (const ins of co.Installments || []) {
+      const n = ins.NumberOfInstallments;
+      if (!n || n < 2) continue;
+      const total = ins.TotalValuePlusInterestRate || ins.Value * n;
+      const sinInteres = ins.InterestRate === 0 || Math.abs(total - co.Price) < 2;
+      if (!best || (sinInteres && !best.sinInteres) || (sinInteres === best.sinInteres && n > best.n)) {
+        best = { n, monto: Math.round(ins.Value), total: Math.round(total), sinInteres, medio: ins.PaymentSystemName || null };
+      }
+    }
+    out.push({
+      titulo: p.productName,
+      url: p.link ? (p.link.startsWith("http") ? p.link : base + p.link) : base,
+      contado: co.Price,
+      lista: co.ListPrice && co.ListPrice > co.Price ? co.ListPrice : null,
+      cuotas: best
+    });
+  }
+  return out;
+}
+
+// ---------- JSON-LD (datos estructurados que muchas tiendas publican para Google) ----------
+export function parseJsonLd(html, base) {
+  const out = [];
+  const blocks = [...html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+  const visit = (node) => {
+    if (!node || typeof node !== "object") return;
+    if (Array.isArray(node)) return node.forEach(visit);
+    const type = [].concat(node["@type"] || []).map(String);
+    if (type.includes("Product")) {
+      const offers = [].concat(node.offers || []);
+      for (const o of offers) {
+        const price = toNumber(o.price ?? o.lowPrice);
+        const cur = o.priceCurrency || "ARS";
+        if (price && cur === "ARS" && !/OutOfStock/i.test(o.availability || "")) {
+          let url = node.url || o.url || base;
+          if (url && !/^https?:/.test(url)) url = new URL(url, base).href;
+          out.push({ titulo: decode(node.name), url, contado: price, lista: null, cuotas: null });
+          break;
+        }
+      }
+    }
+    for (const k of ["@graph", "itemListElement", "item", "mainEntity"]) if (node[k]) visit(node[k]);
+  };
+  for (const b of blocks) {
+    try {
+      visit(JSON.parse(b[1].trim()));
+    } catch {
+      /* bloque inválido: se ignora */
+    }
+  }
+  return out;
+}
+
+// ---------- __NEXT_DATA__ (sitios hechos con Next.js, por ejemplo Frávega) ----------
+export function parseNextData(html, base) {
+  const m = html.match(/<script[^>]+id=["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script>/i);
+  if (!m) return [];
+  let data;
+  try {
+    data = JSON.parse(m[1]);
+  } catch {
+    return [];
+  }
+  const out = [];
+  const seen = new Set();
+  const priceOf = (o) => {
+    for (const k of ["salePrice", "price", "bestPrice", "sellingPrice", "finalPrice", "amount"]) {
+      const v = o[k];
+      if (typeof v === "number" && v > 1000) return v;
+      if (v && typeof v === "object") {
+        const inner = priceOf(v);
+        if (inner) return inner;
+      }
+      if (typeof v === "string" && /^\d[\d.,]*$/.test(v)) {
+        const n = toNumber(v);
+        if (n > 1000) return n;
+      }
+    }
+    return null;
+  };
+  const walk = (o, depth) => {
+    if (!o || typeof o !== "object" || depth > 14) return;
+    if (Array.isArray(o)) return o.forEach((x) => walk(x, depth + 1));
+    const title = o.title || o.name || o.productName;
+    const price = typeof title === "string" && title.length > 8 ? priceOf(o) : null;
+    if (price) {
+      const slug = o.slug || o.url || o.link || o.href;
+      let url = typeof slug === "string" ? slug : base;
+      if (!/^https?:/.test(url)) url = new URL(url.startsWith("/") ? url : "/" + url, base).href;
+      const key = title + price;
+      if (!seen.has(key)) {
+        seen.add(key);
+        const lista = typeof o.listPrice === "number" && o.listPrice > price ? o.listPrice : null;
+        out.push({ titulo: decode(title), url, contado: price, lista, cuotas: null });
+      }
+    }
+    for (const v of Object.values(o)) walk(v, depth + 1);
+  };
+  walk(data, 0);
+  return out;
+}
+
+// ---------- Mercado Libre: listado público ----------
+export function parseMercadoLibre(html) {
+  const chunks = html.split(/<li[^>]+class="[^"]*ui-search-layout__item/).slice(1);
+  const items = [];
+  for (const chunk of chunks) {
+    const link = chunk.match(/<a[^>]+href="(https:\/\/[^"]*mercadolibre\.com\.ar[^"]*)"[^>]*>/);
+    const titleMatch =
+      chunk.match(/class="[^"]*poly-component__title[^"]*"[^>]*>([\s\S]*?)<\/(a|h2|h3)>/) ||
+      chunk.match(/class="[^"]*ui-search-item__title[^"]*"[^>]*>([\s\S]*?)<\/(a|h2|h3)>/);
+    if (!link || !titleMatch) continue;
+    const prevBlock = chunk.match(/andes-money-amount--previous[\s\S]*?andes-money-amount__fraction[^>]*>([\d.]+)</);
+    const allPrices = [...chunk.matchAll(/andes-money-amount__fraction[^>]*>([\d.]+)</g)].map((m) => toNumber(m[1]));
+    const lista = prevBlock ? toNumber(prevBlock[1]) : null;
+    const contado = lista ? allPrices.find((p) => p !== lista) ?? allPrices[0] : allPrices[0];
+    if (!contado) continue;
+    const text = decode(chunk);
+    items.push({
+      titulo: decode(titleMatch[1]),
+      url: link[1].split("#")[0],
+      contado,
+      lista: lista && lista > contado ? lista : null,
+      cuotas: cuotasFromText(text, contado),
+      tiendaOficial: /tienda oficial|vendido por/i.test(text)
+    });
+  }
+  return items;
+}
+
+// "12 cuotas sin interés de $141.667" / "Mismo precio en 6 cuotas de $1.000"
+export function cuotasFromText(text, contado) {
+  const m = text.match(/(?<![\d.])(\d{1,2})\s*(?:cuotas|x)\s*(?:sin inter[eé]s\s*)?de\s*\$\s*([\d.]+)(?:,(\d+))?\s*(sin inter[eé]s)?/i);
+  if (m) {
+    const n = Number(m[1]);
+    const monto = toNumber(m[2]);
+    const total = n * monto;
+    const sinInteres = /sin inter[eé]s/i.test(m[0]) || /mismo precio en \d+ cuotas/i.test(text) || (contado && Math.abs(total - contado) / contado < 0.01);
+    return { n, monto, total, sinInteres };
+  }
+  const mp = text.match(/mismo precio en (\d+) cuotas/i);
+  if (mp && contado) {
+    const n = Number(mp[1]);
+    return { n, monto: Math.round(contado / n), total: contado, sinInteres: true };
+  }
+  return null;
+}
+
+// Página de producto de Mejores Compras (precio de Mercado Libre)
+export function parseMejoresCompras(html, url) {
+  const ld = parseJsonLd(html, url);
+  if (ld.length) {
+    const text = decode(html.replace(/<script[\s\S]*?<\/script>/gi, " "));
+    return ld.slice(0, 1).map((o) => ({ ...o, cuotas: cuotasFromText(text, o.contado) }));
+  }
+  const meta = html.match(/itemprop=["']price["'][^>]*content=["']([\d.,]+)/i) || html.match(/property=["']product:price:amount["'][^>]*content=["']([\d.,]+)/i);
+  const title = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1];
+  if (meta && title) return [{ titulo: decode(title), url, contado: toNumber(meta[1]), lista: null, cuotas: null }];
+  return [];
+}

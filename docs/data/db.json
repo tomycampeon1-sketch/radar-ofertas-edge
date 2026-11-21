@@ -1,0 +1,630 @@
+{
+ "version": 1,
+ "actualizado": "2026-11-21T05:46:44.625Z",
+ "inflacionMensual": 2,
+ "tiendas": {
+  "mercadolibre": {
+   "nombre": "Mercado Libre",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "fravega": {
+   "nombre": "Frávega",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "garbarino": {
+   "nombre": "Garbarino",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "musimundo": {
+   "nombre": "Musimundo",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "megatone": {
+   "nombre": "Megatone",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "cetrohogar": {
+   "nombre": "Cetrohogar",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "compragamer": {
+   "nombre": "Compra Gamer",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "venex": {
+   "nombre": "Venex",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "fullh4rd": {
+   "nombre": "Full H4rd",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  },
+  "mexx": {
+   "nombre": "Mexx",
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": null,
+   "ultimaOk": null
+  }
+ },
+ "productos": [
+  {
+   "id": "ps5-slim-digital",
+   "nombre": "PS5 Slim Digital 1 TB",
+   "grupo": "consola",
+   "pieza": null,
+   "busqueda": "PlayStation 5 Slim Digital",
+   "nota": "Recomendada en la investigación: 1 TB y rendimiento confirmado.",
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Sony Store",
+     "contado": 1599999,
+     "cuotas": 6,
+     "cuotaMonto": 316667,
+     "total": 1899999,
+     "sinInteres": true,
+     "fecha": "2026-11-19",
+     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/"
+    },
+    {
+     "tienda": "Frávega",
+     "contado": null,
+     "cuotas": 12,
+     "cuotaMonto": 155833,
+     "total": 1869999,
+     "sinInteres": true,
+     "fecha": "2026-11-19",
+     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/"
+    },
+    {
+     "tienda": "Cetrohogar",
+     "contado": null,
+     "cuotas": 18,
+     "cuotaMonto": 105556,
+     "total": 1899999,
+     "sinInteres": true,
+     "fecha": "2026-11-19",
+     "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/"
+    },
+    {
+     "tienda": "Mercado Libre",
+     "contado": 1050000,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-19",
+     "fuente": "https://examedia.com.ar/portada/post/88268013",
+     "aviso": "Vendedores particulares: revisá garantía y reputación.",
+     "particular": true
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/playstation-5-slim-digital",
+    "fravega": "https://www.fravega.com/l/?keyword=PlayStation%205%20Slim%20Digital",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=PlayStation%205%20Slim%20Digital",
+    "musimundo": "https://www.musimundo.com/search?text=PlayStation%205%20Slim%20Digital",
+    "megatone": "https://www.megatone.net/search/PlayStation%205%20Slim%20Digital",
+    "cetrohogar": "https://www.cetrohogar.com.ar/PlayStation%205%20Slim%20Digital?_q=PlayStation%205%20Slim%20Digital&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=PlayStation%205%20Slim%20Digital",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=PlayStation%205%20Slim%20Digital",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/PlayStation%205%20Slim%20Digital",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=PlayStation%205%20Slim%20Digital"
+   }
+  },
+  {
+   "id": "ps5-slim-lectora",
+   "nombre": "PS5 Slim con lectora 1 TB",
+   "grupo": "consola",
+   "pieza": null,
+   "busqueda": "PlayStation 5 Slim",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Precio oficial",
+     "contado": 2099999,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-19",
+     "fuente": "https://examedia.com.ar/portada/post/88268013"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/playstation-5-slim",
+    "fravega": "https://www.fravega.com/l/?keyword=PlayStation%205%20Slim",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=PlayStation%205%20Slim",
+    "musimundo": "https://www.musimundo.com/search?text=PlayStation%205%20Slim",
+    "megatone": "https://www.megatone.net/search/PlayStation%205%20Slim",
+    "cetrohogar": "https://www.cetrohogar.com.ar/PlayStation%205%20Slim?_q=PlayStation%205%20Slim&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=PlayStation%205%20Slim",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=PlayStation%205%20Slim",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/PlayStation%205%20Slim",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=PlayStation%205%20Slim"
+   }
+  },
+  {
+   "id": "ps5-pro",
+   "nombre": "PS5 Pro 2 TB",
+   "grupo": "consola",
+   "pieza": null,
+   "busqueda": "PlayStation 5 Pro",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Sony Store",
+     "contado": 2799999,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-18",
+     "fuente": "https://www.iprofesional.com/actualidad/469488-queres-jugar-al-gta-vi-esto-cuesta-una-playstation-5-en-argentina"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/playstation-5-pro",
+    "fravega": "https://www.fravega.com/l/?keyword=PlayStation%205%20Pro",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=PlayStation%205%20Pro",
+    "musimundo": "https://www.musimundo.com/search?text=PlayStation%205%20Pro",
+    "megatone": "https://www.megatone.net/search/PlayStation%205%20Pro",
+    "cetrohogar": "https://www.cetrohogar.com.ar/PlayStation%205%20Pro?_q=PlayStation%205%20Pro&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=PlayStation%205%20Pro",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=PlayStation%205%20Pro",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/PlayStation%205%20Pro",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=PlayStation%205%20Pro"
+   }
+  },
+  {
+   "id": "xbox-series-s",
+   "nombre": "Xbox Series S 512 GB",
+   "grupo": "consola",
+   "pieza": null,
+   "busqueda": "Xbox Series S",
+   "nota": "La más barata, pero 512 GB para un juego de 212 GB.",
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "GameShop",
+     "contado": 836190,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": 929100,
+     "sinInteres": false,
+     "fecha": "2026-11-19",
+     "fuente": "https://examedia.com.ar/portada/post/88268013"
+    },
+    {
+     "tienda": "Mercado Libre",
+     "contado": 1450000,
+     "cuotas": 12,
+     "cuotaMonto": 141667,
+     "total": 1699999,
+     "sinInteres": true,
+     "fecha": "2026-11-08",
+     "fuente": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/xbox-series-s",
+    "fravega": "https://www.fravega.com/l/?keyword=Xbox%20Series%20S",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Xbox%20Series%20S",
+    "musimundo": "https://www.musimundo.com/search?text=Xbox%20Series%20S",
+    "megatone": "https://www.megatone.net/search/Xbox%20Series%20S",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Xbox%20Series%20S?_q=Xbox%20Series%20S&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Xbox%20Series%20S",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Xbox%20Series%20S",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Xbox%20Series%20S",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Xbox%20Series%20S"
+   }
+  },
+  {
+   "id": "xbox-series-x",
+   "nombre": "Xbox Series X 1 TB",
+   "grupo": "consola",
+   "pieza": null,
+   "busqueda": "Xbox Series X",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Varias",
+     "contado": 1890500,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-19",
+     "fuente": "https://examedia.com.ar/portada/post/88268013"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/xbox-series-x",
+    "fravega": "https://www.fravega.com/l/?keyword=Xbox%20Series%20X",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Xbox%20Series%20X",
+    "musimundo": "https://www.musimundo.com/search?text=Xbox%20Series%20X",
+    "megatone": "https://www.megatone.net/search/Xbox%20Series%20X",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Xbox%20Series%20X?_q=Xbox%20Series%20X&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Xbox%20Series%20X",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Xbox%20Series%20X",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Xbox%20Series%20X",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Xbox%20Series%20X"
+   }
+  },
+  {
+   "id": "cpu-7800x3d",
+   "nombre": "Procesador AMD Ryzen 7 7800X3D",
+   "grupo": "pc",
+   "pieza": "procesador",
+   "busqueda": "Ryzen 7 7800X3D",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Mercado Libre",
+     "contado": 710399,
+     "cuotas": 12,
+     "cuotaMonto": 59200,
+     "total": 710399,
+     "sinInteres": true,
+     "fecha": "2026-11-21",
+     "fuente": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/ryzen-7-7800x3d",
+    "fravega": "https://www.fravega.com/l/?keyword=Ryzen%207%207800X3D",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Ryzen%207%207800X3D",
+    "musimundo": "https://www.musimundo.com/search?text=Ryzen%207%207800X3D",
+    "megatone": "https://www.megatone.net/search/Ryzen%207%207800X3D",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Ryzen%207%207800X3D?_q=Ryzen%207%207800X3D&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Ryzen%207%207800X3D",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Ryzen%207%207800X3D",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Ryzen%207%207800X3D",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Ryzen%207%207800X3D"
+   }
+  },
+  {
+   "id": "cpu-7600",
+   "nombre": "Procesador AMD Ryzen 5 7600 (opción barata)",
+   "grupo": "pc",
+   "pieza": "procesador-barato",
+   "busqueda": "Ryzen 5 7600",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Mercado Libre",
+     "contado": 399228,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-21",
+     "fuente": "https://mejorescompras.com.ar/computacion"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/ryzen-5-7600",
+    "fravega": "https://www.fravega.com/l/?keyword=Ryzen%205%207600",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Ryzen%205%207600",
+    "musimundo": "https://www.musimundo.com/search?text=Ryzen%205%207600",
+    "megatone": "https://www.megatone.net/search/Ryzen%205%207600",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Ryzen%205%207600?_q=Ryzen%205%207600&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Ryzen%205%207600",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Ryzen%205%207600",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Ryzen%205%207600",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Ryzen%205%207600"
+   }
+  },
+  {
+   "id": "gpu-9070xt",
+   "nombre": "Placa de video Radeon RX 9070 XT 16 GB",
+   "grupo": "pc",
+   "pieza": "placa de video",
+   "busqueda": "RX 9070 XT",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Mercado Libre",
+     "contado": 2308500,
+     "cuotas": 12,
+     "cuotaMonto": 192375,
+     "total": 2308500,
+     "sinInteres": true,
+     "fecha": "2026-11-21",
+     "fuente": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/rx-9070-xt",
+    "fravega": "https://www.fravega.com/l/?keyword=RX%209070%20XT",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=RX%209070%20XT",
+    "musimundo": "https://www.musimundo.com/search?text=RX%209070%20XT",
+    "megatone": "https://www.megatone.net/search/RX%209070%20XT",
+    "cetrohogar": "https://www.cetrohogar.com.ar/RX%209070%20XT?_q=RX%209070%20XT&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=RX%209070%20XT",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=RX%209070%20XT",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/RX%209070%20XT",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=RX%209070%20XT"
+   }
+  },
+  {
+   "id": "mb-b650m",
+   "nombre": "Motherboard B650M (AM5)",
+   "grupo": "pc",
+   "pieza": "motherboard",
+   "busqueda": "Motherboard B650M AM5",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Mercado Libre",
+     "contado": 496999,
+     "cuotas": 12,
+     "cuotaMonto": 41417,
+     "total": 496999,
+     "sinInteres": true,
+     "fecha": "2026-10-24",
+     "fuente": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/motherboard-b650m-am5",
+    "fravega": "https://www.fravega.com/l/?keyword=Motherboard%20B650M%20AM5",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Motherboard%20B650M%20AM5",
+    "musimundo": "https://www.musimundo.com/search?text=Motherboard%20B650M%20AM5",
+    "megatone": "https://www.megatone.net/search/Motherboard%20B650M%20AM5",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Motherboard%20B650M%20AM5?_q=Motherboard%20B650M%20AM5&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Motherboard%20B650M%20AM5",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Motherboard%20B650M%20AM5",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Motherboard%20B650M%20AM5",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Motherboard%20B650M%20AM5"
+   }
+  },
+  {
+   "id": "ram-32-ddr5",
+   "nombre": "Memoria 32 GB DDR5 6000 (2x16)",
+   "grupo": "pc",
+   "pieza": "memoria",
+   "busqueda": "Memoria DDR5 32GB 6000",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Mercado Libre",
+     "contado": 1136441,
+     "cuotas": 12,
+     "cuotaMonto": 94703,
+     "total": 1136441,
+     "sinInteres": true,
+     "fecha": "2026-11-21",
+     "fuente": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra"
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/memoria-ddr5-32gb-6000",
+    "fravega": "https://www.fravega.com/l/?keyword=Memoria%20DDR5%2032GB%206000",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Memoria%20DDR5%2032GB%206000",
+    "musimundo": "https://www.musimundo.com/search?text=Memoria%20DDR5%2032GB%206000",
+    "megatone": "https://www.megatone.net/search/Memoria%20DDR5%2032GB%206000",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Memoria%20DDR5%2032GB%206000?_q=Memoria%20DDR5%2032GB%206000&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Memoria%20DDR5%2032GB%206000",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Memoria%20DDR5%2032GB%206000",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Memoria%20DDR5%2032GB%206000",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Memoria%20DDR5%2032GB%206000"
+   }
+  },
+  {
+   "id": "ssd-1tb",
+   "nombre": "SSD NVMe 1 TB",
+   "grupo": "pc",
+   "pieza": "disco",
+   "busqueda": "SSD NVMe 1TB M.2",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Estimado",
+     "contado": 280000,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-21",
+     "fuente": null,
+     "aviso": "Estimación, sin cotizar."
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/ssd-nvme-1tb-m.2",
+    "fravega": "https://www.fravega.com/l/?keyword=SSD%20NVMe%201TB%20M.2",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=SSD%20NVMe%201TB%20M.2",
+    "musimundo": "https://www.musimundo.com/search?text=SSD%20NVMe%201TB%20M.2",
+    "megatone": "https://www.megatone.net/search/SSD%20NVMe%201TB%20M.2",
+    "cetrohogar": "https://www.cetrohogar.com.ar/SSD%20NVMe%201TB%20M.2?_q=SSD%20NVMe%201TB%20M.2&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=SSD%20NVMe%201TB%20M.2",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=SSD%20NVMe%201TB%20M.2",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/SSD%20NVMe%201TB%20M.2",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=SSD%20NVMe%201TB%20M.2"
+   }
+  },
+  {
+   "id": "psu-750",
+   "nombre": "Fuente 750 W 80 Plus",
+   "grupo": "pc",
+   "pieza": "fuente",
+   "busqueda": "Fuente 750W 80 Plus",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Estimado",
+     "contado": 180000,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-21",
+     "fuente": null,
+     "aviso": "Estimación, sin cotizar."
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/fuente-750w-80-plus",
+    "fravega": "https://www.fravega.com/l/?keyword=Fuente%20750W%2080%20Plus",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Fuente%20750W%2080%20Plus",
+    "musimundo": "https://www.musimundo.com/search?text=Fuente%20750W%2080%20Plus",
+    "megatone": "https://www.megatone.net/search/Fuente%20750W%2080%20Plus",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Fuente%20750W%2080%20Plus?_q=Fuente%20750W%2080%20Plus&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Fuente%20750W%2080%20Plus",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Fuente%20750W%2080%20Plus",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Fuente%20750W%2080%20Plus",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Fuente%20750W%2080%20Plus"
+   }
+  },
+  {
+   "id": "gabinete",
+   "nombre": "Gabinete con buen flujo de aire + cooler",
+   "grupo": "pc",
+   "pieza": "gabinete",
+   "busqueda": "Gabinete gamer mesh ATX",
+   "nota": null,
+   "ofertas": [],
+   "referencia": [
+    {
+     "tienda": "Estimado",
+     "contado": 180000,
+     "cuotas": null,
+     "cuotaMonto": null,
+     "total": null,
+     "sinInteres": false,
+     "fecha": "2026-11-21",
+     "fuente": null,
+     "aviso": "Estimación, sin cotizar."
+    }
+   ],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/gabinete-gamer-mesh-atx",
+    "fravega": "https://www.fravega.com/l/?keyword=Gabinete%20gamer%20mesh%20ATX",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Gabinete%20gamer%20mesh%20ATX",
+    "musimundo": "https://www.musimundo.com/search?text=Gabinete%20gamer%20mesh%20ATX",
+    "megatone": "https://www.megatone.net/search/Gabinete%20gamer%20mesh%20ATX",
+    "cetrohogar": "https://www.cetrohogar.com.ar/Gabinete%20gamer%20mesh%20ATX?_q=Gabinete%20gamer%20mesh%20ATX&map=ft",
+    "compragamer": "https://compragamer.com/productos?criterio=Gabinete%20gamer%20mesh%20ATX",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Gabinete%20gamer%20mesh%20ATX",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Gabinete%20gamer%20mesh%20ATX",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Gabinete%20gamer%20mesh%20ATX"
+   }
+  }
+ ],
+ "alertas": [],
+ "nuevasEstaVez": 0
+}
