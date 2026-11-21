@@ -2,6 +2,7 @@ import { STORES, EVENT_KEYWORDS, DEFAULT_WATCHLIST, DEFAULT_SETTINGS } from "./l
 import { upcomingEvents, formatDate } from "./lib/events.js";
 import { searchMercadoLibre, matchesQuery } from "./lib/ml.js";
 import { fetchSharedDb, newAlerts, summarize } from "./lib/shared.js";
+import { stepAporte, uploadAportes, testToken } from "./lib/aporte.js";
 
 const ALARM = "radar-check";
 const MAX_FEED = 80;
@@ -44,6 +45,7 @@ chrome.runtime.onStartup.addListener(schedule);
 
 chrome.alarms.onAlarm.addListener((a) => {
   if (a.name === ALARM) runChecks();
+  if (a.name === ALARM_APORTE) aporteDesdeCero(false).catch(() => {});
 });
 
 chrome.storage.onChanged.addListener((changes) => {
@@ -53,6 +55,14 @@ chrome.storage.onChanged.addListener((changes) => {
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg && msg.type === "runNow") {
     runChecks().then((r) => sendResponse(r)).catch((e) => sendResponse({ error: String(e) }));
+    return true;
+  }
+  if (msg && msg.type === "testToken") {
+    testToken(msg.token).then(sendResponse).catch((e) => sendResponse({ ok: false, error: String(e.message || e) }));
+    return true;
+  }
+  if (msg && msg.type === "aporteNow") {
+    aporteDesdeCero(true).then((a) => sendResponse(a || { resultado: "Activá el aporte y cargá la clave primero" })).catch((e) => sendResponse({ ultimoError: String(e.message || e) }));
     return true;
   }
   if (msg && msg.type === "markSeen") {
@@ -113,9 +123,11 @@ async function doRun({ silentFirstRun = false } = {}) {
   if (st.settings.notifyEvents) newEntries.push(...checkCalendar(st));
 
   let shared = null;
+  let sharedDb = null;
   if (st.settings.useSharedDb) {
     try {
       const db = await fetchSharedDb(st.settings.dbUrl);
+      sharedDb = db;
       const firstTime = st.sharedSeen === undefined;
       const { fresh, seenIds } = newAlerts(db, st.sharedSeen);
       st.sharedSeen = seenIds;
@@ -181,7 +193,45 @@ async function doRun({ silentFirstRun = false } = {}) {
     ...(shared ? { shared } : {})
   });
   await updateBadge();
+  // Después de los avisos: leer tiendas bloqueadas para GitHub y aportar precios a la base
+  if (sharedDb) await maybeAporte(sharedDb, st.settings);
   return { found: newEntries.length, errors };
+}
+
+// ---------- aporte de precios a la base compartida ----------
+const ALARM_APORTE = "aporte-sigue";
+
+async function maybeAporte(db, settings, force = false) {
+  if (!settings.aportar || !settings.githubToken || !db) return null;
+  const { aporte = {} } = await chrome.storage.local.get("aporte");
+  const enCurso = !!(aporte.state && aporte.state.cola && aporte.state.cursor < aporte.state.cola.length);
+  const cada = (Number(settings.aporteCadaHoras) || 3) * 3600000;
+  if (!force && !enCurso && aporte.ultimoCiclo && Date.now() - aporte.ultimoCiclo < cada) return null;
+  const state = enCurso && !force ? aporte.state : { cursor: 0, cola: null, tiendas: (aporte.state || {}).tiendas || {} };
+  try {
+    const r = await stepAporte(db, state);
+    aporte.state = r.state;
+    aporte.ultimoError = null;
+    if (r.terminado) {
+      aporte.ultimoCiclo = Date.now();
+      const up = await uploadAportes(settings.githubToken, r.state);
+      if (up.subido) aporte.ultimaSubida = Date.now();
+      aporte.resultado = up.subido ? `Subí precios de ${up.tiendas} tienda(s)` : up.motivo;
+    } else {
+      await chrome.alarms.create(ALARM_APORTE, { delayInMinutes: 1 }); // seguir con las tiendas que faltan
+    }
+  } catch (e) {
+    aporte.ultimoError = e.message;
+  }
+  await chrome.storage.local.set({ aporte });
+  return aporte;
+}
+
+async function aporteDesdeCero(force) {
+  const { settings: saved } = await chrome.storage.local.get("settings");
+  const settings = { ...DEFAULT_SETTINGS, ...(saved || {}) };
+  const db = await fetchSharedDb(settings.dbUrl);
+  return maybeAporte(db, settings, force);
 }
 
 function checkCalendar(st) {

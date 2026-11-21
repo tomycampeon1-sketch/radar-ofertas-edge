@@ -1,5 +1,5 @@
 // Cómo se busca en cada tienda. Cada tienda prueba sus métodos en orden y usa el primero que da resultados.
-import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, parseMejoresCompras } from "./parse.mjs";
+import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, parseMejoresCompras } from "./parse.js";
 
 const slug = (q) => q.trim().toLowerCase().replace(/\s+/g, "-");
 const enc = encodeURIComponent;

@@ -2,7 +2,7 @@ import { STORES, DEFAULT_WATCHLIST, DEFAULT_SETTINGS } from "./lib/config.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const BOOLS = ["useSharedDb", "notifyWatchlist", "notifyStoreBanners", "notifyEvents", "onlyNewCondition"];
+const BOOLS = ["aportar", "useSharedDb", "notifyWatchlist", "notifyStoreBanners", "notifyEvents", "onlyNewCondition"];
 const NUMS = ["intervalMinutes", "daysBeforeEvent", "minInstallmentsSinInteres"];
 
 function rowHtml(w) {
@@ -27,6 +27,9 @@ async function load() {
   NUMS.forEach((k) => ($(k).value = settings[k]));
   $("mlAccessToken").value = settings.mlAccessToken || "";
   $("dbUrl").value = settings.dbUrl || DEFAULT_SETTINGS.dbUrl;
+  $("githubToken").value = settings.githubToken || "";
+  const { aporte } = await chrome.storage.local.get("aporte");
+  if (aporte) $("aporteMsg").textContent = aporteTexto(aporte);
 }
 
 function collect() {
@@ -44,6 +47,7 @@ function collect() {
   NUMS.forEach((k) => (settings[k] = Number($(k).value) || DEFAULT_SETTINGS[k]));
   settings.enabledStores = [...document.querySelectorAll("#stores input:checked")].map((i) => i.value);
   settings.mlAccessToken = $("mlAccessToken").value.trim();
+  settings.githubToken = $("githubToken").value.trim();
   settings.dbUrl = /^https:\/\//.test($("dbUrl").value.trim()) ? $("dbUrl").value.trim() : DEFAULT_SETTINGS.dbUrl;
   return { settings, watchlist };
 }
@@ -64,6 +68,30 @@ $("add").addEventListener("click", () => {
   $("watch").lastElementChild.querySelector(".q").focus();
 });
 $("save").addEventListener("click", save);
+
+function aporteTexto(a) {
+  if (!a) return "";
+  if (a.ultimoError) return `Error: ${a.ultimoError}`;
+  const parts = [];
+  if (a.state && a.state.cola && a.state.cursor < a.state.cola.length) parts.push(`Leyendo tiendas: ${a.state.cursor} de ${a.state.cola.length}, sigue en 1 minuto…`);
+  if (a.resultado) parts.push(a.resultado);
+  if (a.ultimaSubida) parts.push(`última subida: ${new Date(a.ultimaSubida).toLocaleString("es-AR")}`);
+  return parts.join(" · ");
+}
+
+$("probarToken").addEventListener("click", async () => {
+  $("aporteMsg").textContent = "Probando…";
+  const r = await chrome.runtime.sendMessage({ type: "testToken", token: $("githubToken").value.trim() });
+  $("aporteMsg").textContent = r.ok ? "✓ La clave funciona y puede guardar en el repo" : `✕ ${r.error}`;
+});
+
+$("aporteNow").addEventListener("click", async () => {
+  if (!$("aportar").checked) $("aportar").checked = true;
+  await save();
+  $("aporteMsg").textContent = "Leyendo tiendas desde esta compu (tarda unos minutos)…";
+  const r = await chrome.runtime.sendMessage({ type: "aporteNow" });
+  $("aporteMsg").textContent = aporteTexto(r) || "Listo";
+});
 $("test").addEventListener("click", async () => {
   await save();
   clearTimeout(msgTimer);

@@ -93,6 +93,9 @@ export const DEFAULT_SETTINGS = {
   intervalMinutes: 60,
   useSharedDb: true, // leer la base compartida de la página (recomendado)
   dbUrl: "https://tomycampeon1-sketch.github.io/radar-ofertas-edge/data/db.json",
+  aportar: false, // leer desde esta compu las tiendas que bloquean a GitHub y subir los precios a la base
+  githubToken: "",
+  aporteCadaHoras: 3,
   enabledStores: STORES.map((s) => s.id),
   notifyEvents: true,
   notifyStoreBanners: true,

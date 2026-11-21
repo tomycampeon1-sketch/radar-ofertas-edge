@@ -17,6 +17,24 @@
     <div class="row"><label style="flex:1">Dirección de la base <input id="dbUrl" style="width:100%" placeholder="https://…/data/db.json"></label></div>
   </section>
 
+  <h2>Aportar precios a la base desde esta compu</h2>
+  <section>
+    <p class="muted small">Algunas tiendas (Frávega, Venex, Full H4rd…) bloquean a los servidores de GitHub pero no a tu navegador. Si activás esto, cada 3 horas la extensión lee esas tiendas desde Edge y guarda los precios en tu repo. En la próxima actualización aparecen en la página y en la base, marcados "desde tu compu".</p>
+    <details class="small"><summary><b>Cómo crear la clave de GitHub (2 minutos)</b></summary>
+      <ol>
+        <li>Entrá a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com/settings/personal-access-tokens/new</a>.</li>
+        <li><b>Token name</b>: "Radar de Ofertas". <b>Expiration</b>: 1 año (o lo que prefieras).</li>
+        <li><b>Repository access</b>: "Only select repositories" y elegí <b>radar-ofertas-edge</b>.</li>
+        <li><b>Permissions</b> &gt; Repository permissions &gt; <b>Contents</b>: "Read and write". No hace falta nada más.</li>
+        <li>Tocá <b>Generate token</b>, copiá la clave (empieza con <code>github_pat_</code>) y pegala acá abajo.</li>
+      </ol>
+      <p>La clave queda guardada solo en este Edge y solo puede tocar ese repo.</p>
+    </details>
+    <div class="row"><label><input type="checkbox" id="aportar"> Aportar precios desde esta compu</label></div>
+    <div class="row"><input type="password" id="githubToken" placeholder="github_pat_..." style="flex:1;min-width:240px"><button id="probarToken">Probar clave</button></div>
+    <div class="row"><button id="aporteNow">Guardar y aportar ahora</button><span id="aporteMsg" class="small muted"></span></div>
+  </section>
+
   <h2>Productos que sigo desde esta compu (Mercado Libre)</h2>
   <section>
     <p class="muted small">Te aviso cuando un producto baja de tu precio tope, tiene el descuento mínimo que elegiste, se puede pagar en cuotas sin interés o baja más de 5% respecto del mínimo visto. Las palabras a excluir sirven para sacar accesorios (por ejemplo "joystick" o "funda").</p>

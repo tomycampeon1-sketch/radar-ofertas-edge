@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Radar de Ofertas Tech AR",
   "short_name": "Radar Ofertas",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Te avisa de ofertas, cuotas sin interés y eventos en tiendas de tecnología argentinas. Usa la misma base de datos que la página del Radar de Ofertas.",
   "default_locale": "es",
   "icons": {
@@ -32,6 +32,9 @@
   "host_permissions": [
     "https://tomycampeon1-sketch.github.io/*",
     "https://raw.githubusercontent.com/*",
+    "https://*.cetrohogar.com.ar/*",
+    "https://*.megatone.net/*",
+    "https://api.github.com/*",
     "https://api.mercadolibre.com/*",
     "https://listado.mercadolibre.com.ar/*",
     "https://www.mercadolibre.com.ar/*",

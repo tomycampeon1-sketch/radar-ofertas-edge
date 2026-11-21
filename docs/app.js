@@ -153,7 +153,7 @@
         .sort((a, b) => (a.contado || a.cuotas?.total || 1e12) - (b.contado || b.cuotas?.total || 1e12))
         .map((o) => {
           const rec = o.contado && o.cuotas && o.cuotas.total ? o.cuotas.total / o.contado - 1 : null;
-          return `<tr><td>${linkOr(esc(o.tienda), o.url)}${o.titulo ? `<div class="muted small">${esc(o.titulo.slice(0, 70))}</div>` : ""}${o.aviso ? `<div class="muted small">${esc(o.aviso)}</div>` : ""}</td>
+          return `<tr><td>${linkOr(esc(o.tienda), o.url)}${o.titulo ? `<div class="muted small">${esc(o.titulo.slice(0, 70))}</div>` : ""}${o.via === "tu compu" ? `<div class="muted small">leído desde tu compu</div>` : ""}${o.aviso ? `<div class="muted small">${esc(o.aviso)}</div>` : ""}</td>
             <td class="r">${money(o.contado)}${o.lista ? `<div class="muted small"><s>${money(o.lista)}</s></div>` : ""}</td>
             <td class="r">${o.cuotas ? `${o.cuotas.n} × ${money(o.cuotas.monto)}<div class="muted small">${o.cuotas.sinInteres ? "sin interés" : "con interés"} · total ${money(o.cuotas.total)}</div>` : o.totalLista ? `<span class="muted small">lista ${money(o.totalLista)}</span>` : "—"}</td>
             <td class="r">${pct(rec)}</td><td>${tag(o.fuente)} <span class="muted small">${fecha(o.fecha)}</span></td></tr>`;

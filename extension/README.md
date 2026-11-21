@@ -45,6 +45,10 @@ Es un aviso normal para extensiones cargadas a mano. Tocá la X para cerrarlo. N
 
 Tu configuración se guarda solo en tu navegador. La extensión solo lee la base pública; no manda datos a ningún lado.
 
+## Aportar precios a la base (opcional)
+
+Algunas tiendas bloquean a los servidores de GitHub pero no a tu navegador. En **Opciones > Aportar precios** pegás una clave de GitHub (los pasos están ahí mismo) y cada 3 horas la extensión lee esas tiendas desde Edge y guarda los precios en `docs/data/aportes.json` de tu repo. GitHub los suma a la base en unos minutos. La clave queda solo en este Edge y solo puede tocar ese repo.
+
 ## Limitaciones
 
 - Funciona mientras Edge esté abierto (si Edge corre en segundo plano, también).
@@ -61,5 +65,7 @@ Tu configuración se guarda solo en tu navegador. La extensión solo lee la base
 | `lib/ml.js` | Búsqueda en Mercado Libre |
 | `lib/events.js` | Calendario de eventos |
 | `lib/shared.js` | Lectura de la base compartida con la página |
+| `lib/aporte.js` | Aporte de precios leídos desde tu compu |
+| `lib/core/` | Lector de tiendas (el mismo que usa GitHub) |
 | `popup.html/js` | La ventanita del ícono |
 | `options.html/js` | Página de opciones |

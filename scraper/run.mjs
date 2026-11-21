@@ -3,98 +3,49 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { SOURCES } from "./sources.mjs";
-import { matches, inRange } from "./parse.mjs";
+import { SOURCES } from "../extension/lib/core/sources.js";
+import { matches, inRange } from "../extension/lib/core/parse.js";
+import { scrapeAll } from "../extension/lib/core/scrape.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DB_PATH = path.join(ROOT, "docs/data/db.json");
-const UA = "RadarOfertasPersonal/1.0 (uso personal; +https://github.com/tomycampeon1-sketch/radar-ofertas-edge)";
 const PAUSA_MS = Number(process.env.PAUSA_MS ?? 1500);
 const MAX_ALERTAS = 150;
 const MAX_HISTORIA = 240; // ~60 días a 4 lecturas por día
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const APORTE_MAX_HORAS = 24;
 const money = (n) => (n == null ? "?" : "$" + Math.round(n).toLocaleString("es-AR"));
 
-// ---------- lectura de tiendas ----------
-export async function fetchText(url, accept, fetchImpl = fetch) {
-  const res = await fetchImpl(url, {
-    headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "es-AR,es;q=0.9" },
-    redirect: "follow",
-    signal: AbortSignal.timeout(20000)
-  });
-  if (!res.ok) {
-    const e = new Error(`HTTP ${res.status}`);
-    e.status = res.status;
-    throw e;
-  }
-  return res.text();
-}
+export { scrapeAll };
 
-export async function scrapeAll(config, { fetchImpl = fetch, log = console.log } = {}) {
-  const resultados = {}; // productoId -> tiendaId -> [ofertas]
-  const estado = {}; // tiendaId -> {ok, metodo, ofertas, error}
-  for (const t of config.tiendas) {
-    const src = SOURCES[t.id];
-    estado[t.id] = { nombre: t.nombre, ok: false, metodo: null, ofertas: 0, error: null };
-    if (!src) continue;
-    if (!src.metodos.length && !src.extra) {
-      estado[t.id].error = "Sin lectura automática (solo enlace)";
-      continue;
-    }
-    let fallas = 0;
-    let metodoBueno = null; // una vez que un método anda, se usa ese
-    for (const p of config.productos) {
-      if (fallas >= 3) break; // la tienda nos está bloqueando: no insistir
-      const metodos = metodoBueno ? [metodoBueno] : src.metodos;
-      let lista = null;
-      for (const m of metodos) {
-        try {
-          await sleep(PAUSA_MS);
-          const body = await fetchText(m.url(p.busqueda), m.accept, fetchImpl);
-          const parsed = m.parse(body);
-          if (parsed.length) {
-            lista = parsed;
-            metodoBueno = m;
-            estado[t.id].metodo = m.nombre;
-            break;
-          }
-        } catch (e) {
-          estado[t.id].error = `${m.nombre}: ${e.message}`;
-          fallas++;
-        }
-      }
-      // Fuentes extra (ej. Mejores Compras para Mercado Libre)
-      if (src.extra) {
-        for (const ex of (p.extra || []).filter((x) => x.tienda === t.id)) {
-          try {
-            await sleep(PAUSA_MS);
-            const body = await fetchText(ex.url, src.extra.accept, fetchImpl);
-            const parsed = src.extra.parse(body, ex.url).map((o) => ({ ...o, via: new URL(ex.url).hostname }));
-            if (parsed.length) {
-              lista = [...(lista || []), ...parsed];
-              estado[t.id].metodo = estado[t.id].metodo || "extra";
-            }
-          } catch (e) {
-            estado[t.id].error = `extra: ${e.message}`;
-          }
-        }
-      }
-      if (!lista) continue;
-      const buenas = lista.filter((o) => matches(o.titulo, p) && inRange(o.contado, p));
-      if (!buenas.length) {
-        const ej = lista.slice(0, 2).map((o) => `"${o.titulo.slice(0, 60)}" ${money(o.contado)}`).join(" · ");
-        log(`  ${t.nombre} / ${p.id}: ${lista.length} resultado(s) descartado(s), ej.: ${ej}`);
-      }
+// Suma los precios que leyó la extensión desde la compu de Tomas (docs/data/aportes.json)
+// para las tiendas o productos que GitHub no pudo leer.
+export function mergeAportes(scraped, aportes, config, now = new Date()) {
+  if (!aportes || !aportes.tiendas) return scraped;
+  const prods = Object.fromEntries(config.productos.map((p) => [p.id, p]));
+  for (const [tid, ap] of Object.entries(aportes.tiendas)) {
+    if (!ap || !ap.fecha || now - new Date(ap.fecha) > APORTE_MAX_HORAS * 3600000) continue;
+    if (!config.tiendas.some((t) => t.id === tid)) continue;
+    let usadas = 0;
+    for (const [pid, ofertas] of Object.entries(ap.productos || {})) {
+      const p = prods[pid];
+      if (!p || scraped.resultados[pid]?.[tid]) continue; // GitHub ya tiene dato propio
+      const buenas = (ofertas || []).filter((o) => o && typeof o.titulo === "string" && /^https:\/\//.test(o.url || "") && matches(o.titulo, p) && inRange(o.contado, p))
+        .map((o) => ({ titulo: o.titulo, url: o.url, contado: Number(o.contado), lista: Number(o.lista) || null, cuotas: o.cuotas || null, via: "tu compu", fecha: ap.fecha }));
       if (buenas.length) {
-        (resultados[p.id] ||= {})[t.id] = buenas;
-        estado[t.id].ok = true;
-        estado[t.id].ofertas += buenas.length;
+        (scraped.resultados[pid] ||= {})[tid] = buenas;
+        usadas += buenas.length;
       }
     }
-    if (estado[t.id].ok) estado[t.id].error = null;
-    log(`${t.nombre}: ${estado[t.id].ok ? `${estado[t.id].ofertas} ofertas (${estado[t.id].metodo})` : `sin datos (${estado[t.id].error || "nada coincidió"})`}`);
+    if (usadas) {
+      const e = (scraped.estado[tid] ||= { nombre: tid, ok: false, ofertas: 0 });
+      if (!e.ok) e.metodo = "desde tu compu";
+      e.ok = true;
+      e.error = null;
+      e.ofertas = (e.ofertas || 0) + usadas;
+      e.aporte = ap.fecha;
+    }
   }
-  return { resultados, estado };
+  return scraped;
 }
 
 // ---------- armado de la base ----------
@@ -129,7 +80,7 @@ export function buildDb(prev, config, { resultados, estado }, now = new Date()) 
         const mc = mejorCuotas(orden);
         if (mc && mc !== orden[0]) elegidas.push(mc);
         for (const o of elegidas)
-          ofertas.push({ tienda: nombreTienda[t.id], tiendaId: t.id, titulo: o.titulo, url: o.url, contado: o.contado, lista: o.lista || null, cuotas: o.cuotas || null, via: o.via || null, fuente: "auto", fecha: iso });
+          ofertas.push({ tienda: nombreTienda[t.id], tiendaId: t.id, titulo: o.titulo, url: o.url, contado: o.contado, lista: o.lista || null, cuotas: o.cuotas || null, via: o.via || null, fuente: "auto", fecha: o.fecha || iso });
       } else {
         // la tienda falló esta vez: conservar lo último que vimos si tiene menos de 3 días
         for (const o of (antes.ofertas || []).filter((x) => x.tiendaId === t.id && x.fuente === "auto")) {
@@ -175,6 +126,7 @@ export function buildDb(prev, config, { resultados, estado }, now = new Date()) 
       grupo: p.grupo,
       pieza: p.pieza || null,
       busqueda: p.busqueda,
+      filtro: { debeTener: p.debeTener || [], excluir: p.excluir || [], minimo: p.minimo || null, maximo: p.maximo || null },
       nota: p.nota || null,
       ofertas,
       referencia: p.referencia || [],
@@ -196,7 +148,7 @@ export function buildDb(prev, config, { resultados, estado }, now = new Date()) 
   for (const t of config.tiendas) {
     const e = estado[t.id] || {};
     const antes = prev?.tiendas?.[t.id] || {};
-    tiendas[t.id] = { nombre: t.nombre, ok: !!e.ok, metodo: e.metodo || null, ofertas: e.ofertas || 0, error: e.error || null, ultimaOk: e.ok ? iso : antes.ultimaOk || null };
+    tiendas[t.id] = { nombre: t.nombre, ok: !!e.ok, metodo: e.metodo || null, ofertas: e.ofertas || 0, error: e.error || null, aporte: e.aporte || null, ultimaOk: e.ok ? iso : antes.ultimaOk || null };
   }
 
   return {
@@ -219,7 +171,14 @@ async function main() {
   } catch {
     /* primera vez */
   }
-  const scraped = process.argv.includes("--sin-red") ? { resultados: {}, estado: {} } : await scrapeAll(config);
+  const scraped = process.argv.includes("--sin-red") ? { resultados: {}, estado: {} } : await scrapeAll(config, { pausaMs: PAUSA_MS });
+  let aportes = null;
+  try {
+    aportes = JSON.parse(await readFile(path.join(ROOT, "docs/data/aportes.json"), "utf8"));
+  } catch {
+    /* todavía no hay aportes de la extensión */
+  }
+  mergeAportes(scraped, aportes, config);
   const db = buildDb(prev, config, scraped);
   await mkdir(path.dirname(DB_PATH), { recursive: true });
   await writeFile(DB_PATH, JSON.stringify(db, null, 1));

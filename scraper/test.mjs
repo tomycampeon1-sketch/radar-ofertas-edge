@@ -1,8 +1,8 @@
 // Pruebas con páginas simuladas: node --test scraper/
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, matches, toNumber, cuotasFromText } from "./parse.mjs";
-import { buildDb, scrapeAll } from "./run.mjs";
+import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, matches, toNumber, cuotasFromText } from "../extension/lib/core/parse.js";
+import { buildDb, scrapeAll, mergeAportes } from "./run.mjs";
 
 const PS5 = { id: "ps5", nombre: "PS5 Slim Digital", grupo: "consola", busqueda: "PlayStation 5 Slim Digital", debeTener: ["ps5|playstation 5", "digital"], excluir: ["joystick", "juego"], minimo: 800000, maximo: 4000000 };
 const CONFIG = { tiendas: [{ id: "garbarino", nombre: "Garbarino" }, { id: "mercadolibre", nombre: "Mercado Libre" }], productos: [PS5] };
@@ -107,9 +107,67 @@ test("scrapeAll deja de insistir con una tienda que bloquea", async () => {
     llamadas++;
     return { ok: false, status: 403, text: async () => "" };
   };
-  process.env.PAUSA_MS = "0";
   const cfg = { tiendas: [{ id: "venex", nombre: "Venex" }], productos: [PS5, { ...PS5, id: "b" }, { ...PS5, id: "c" }, { ...PS5, id: "d" }, { ...PS5, id: "e" }] };
-  const { estado } = await scrapeAll(cfg, { fetchImpl: fake, log: () => {} });
+  const { estado } = await scrapeAll(cfg, { fetchImpl: fake, log: () => {}, pausaMs: 0 });
   assert.equal(estado.venex.ok, false);
   assert.equal(llamadas, 3);
+});
+
+test("mergeAportes suma precios de la extensión solo donde GitHub no tiene", () => {
+  const now = new Date("2026-11-21T12:00:00Z");
+  const scraped = { resultados: { ps5: { mercadolibre: [{ titulo: "PS5 Slim Digital", url: "https://ml", contado: 1500000 }] } }, estado: { mercadolibre: { ok: true, ofertas: 1 } } };
+  const aportes = { tiendas: {
+    garbarino: { fecha: "2026-11-21T10:00:00Z", productos: { ps5: [
+      { titulo: "Consola PlayStation 5 Slim Digital", url: "https://www.garbarino.com/p", contado: 1650000, cuotas: { n: 12, monto: 137500, total: 1650000, sinInteres: true } },
+      { titulo: "Joystick PS5 Digital", url: "https://www.garbarino.com/j", contado: 900000 }
+    ] } },
+    mercadolibre: { fecha: "2026-11-21T10:00:00Z", productos: { ps5: [{ titulo: "PS5 Slim Digital", url: "https://ml2", contado: 1 }] } },
+    venex: { fecha: "2026-11-19T10:00:00Z", productos: { ps5: [{ titulo: "PS5 Slim Digital", url: "https://v", contado: 1600000 }] } }
+  } };
+  mergeAportes(scraped, aportes, CONFIG, now);
+  assert.equal(scraped.resultados.ps5.garbarino.length, 1);
+  assert.equal(scraped.resultados.ps5.garbarino[0].via, "tu compu");
+  assert.equal(scraped.resultados.ps5.mercadolibre[0].url, "https://ml");
+  assert.ok(!scraped.resultados.ps5.venex);
+  assert.equal(scraped.estado.garbarino.metodo, "desde tu compu");
+  const db = buildDb(null, CONFIG, scraped, now);
+  const g = db.productos[0].ofertas.find((o) => o.tiendaId === "garbarino");
+  assert.equal(g.fecha, "2026-11-21T10:00:00Z");
+  assert.deepEqual(db.productos[0].filtro.debeTener, PS5.debeTener);
+});
+
+test("extensión: stepAporte lee tiendas pendientes y uploadAportes sube el archivo", async () => {
+  const { stepAporte, uploadAportes, pendingStores } = await import("../extension/lib/aporte.js");
+  const db = {
+    tiendas: { mercadolibre: { nombre: "Mercado Libre", ok: true, metodo: "extra" }, garbarino: { nombre: "Garbarino", ok: false } },
+    productos: [{ id: "ps5", busqueda: "PS5 Slim Digital", filtro: { debeTener: PS5.debeTener, excluir: PS5.excluir, minimo: PS5.minimo, maximo: PS5.maximo } }]
+  };
+  assert.deepEqual(pendingStores(db).map((t) => t.id), ["garbarino"]);
+  const vtexJson = JSON.stringify([{ productName: "Consola PlayStation 5 Slim Digital", link: "/p", items: [{ sellers: [{ sellerDefault: true, commertialOffer: { Price: 1650000, ListPrice: 1650000, AvailableQuantity: 1, Installments: [] } }] }] }]);
+  const fakeFetch = async (url) => ({ ok: true, status: 200, text: async () => (url.includes("/api/catalog_system/") ? vtexJson : "") });
+  const { state, terminado } = await stepAporte(db, null, { pausaMs: 0, fetchImpl: fakeFetch });
+  assert.ok(terminado);
+  assert.equal(state.tiendas.garbarino.productos.ps5[0].contado, 1650000);
+
+  const calls = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, opts = {}) => {
+    calls.push({ url, method: opts.method || "GET", body: opts.body });
+    if (!opts.method) return { ok: true, status: 200, json: async () => ({ sha: "abc" }) };
+    return { ok: true, status: 200, json: async () => ({}) };
+  };
+  try {
+    const r = await uploadAportes("tok", state);
+    assert.ok(r.subido);
+    const put = JSON.parse(calls[1].body);
+    assert.equal(put.sha, "abc");
+    const contenido = JSON.parse(Buffer.from(put.content, "base64").toString("utf8"));
+    assert.equal(contenido.tiendas.garbarino.productos.ps5[0].contado, 1650000);
+    // y GitHub lo suma a la base
+    const cfg = { tiendas: [{ id: "garbarino", nombre: "Garbarino" }], productos: [PS5] };
+    const merged = mergeAportes({ resultados: {}, estado: {} }, contenido, cfg);
+    assert.equal(merged.resultados.ps5.garbarino[0].contado, 1650000);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
 });

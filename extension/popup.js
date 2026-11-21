@@ -18,7 +18,7 @@ const ago = (t) => {
 const safeUrl = (u) => (/^https:\/\//.test(u || "") ? u : null);
 
 async function load() {
-  return chrome.storage.local.get(["feed", "watchlist", "watchState", "lastRun", "lastErrors", "settings", "shared"]);
+  return chrome.storage.local.get(["feed", "watchlist", "watchState", "lastRun", "lastErrors", "settings", "shared", "aporte"]);
 }
 
 function renderFeed(s) {
@@ -86,6 +86,10 @@ async function render() {
   const errs = (s.lastErrors || []).length;
   statusEl.textContent = `Último chequeo: ${ago(s.lastRun)}${errs ? ` · ${errs} fuente(s) con error` : ""}`;
   statusEl.title = (s.lastErrors || []).join("\n");
+  if (s.aporte && (s.aporte.ultimaSubida || s.aporte.ultimoError)) {
+    statusEl.textContent += s.aporte.ultimoError ? " · aporte con error" : ` · aporte ${ago(s.aporte.ultimaSubida)}`;
+    if (s.aporte.ultimoError) statusEl.title += `\nAporte: ${s.aporte.ultimoError}`;
+  }
 }
 
 document.querySelectorAll(".tabs button").forEach((b) =>
