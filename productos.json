@@ -199,10 +199,31 @@
       "referencia": []
     },
     {
-      "id": "cpu-7800x3d",
-      "nombre": "Procesador AMD Ryzen 7 7800X3D",
+      "id": "cpu-9800x3d",
+      "nombre": "Procesador AMD Ryzen 7 9800X3D",
       "grupo": "pc",
       "pieza": "procesador",
+      "busqueda": "Ryzen 7 9800X3D",
+      "debeTener": [
+        "9800x3d"
+      ],
+      "excluir": [
+        "notebook",
+        "pc armada",
+        "combo",
+        "kit",
+        "cooler para"
+      ],
+      "minimo": 400000,
+      "maximo": 3000000,
+      "nota": "El procesador más rápido para juegos. GTA 6 es pesado de procesador (en consola no pasa de 30 fps por eso).",
+      "referencia": []
+    },
+    {
+      "id": "cpu-7800x3d",
+      "nombre": "Procesador AMD Ryzen 7 7800X3D (opción más barata)",
+      "grupo": "pc",
+      "pieza": "procesador-barato",
       "busqueda": "Ryzen 7 7800X3D",
       "debeTener": [
         "7800x3d"
@@ -237,82 +258,43 @@
           "fecha": "2026-11-21",
           "fuente": "https://www.mercadolibre.com.ar/p/MLA66263745"
         }
-      ]
+      ],
+      "nota": "Entre 10% y 15% menos fps que el 9800X3D, con la misma placa madre."
     },
     {
-      "id": "cpu-7600",
-      "nombre": "Procesador AMD Ryzen 5 7600 (opción barata)",
-      "grupo": "pc",
-      "pieza": "procesador-barato",
-      "busqueda": "Ryzen 5 7600",
-      "debeTener": [
-        "7600"
-      ],
-      "excluir": [
-        "7600x3d",
-        "rx 7600",
-        "rx7600",
-        "notebook",
-        "pc armada",
-        "combo",
-        "kit",
-        "placa de video"
-      ],
-      "minimo": 150000,
-      "maximo": 1200000,
-      "referencia": []
-    },
-    {
-      "id": "gpu-9070xt",
-      "nombre": "Placa de video Radeon RX 9070 XT 16 GB",
+      "id": "gpu-rtx5080",
+      "nombre": "Placa de video GeForce RTX 5080 16 GB",
       "grupo": "pc",
       "pieza": "placa de video",
-      "busqueda": "RX 9070 XT",
+      "busqueda": "RTX 5080",
       "debeTener": [
-        "9070 xt|9070xt"
+        "5080"
       ],
       "excluir": [
         "notebook",
+        "laptop",
         "pc armada",
         "combo",
         "soporte",
         "cable",
         "backplate",
-        "waterblock"
+        "waterblock",
+        "5070",
+        "5090"
       ],
-      "minimo": 900000,
-      "maximo": 5000000,
-      "extra": [
-        {
-          "tienda": "mercadolibre",
-          "url": "https://www.mercadolibre.com.ar/p/MLA50971304"
-        },
-        {
-          "tienda": "mercadolibre",
-          "url": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50"
-        }
-      ],
-      "referencia": [
-        {
-          "tienda": "Mercado Libre",
-          "contado": 2308500,
-          "cuotas": 12,
-          "cuotaMonto": 192375,
-          "total": 2308500,
-          "sinInteres": true,
-          "fecha": "2026-11-21",
-          "fuente": "https://www.mercadolibre.com.ar/p/MLA50971304"
-        }
-      ]
+      "minimo": 1500000,
+      "maximo": 9000000,
+      "nota": "Para 120 fps en 2K hace falta DLSS 4 con generación de cuadros, que solo tienen las RTX 50.",
+      "referencia": []
     },
     {
       "id": "mb-b650m",
-      "nombre": "Motherboard B650M (AM5)",
+      "nombre": "Motherboard B650M o B850M (AM5)",
       "grupo": "pc",
       "pieza": "motherboard",
-      "busqueda": "Motherboard B650M AM5",
+      "busqueda": "Motherboard B850M AM5",
       "debeTener": [
-        "b650m"
+        "b650m|b850m"
       ],
       "excluir": [
         "combo",
@@ -343,7 +325,8 @@
           "fecha": "2026-10-24",
           "fuente": "https://www.mercadolibre.com.ar/p/MLA29226165"
         }
-      ]
+      ],
+      "nota": "Si es B650, que diga \"Ryzen 9000 ready\" o pedí que le actualicen la BIOS."
     },
     {
       "id": "ram-32-ddr5",
@@ -388,14 +371,14 @@
       ]
     },
     {
-      "id": "ssd-1tb",
-      "nombre": "SSD NVMe 1 TB",
+      "id": "ssd-2tb",
+      "nombre": "SSD NVMe 2 TB",
       "grupo": "pc",
       "pieza": "disco",
-      "busqueda": "SSD NVMe 1TB M.2",
+      "busqueda": "SSD NVMe 2TB M.2",
       "debeTener": [
         "ssd|nvme",
-        "1tb|1 tb",
+        "2tb|2 tb",
         "nvme|m.2|m2"
       ],
       "excluir": [
@@ -406,12 +389,13 @@
         "usb",
         "gabinete"
       ],
-      "minimo": 60000,
-      "maximo": 900000,
+      "minimo": 100000,
+      "maximo": 1500000,
+      "nota": "GTA 6 ocupa más de 200 GB en consola.",
       "referencia": [
         {
           "tienda": "Estimado",
-          "contado": 280000,
+          "contado": 450000,
           "cuotas": null,
           "cuotaMonto": null,
           "total": null,
@@ -424,14 +408,14 @@
     },
     {
       "id": "psu-750",
-      "nombre": "Fuente 750 W 80 Plus",
+      "nombre": "Fuente 850 W 80 Plus Gold",
       "grupo": "pc",
       "pieza": "fuente",
       "yaTengo": true,
-      "busqueda": "Fuente 750W 80 Plus",
+      "busqueda": "Fuente 850W 80 Plus Gold",
       "debeTener": [
         "fuente",
-        "750"
+        "850"
       ],
       "excluir": [
         "notebook",
@@ -454,7 +438,8 @@
           "fuente": null,
           "aviso": "Precio estimado, sin link de compra."
         }
-      ]
+      ],
+      "nota": "Ya la tenés. La RTX 5080 pide 850 W: si la tuya es de menos, conviene cambiarla."
     },
     {
       "id": "gabinete",

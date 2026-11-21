@@ -83,10 +83,9 @@ export const DEFAULT_WATCHLIST = [
   { id: "w1", query: "PlayStation 5 Slim", maxPrice: null, minDiscount: 10, exclude: "joystick control funda juego soporte cable" },
   { id: "w2", query: "Xbox Series S", maxPrice: null, minDiscount: 10, exclude: "joystick control funda juego soporte cable" },
   { id: "w3", query: "Xbox Series X", maxPrice: null, minDiscount: 10, exclude: "joystick control funda juego soporte cable" },
-  { id: "w4", query: "placa de video RTX 5060 Ti", maxPrice: null, minDiscount: 10, exclude: "notebook pc completa cooler" },
-  { id: "w5", query: "placa de video RX 9060 XT", maxPrice: null, minDiscount: 10, exclude: "notebook pc completa cooler" },
-  { id: "w6", query: "Ryzen 5 7600", maxPrice: null, minDiscount: 10, exclude: "notebook pc completa combo" },
-  { id: "w7", query: "monitor 27 165hz", maxPrice: null, minDiscount: 15, exclude: "soporte brazo" }
+  { id: "w4", query: "placa de video RTX 5080", maxPrice: null, minDiscount: 10, exclude: "notebook pc completa cooler" },
+  { id: "w5", query: "placa de video RTX 5070 Ti", maxPrice: null, minDiscount: 10, exclude: "notebook pc completa cooler" },
+  { id: "w6", query: "Ryzen 7 9800X3D", maxPrice: null, minDiscount: 10, exclude: "notebook pc completa combo" }
 ];
 
 export const DEFAULT_SETTINGS = {

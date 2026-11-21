@@ -156,15 +156,16 @@
   }
 
   function totalPc() {
-    let total = 0, cuotasTotal = 0, estimadas = 0;
+    let total = 0, cuotasTotal = 0, estimadas = 0, faltan = 0;
     for (const p of piezasPc()) {
       if (p.yaTengo) continue; // lo que ya tenés no suma
       const m = mejores(p);
+      if (!m.contado) faltan++;
       if (m.contado) total += m.contado.contado;
       if (m.contado && m.contado.tienda === "Estimado") estimadas++;
       cuotasTotal += m.cuotas ? m.cuotas.cuotas.total : m.contado ? m.contado.contado : 0;
     }
-    return { total, cuotasTotal, estimadas };
+    return { total, cuotasTotal, estimadas, faltan };
   }
 
   function renderGta() {
@@ -186,11 +187,11 @@
         <div class="w">${c ? (c.tienda === "Estimado" ? `Estimado, sin link de compra` : `${esc(c.tienda)} ${tag(c.fuente)}`) : "Sin precio de tienda todavía"}</div>
         ${q ? `<div class="w"><span>${q.cuotas.n} × ${money(q.cuotas.monto)}</span>${chip(t, true)}</div>` : `<div class="w">Sin plan sin interés conocido</div>`}</div></div>`;
     });
-    const { total, cuotasTotal, estimadas } = totalPc();
+    const { total, cuotasTotal, estimadas, faltan } = totalPc();
     $("pc").innerHTML = `<div class="pc-grid">${parts.join("")}</div>
       <div class="pc-total"><div><div class="k">Total de contado</div><div class="v">${money(total)}</div></div>
         <div><div class="k">En 12 cuotas</div><div class="v">≈ 12 × ${money(cuotasTotal / 12)}</div></div>
-        <div class="muted small" style="flex:1;min-width:220px">${estimadas ? `${estimadas} pieza(s) son estimaciones. ` : ""}No suma ${piezasPc().filter((p) => p.yaTengo).map((p) => p.pieza).concat("monitor 2K").join(" ni ")} porque ya los tenés, ni Windows. GTA 6 todavía no tiene versión de PC ni requisitos oficiales: el armado es una estimación basada en cómo corre en PS5.</div></div>`;
+        <div class="muted small" style="flex:1;min-width:220px">${faltan ? `<b>Faltan precios de ${faltan} pieza(s): el total todavía no está completo.</b> ` : ""}${estimadas ? `${estimadas} pieza(s) son estimaciones. ` : ""}No suma ${piezasPc().filter((p) => p.yaTengo).map((p) => p.pieza).concat("monitor 2K").join(" ni ")} porque ya los tenés, ni Windows. GTA 6 todavía no tiene versión de PC ni requisitos oficiales: el armado es una estimación para 2K a 120 fps con DLSS 4 y generación de cuadros.</div></div>`;
     renderHero();
   }
 
@@ -207,13 +208,13 @@
     $("titular").textContent = base
       ? `Jugar GTA 6 hoy: ${base.p.nombre} desde ${money(base.c.contado)}`
       : "La forma más barata de jugar GTA 6";
-    $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. ${ps5 && !m.contado ? "La PS5 Slim Digital (la recomendada) todavía no tiene precio de tienda. " : ""}Armar la PC para 2K (ya tenés monitor y fuente) sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
+    $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. ${ps5 && !m.contado ? "La PS5 Slim Digital (la recomendada) todavía no tiene precio de tienda. " : ""}Armar la PC para 2K a 120 fps (ya tenés monitor y fuente) sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
     const t = m.cuotas ? tipoCuotas(m.cuotas, m.contado && m.contado.contado) : null;
     $("stats").innerHTML = [
       { k: "Consola más barata hoy", v: barata ? money(barata.c.contado) : "—", s: barata ? `${barata.p.nombre} en ${barata.c.tienda}` : "todavía sin precio de tienda", u: barata && barata.c.url },
       { k: "PS5 Slim Digital (recomendada)", v: m.contado ? money(m.contado.contado) : "—", s: m.contado ? `de contado en ${m.contado.tienda}` : m.cuotas ? "" : "esperando precio de tienda", u: m.contado && m.contado.url },
       { k: "PS5 en cuotas sin interés", v: m.cuotas ? `${m.cuotas.cuotas.n} × ${money(m.cuotas.cuotas.monto)}` : "—", s: m.cuotas ? `total ${money(m.cuotas.cuotas.total)} en ${m.cuotas.tienda}${t && t.rec > 0.01 ? ` (${pct(t.rec)} vs contado)` : ""}` : "sin plan conocido todavía", u: m.cuotas && m.cuotas.url },
-      { k: "Lo que te falta para la PC 2K", v: money(total), s: "ya tenés monitor 2K y fuente", u: null, go: "pc" }
+      { k: "Te falta para la PC 2K 120 fps", v: money(total), s: "ya tenés monitor 2K y fuente", u: null, go: "pc" }
     ].map((x) => {
       const u = safe(x.u);
       const inner = `<div class="k">${esc(x.k)}</div><div class="v">${esc(x.v)}</div><div class="s">${esc(x.s)}</div>`;
