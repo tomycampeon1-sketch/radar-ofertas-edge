@@ -127,6 +127,7 @@ export function buildDb(prev, config, { resultados, estado }, now = new Date()) 
       pieza: p.pieza || null,
       busqueda: p.busqueda,
       filtro: { debeTener: p.debeTener || [], excluir: p.excluir || [], minimo: p.minimo || null, maximo: p.maximo || null },
+      extra: (p.extra || []).filter((e) => /^https:\/\//.test(e.url)),
       nota: p.nota || null,
       imagen: (ofertas.find((o) => o.imagen) || {}).imagen || (antes.imagen && /^https:\/\//.test(antes.imagen) ? antes.imagen : null) || p.imagen || null,
       ofertas,

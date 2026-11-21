@@ -1,5 +1,5 @@
 {
-  "_ayuda": "Lista de productos que sigue el radar. Para agregar uno, copiá un bloque y cambiá id, nombre, busqueda, debeTener, excluir y los precios minimo/maximo (sirven para descartar accesorios y errores). Guardá el archivo en GitHub y en la próxima actualización aparece en la página y en la extensión.",
+  "_ayuda": "Lista de productos que sigue el radar. Para agregar uno, copiá un bloque y cambiá id, nombre, busqueda, debeTener, excluir y los precios minimo/maximo (sirven para descartar accesorios y errores). Guardá el archivo en GitHub y en la próxima actualización aparece en la página y en la extensión. En \"referencia\" van solo precios vistos en una página de compra (tienda o Mercado Libre) con su link directo; nada de notas de diarios.",
   "inflacionMensual": 2.0,
   "tiendas": [
     {
@@ -17,14 +17,6 @@
     {
       "id": "musimundo",
       "nombre": "Musimundo"
-    },
-    {
-      "id": "megatone",
-      "nombre": "Megatone"
-    },
-    {
-      "id": "cetrohogar",
-      "nombre": "Cetrohogar"
     },
     {
       "id": "compragamer",
@@ -72,56 +64,14 @@
       "extra": [
         {
           "tienda": "mercadolibre",
+          "url": "https://www.mercadolibre.com.ar/p/MLA42097103"
+        },
+        {
+          "tienda": "mercadolibre",
           "url": "https://mejorescompras.com.ar/precio/MLA42097103--sony-playstation-5-slim-edicion-digital-1tb-blanco"
         }
       ],
-      "referencia": [
-        {
-          "tienda": "Sony Store",
-          "contado": 1599999,
-          "cuotas": 6,
-          "cuotaMonto": 316667,
-          "total": 1899999,
-          "sinInteres": true,
-          "fecha": "2026-11-19",
-          "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
-          "medios": "6 cuotas sin interés sobre el precio de lista ($1.899.999), más caro que el contado"
-        },
-        {
-          "tienda": "Frávega",
-          "contado": null,
-          "cuotas": 12,
-          "cuotaMonto": 155833,
-          "total": 1869999,
-          "sinInteres": true,
-          "fecha": "2026-11-19",
-          "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
-          "medios": "Hasta 12 cuotas con Banco Patagonia"
-        },
-        {
-          "tienda": "Cetrohogar",
-          "contado": null,
-          "cuotas": 18,
-          "cuotaMonto": 105556,
-          "total": 1899999,
-          "sinInteres": true,
-          "fecha": "2026-11-19",
-          "fuente": "https://rosariotimes.com/se-lanzo-el-gta-6-cuanto-cuesta-comprar-la-playstation-en-argentina/",
-          "medios": "9, 12 o 18 cuotas sin interés según el banco"
-        },
-        {
-          "tienda": "Mercado Libre",
-          "contado": 1050000,
-          "cuotas": null,
-          "cuotaMonto": null,
-          "total": null,
-          "sinInteres": false,
-          "fecha": "2026-11-19",
-          "fuente": "https://examedia.com.ar/portada/post/88268013",
-          "aviso": "Vendedores particulares: revisá garantía y reputación.",
-          "particular": true
-        }
-      ]
+      "referencia": []
     },
     {
       "id": "ps5-slim-lectora",
@@ -148,18 +98,7 @@
       ],
       "minimo": 900000,
       "maximo": 4500000,
-      "referencia": [
-        {
-          "tienda": "Precio oficial",
-          "contado": 2099999,
-          "cuotas": null,
-          "cuotaMonto": null,
-          "total": null,
-          "sinInteres": false,
-          "fecha": "2026-11-19",
-          "fuente": "https://examedia.com.ar/portada/post/88268013"
-        }
-      ]
+      "referencia": []
     },
     {
       "id": "ps5-pro",
@@ -185,18 +124,7 @@
       ],
       "minimo": 1800000,
       "maximo": 6000000,
-      "referencia": [
-        {
-          "tienda": "Sony Store",
-          "contado": 2799999,
-          "cuotas": null,
-          "cuotaMonto": null,
-          "total": null,
-          "sinInteres": false,
-          "fecha": "2026-11-18",
-          "fuente": "https://www.iprofesional.com/actualidad/469488-queres-jugar-al-gta-vi-esto-cuesta-una-playstation-5-en-argentina"
-        }
-      ]
+      "referencia": []
     },
     {
       "id": "xbox-series-s",
@@ -226,31 +154,23 @@
       "extra": [
         {
           "tienda": "mercadolibre",
+          "url": "https://www.mercadolibre.com.ar/p/MLA54145150"
+        },
+        {
+          "tienda": "mercadolibre",
           "url": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco"
         }
       ],
       "referencia": [
         {
-          "tienda": "GameShop",
-          "contado": 836190,
-          "cuotas": null,
-          "cuotaMonto": null,
-          "total": 929100,
-          "sinInteres": false,
-          "fecha": "2026-11-19",
-          "fuente": "https://examedia.com.ar/portada/post/88268013",
-          "medios": "Precio de lista $929.100; plan de cuotas sin detalle"
-        },
-        {
           "tienda": "Mercado Libre",
           "contado": 1450000,
-          "cuotas": 12,
-          "cuotaMonto": 141667,
-          "total": 1699999,
-          "sinInteres": true,
+          "cuotas": null,
+          "cuotaMonto": null,
+          "total": null,
+          "sinInteres": false,
           "fecha": "2026-11-08",
-          "fuente": "https://mejorescompras.com.ar/precio/MLA54145150--microsoft-xbox-series-s-512gb-estandar-color-blanco",
-          "medios": "12 cuotas sin interés en otra publicación ($1.699.999)"
+          "fuente": "https://www.mercadolibre.com.ar/p/MLA54145150"
         }
       ]
     },
@@ -276,18 +196,7 @@
       ],
       "minimo": 1000000,
       "maximo": 5000000,
-      "referencia": [
-        {
-          "tienda": "Varias",
-          "contado": 1890500,
-          "cuotas": null,
-          "cuotaMonto": null,
-          "total": null,
-          "sinInteres": false,
-          "fecha": "2026-11-19",
-          "fuente": "https://examedia.com.ar/portada/post/88268013"
-        }
-      ]
+      "referencia": []
     },
     {
       "id": "cpu-7800x3d",
@@ -310,6 +219,10 @@
       "extra": [
         {
           "tienda": "mercadolibre",
+          "url": "https://www.mercadolibre.com.ar/p/MLA66263745"
+        },
+        {
+          "tienda": "mercadolibre",
           "url": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia"
         }
       ],
@@ -322,8 +235,7 @@
           "total": 710399,
           "sinInteres": true,
           "fecha": "2026-11-21",
-          "fuente": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia",
-          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+          "fuente": "https://www.mercadolibre.com.ar/p/MLA66263745"
         }
       ]
     },
@@ -348,18 +260,7 @@
       ],
       "minimo": 150000,
       "maximo": 1200000,
-      "referencia": [
-        {
-          "tienda": "Mercado Libre",
-          "contado": 399228,
-          "cuotas": null,
-          "cuotaMonto": null,
-          "total": null,
-          "sinInteres": false,
-          "fecha": "2026-11-21",
-          "fuente": "https://mejorescompras.com.ar/computacion"
-        }
-      ]
+      "referencia": []
     },
     {
       "id": "gpu-9070xt",
@@ -384,6 +285,10 @@
       "extra": [
         {
           "tienda": "mercadolibre",
+          "url": "https://www.mercadolibre.com.ar/p/MLA50971304"
+        },
+        {
+          "tienda": "mercadolibre",
           "url": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50"
         }
       ],
@@ -396,8 +301,7 @@
           "total": 2308500,
           "sinInteres": true,
           "fecha": "2026-11-21",
-          "fuente": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50",
-          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+          "fuente": "https://www.mercadolibre.com.ar/p/MLA50971304"
         }
       ]
     },
@@ -421,6 +325,10 @@
       "extra": [
         {
           "tienda": "mercadolibre",
+          "url": "https://www.mercadolibre.com.ar/p/MLA29226165"
+        },
+        {
+          "tienda": "mercadolibre",
           "url": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro"
         }
       ],
@@ -433,8 +341,7 @@
           "total": 496999,
           "sinInteres": true,
           "fecha": "2026-10-24",
-          "fuente": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro",
-          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+          "fuente": "https://www.mercadolibre.com.ar/p/MLA29226165"
         }
       ]
     },
@@ -460,6 +367,10 @@
       "extra": [
         {
           "tienda": "mercadolibre",
+          "url": "https://www.mercadolibre.com.ar/p/MLA78854862"
+        },
+        {
+          "tienda": "mercadolibre",
           "url": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra"
         }
       ],
@@ -472,8 +383,7 @@
           "total": 1136441,
           "sinInteres": true,
           "fecha": "2026-11-21",
-          "fuente": "https://mejorescompras.com.ar/precio/MLA78854862--memoria-ram-gamer-corsair-vengeance-2x16gb-32gb-6000-ddr5-negra",
-          "medios": "12 cuotas sin interés con tarjetas de crédito (Mercado Libre)"
+          "fuente": "https://www.mercadolibre.com.ar/p/MLA78854862"
         }
       ]
     },
@@ -508,7 +418,7 @@
           "sinInteres": false,
           "fecha": "2026-11-21",
           "fuente": null,
-          "aviso": "Estimación, sin cotizar."
+          "aviso": "Precio estimado, sin link de compra."
         }
       ]
     },
@@ -541,7 +451,7 @@
           "sinInteres": false,
           "fecha": "2026-11-21",
           "fuente": null,
-          "aviso": "Estimación, sin cotizar."
+          "aviso": "Precio estimado, sin link de compra."
         }
       ]
     },
@@ -574,7 +484,7 @@
           "sinInteres": false,
           "fecha": "2026-11-21",
           "fuente": null,
-          "aviso": "Estimación, sin cotizar."
+          "aviso": "Precio estimado, sin link de compra."
         }
       ]
     }

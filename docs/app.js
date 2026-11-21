@@ -70,7 +70,7 @@
   // Valor de hoy de n cuotas de "monto", descontando inflación mensual i
   const valorActual = (monto, n, i) => (!i ? monto * n : monto * (1 - Math.pow(1 + i, -n)) / i);
   const inflacion = () => (Number($("inflacion").value) || 0) / 100;
-  const tag = (f) => `<span class="tag ${f}">${f === "auto" ? "al día" : f}</span>`;
+  const tag = (f) => `<span class="tag ${f}">${f === "auto" ? "al día" : f === "nota" ? "precio anterior" : f}</span>`;
 
   // ¿Qué tipo de cuotas son? Compara contra el contado de la misma tienda o, si no hay, el mejor contado.
   function tipoCuotas(o, mejorContado) {
@@ -131,7 +131,7 @@
         <h3>${esc(p.nombre)}</h3>${p.nota ? `<p class="nota">${esc(p.nota)}</p>` : ""}
         <div><div class="price-label">De contado</div>
           <div class="price-row"><span class="price-big">${c ? linkOr(money(c.contado), c.url) : "—"}</span>${c ? tag(c.fuente) : ""}</div>
-          ${c ? `<div class="where">en ${esc(c.tienda)} · ${fecha(c.fecha)}</div>` : ""}</div>
+          ${c ? `<div class="where">en ${esc(c.tienda)} · ${fecha(c.fecha)}</div>` : `<div class="where">Todavía no hay precio de una tienda. Se completa en la próxima lectura (o activando el aporte desde tu Edge).</div>`}</div>
         ${cuotaHtml}
         ${verdict}
         <details class="opts"><summary>Opciones para pagar sin interés (${nPlanes})</summary>${planesSinInteres(p, mejorC)}</details>
@@ -165,7 +165,7 @@
       const t = q ? tipoCuotas(q, c && c.contado) : null;
       return `<div class="part">${media(p, "thumb")}<div><div class="n">${esc(p.nombre)}</div>
         <div class="p">${c ? linkOr(money(c.contado), c.url) : "—"}</div>
-        <div class="w">${c ? `${esc(c.tienda)} ${tag(c.fuente)}` : ""}</div>
+        <div class="w">${c ? (c.tienda === "Estimado" ? `Estimado, sin link de compra` : `${esc(c.tienda)} ${tag(c.fuente)}`) : "Sin precio de tienda todavía"}</div>
         ${q ? `<div class="w">${q.cuotas.n} × ${money(q.cuotas.monto)} ${chip(t)}</div>` : `<div class="w">Sin plan sin interés conocido</div>`}</div></div>`;
     });
     const { total, cuotasTotal, estimadas } = totalPc();
@@ -182,10 +182,11 @@
     const { total } = totalPc();
     const veces = m.contado ? total / m.contado.contado : null;
     $("titular").textContent = `La forma más barata de jugar GTA 6: ${ps5 ? ps5.nombre : "una consola"}${m.contado ? ` desde ${money(m.contado.contado)}` : ""}`;
+    if (!m.contado) $("titular").textContent += " (esperando precio de tienda)";
     $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. Una PC para 2K sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
     const t = m.cuotas ? tipoCuotas(m.cuotas, m.contado && m.contado.contado) : null;
     $("stats").innerHTML = [
-      { k: "PS5 Slim Digital de contado", v: m.contado ? money(m.contado.contado) : "—", s: m.contado ? `en ${m.contado.tienda}` : "" },
+      { k: "PS5 Slim Digital de contado", v: m.contado ? money(m.contado.contado) : "—", s: m.contado ? `en ${m.contado.tienda}` : "todavía sin precio de tienda" },
       { k: "PS5 en cuotas sin interés", v: m.cuotas ? `${m.cuotas.cuotas.n} × ${money(m.cuotas.cuotas.monto)}` : "—", s: m.cuotas ? `total ${money(m.cuotas.cuotas.total)} en ${m.cuotas.tienda}${t && t.rec > 0.01 ? ` (${pct(t.rec)} vs contado)` : ""}` : "" },
       { k: "PC para 2K completa", v: money(total), s: "sin monitor ni Windows" }
     ].map((x) => `<div class="stat"><div class="k">${esc(x.k)}</div><div class="v">${esc(x.v)}</div><div class="s">${esc(x.s)}</div></div>`).join("");

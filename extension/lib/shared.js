@@ -38,15 +38,17 @@ export function summarize(db) {
     tiendasOk: Object.values(db.tiendas || {}).filter((t) => t.ok).length,
     tiendasTotal: Object.keys(db.tiendas || {}).length,
     productos: db.productos.map((p) => {
-      const ref = (p.referencia || []).filter((r) => r.contado && !r.particular && r.tienda !== "Estimado").sort((a, b) => a.contado - b.contado)[0];
+      // Solo precios de páginas de compra (con link directo)
+      const ref = (p.referencia || []).filter((r) => r.contado && /^https:\/\//.test(r.fuente || "")).sort((a, b) => a.contado - b.contado)[0];
       const c = p.mejor && p.mejor.contado;
       return {
         id: p.id,
         nombre: p.nombre,
         grupo: p.grupo,
+        imagen: /^https:\/\//.test(p.imagen || "") ? p.imagen : null,
         contado: c ? c.precio : ref ? ref.contado : null,
         tienda: c ? c.tienda : ref ? ref.tienda : null,
-        url: c ? c.url : null,
+        url: c ? c.url : ref ? ref.fuente : null,
         alDia: !!c,
         cuotas: p.mejor && p.mejor.cuotas ? p.mejor.cuotas : null
       };

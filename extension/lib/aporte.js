@@ -10,14 +10,14 @@ const API = `https://api.github.com/repos/${REPO}`;
 // Tiendas que conviene leer desde acá: las que GitHub no pudo leer en la última revisión.
 export function pendingStores(db) {
   return Object.entries(db.tiendas || {})
-    .filter(([, t]) => !t.ok || t.metodo === "desde tu compu")
+    .filter(([id, t]) => !t.ok || t.metodo === "desde tu compu" || id === "mercadolibre") // ML: GitHub solo lee algunas publicaciones
     .map(([id, t]) => ({ id, nombre: t.nombre }));
 }
 
 function productosDe(db) {
   return (db.productos || [])
     .filter((p) => p.busqueda && p.filtro)
-    .map((p) => ({ id: p.id, busqueda: p.busqueda, ...p.filtro }));
+    .map((p) => ({ id: p.id, busqueda: p.busqueda, ...p.filtro, extra: (p.extra || []).filter((e) => /^https:\/\/www\.mercadolibre\.com\.ar\//.test(e.url)) }));
 }
 
 // Avanza el ciclo de lectura sin pasarse del tiempo disponible. Devuelve el estado actualizado
@@ -30,7 +30,7 @@ export async function stepAporte(db, state, { budgetMs = 150000, pausaMs = 800, 
   const start = Date.now();
   while (st.cursor < tiendas.length && Date.now() - start < budgetMs) {
     const t = tiendas[st.cursor];
-    const r = await scrapeStore(t, productos, { pausaMs, usarExtra: false, fetchImpl });
+    const r = await scrapeStore(t, productos, { pausaMs, usarExtra: true, fetchImpl });
     const porProducto = {};
     for (const [pid, ofertas] of Object.entries(r.porProducto)) porProducto[pid] = [...ofertas].sort((a, b) => a.contado - b.contado).slice(0, 3);
     st.tiendas[t.id] = { fecha: new Date().toISOString(), ok: r.estado.ok, error: r.estado.error, metodo: r.estado.metodo, productos: porProducto };

@@ -135,7 +135,8 @@ async function doRun({ silentFirstRun = false } = {}) {
       // La primera vez no se avisan las ofertas viejas: solo las que aparezcan de ahora en adelante
       if (!firstTime) {
         for (const a of fresh.slice(0, 5)) {
-          newEntries.push({ kind: "base", store: a.tienda, title: a.titulo, message: a.mensaje, url: a.url, price: a.precio });
+          const prod = db.productos.find((x) => x.id === a.productoId) || {};
+          newEntries.push({ kind: "base", store: a.tienda, title: a.titulo, message: a.mensaje, url: a.url, price: a.precio, thumbnail: /^https:\/\//.test(prod.imagen || "") ? prod.imagen : null });
         }
       }
     } catch (e) {

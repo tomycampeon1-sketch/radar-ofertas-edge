@@ -142,7 +142,7 @@ test("extensión: stepAporte lee tiendas pendientes y uploadAportes sube el arch
     tiendas: { mercadolibre: { nombre: "Mercado Libre", ok: true, metodo: "extra" }, garbarino: { nombre: "Garbarino", ok: false } },
     productos: [{ id: "ps5", busqueda: "PS5 Slim Digital", filtro: { debeTener: PS5.debeTener, excluir: PS5.excluir, minimo: PS5.minimo, maximo: PS5.maximo } }]
   };
-  assert.deepEqual(pendingStores(db).map((t) => t.id), ["garbarino"]);
+  assert.deepEqual(pendingStores(db).map((t) => t.id), ["mercadolibre", "garbarino"]);
   const vtexJson = JSON.stringify([{ productName: "Consola PlayStation 5 Slim Digital", link: "/p", items: [{ sellers: [{ sellerDefault: true, commertialOffer: { Price: 1650000, ListPrice: 1650000, AvailableQuantity: 1, Installments: [] } }] }] }]);
   const fakeFetch = async (url) => ({ ok: true, status: 200, text: async () => (url.includes("/api/catalog_system/") ? vtexJson : "") });
   const { state, terminado } = await stepAporte(db, null, { pausaMs: 0, fetchImpl: fakeFetch });

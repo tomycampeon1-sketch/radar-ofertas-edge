@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="options">
-  <h1>🎯 Radar de Ofertas Tech AR</h1>
-  <p class="muted">Elegí qué seguir y cuándo querés que te avise. Los cambios se guardan al tocar <b>Guardar</b>.</p>
-
+  <header class="options-hero"><div class="in">
+    <h1><span class="logo">◎</span> Radar de Ofertas</h1>
+    <p>Elegí qué seguir y cuándo querés que te avise. Los cambios se guardan al tocar <b>Guardar</b>.</p>
+  </div></header>
+  <main>
   <h2>Base compartida con la página</h2>
   <section>
     <p class="muted small">La página del radar guarda los precios de todas las tiendas en una base que GitHub actualiza cada 6 horas. La extensión la lee cada vez que revisa y te avisa de las ofertas nuevas que encuentre (bajas de precio, mínimos históricos, descuentos y cuotas sin interés). <a href="https://tomycampeon1-sketch.github.io/radar-ofertas-edge/" target="_blank">Abrir la página</a></p>
@@ -69,11 +71,12 @@
     <div class="row"><input type="password" id="mlAccessToken" placeholder="APP_USR-..." style="flex:1;min-width:240px"></div>
   </section>
 
-  <div class="row" style="margin-top:20px">
+  <div class="row savebar">
     <button class="primary" id="save">Guardar</button>
     <button id="test">Guardar y verificar ahora</button>
     <span id="msg" class="saved"></span>
   </div>
+  </main>
   <script type="module" src="options.js"></script>
 </body>
 </html>
