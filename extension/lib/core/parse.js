@@ -240,26 +240,34 @@ export function parseMejoresCompras(html, url) {
 export function parseVenex(html) {
   const out = [];
   const seen = new Set();
-  const blocks = html.split(/class="product-box(?:\s|")/).slice(1);
-  for (const b of blocks) {
-    const m = b.match(/<h3 class="product-box-title">\s*<a href="([^"]+)"[^>]*enhancedClick\((\{[^)]*?\})\)/);
-    if (!m) continue;
+  // El título de cada producto es <h3 class="product-box-title"><a href="…" onclick='enhancedClick({…})'>.
+  // El onclick puede venir con comillas simples (HTML del servidor) o dobles con &quot; (HTML re-serializado).
+  const re = /<h3[^>]*class="product-box-title[^"]*"[^>]*>\s*<a\s[^>]*?href="([^"]+)"[^>]*?onclick=(['"])\s*enhancedClick\(([\s\S]*?)\)\s*;?\s*\2/g;
+  const hits = [...html.matchAll(re)];
+  hits.forEach((m, i) => {
     let data;
     try {
-      data = JSON.parse(m[2]);
+      data = JSON.parse(m[3].replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&amp;/g, "&"));
     } catch {
-      continue;
+      return;
     }
     const url = m[1].split("?")[0];
-    if (seen.has(url)) continue;
+    if (seen.has(url)) return;
     seen.add(url);
-    const shown = (b.match(/class="current-price"[^>]*>\s*\$\s*([\d.,]+)/) || [])[1];
+    const start = i ? hits[i - 1].index + hits[i - 1][0].length : Math.max(0, m.index - 6000);
+    const end = i + 1 < hits.length ? hits[i + 1].index : m.index + 6000;
+    const antes = html.slice(Math.max(start, m.index - 6000), m.index);
+    const despues = html.slice(m.index + m[0].length, end);
+    const shown = (despues.match(/class="current-price"[^>]*>\s*\$\s*([\d.,]+)/) || [])[1];
     const contado = toNumber(shown) || toNumber(data.price);
-    if (!contado || /SIN STOCK/i.test(b.slice(0, 4000))) continue;
-    const img = (b.match(/<img[^>]+src="([^"]+)"/) || [])[1];
-    out.push({ titulo: decode(data.name), url: url.startsWith("http") ? url : "https://www.venex.com.ar/" + url.replace(/^\//, ""), contado, lista: null, cuotas: null, imagen: img ? imageOf(img.startsWith("http") ? img : "https://www.venex.com.ar/" + img.replace(/^\//, "")) : null });
-  }
-  return out;
+    const bloque = antes.slice(antes.lastIndexOf("product-box-media") - 200) + despues.split(/product-box-overlay/)[0];
+    if (!contado || /SIN STOCK|AGOTADO/i.test(bloque)) return;
+    const imgs = [...antes.matchAll(/<img[^>]+?(?:data-src|src)="([^"]+)"/g)].map((x) => x[1]).filter((x) => !/^data:|logo|icon/i.test(x));
+    const img = imgs[imgs.length - 1];
+    const abs = (u) => (u.startsWith("http") ? u : "https://www.venex.com.ar/" + u.replace(/^\//, ""));
+    out.push({ titulo: decode(data.name || ""), url: abs(url), contado, lista: null, cuotas: null, imagen: img ? imageOf(abs(img)) : null });
+  });
+  return out.filter((o) => o.titulo);
 }
 
 // Full H4rd: <div class="item product-list"> con <h3> y <div class="price">$contado <span class="price-promo">$lista</span>

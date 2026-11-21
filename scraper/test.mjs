@@ -1,7 +1,7 @@
 // Pruebas con páginas simuladas: node --test scraper/
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, matches, toNumber, cuotasFromText } from "../extension/lib/core/parse.js";
+import { parseVtex, parseJsonLd, parseNextData, parseMercadoLibre, parseVenex, parseFullH4rd, parseCompraGamer, matches, toNumber, cuotasFromText } from "../extension/lib/core/parse.js";
 import { buildDb, scrapeAll, mergeAportes } from "./run.mjs";
 
 const PS5 = { id: "ps5", nombre: "PS5 Slim Digital", grupo: "consola", busqueda: "PlayStation 5 Slim Digital", debeTener: ["ps5|playstation 5", "digital"], excluir: ["joystick", "juego"], minimo: 800000, maximo: 4000000 };
@@ -170,4 +170,42 @@ test("extensión: stepAporte lee tiendas pendientes y uploadAportes sube el arch
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+// Copia recortada de la página real de búsqueda de Venex (nov. 2026)
+const VENEX_BOX = (q) => `<div class="product-box">
+  <div class="product-box-media"><a href="https://www.venex.com.ar/x.html"><img class="img-responsive" src="https://www.venex.com.ar/products_images/1/rx9070.jpg" alt=""></a>
+  <div class="products_label_20725"></div></div><!-- /.product-box-media -->
+  <div class="product-box-body clearfix" style="">
+    <label class="product-box-price-title hidden-xs">Precio en un pago:</label>
+    <h3 class="product-box-title">\r\n                <a href="https://www.venex.com.ar/componentes-de-pc/placas-de-video/placa-de-video-powercolor-amd-radeon-rx-9070-xt-reaper-16gb-gddr6.html?keywords=RX 9070 XT" onclick=${q === "'" ? `'enhancedClick({"id":"20725","name":"Placa De Video Powercolor AMD Radeon RX 9070 XT Reaper 16Gb GDDR6","price":"1473990","position":"1"})'` : `"enhancedClick({&quot;id&quot;:&quot;20725&quot;,&quot;name&quot;:&quot;Placa De Video Powercolor AMD Radeon RX 9070 XT Reaper 16Gb GDDR6&quot;,&quot;price&quot;:&quot;1473990&quot;})"`} >Placa De Video Powercolor AMD Radeon RX 9070 XT Reaper 16Gb...</a>\r\n</h3>
+    <a class="product-box-price clearfix" href="#"><span class="current-price" style="width:100%">$ 1.473.990</span></a>
+    <p class="product-box-payment">Contado efectivo</p></div><!-- /.product-box-body -->
+  <a class="product-box-overlay" href="#"></a></div>`;
+
+test("parseVenex lee la página real (comillas simples y dobles)", () => {
+  for (const q of ["'", '"']) {
+    const r = parseVenex(`<html>${VENEX_BOX(q)}${VENEX_BOX(q).replace("reaper", "hellhound").replace(/1\.473\.990/, "1.500.000")}</html>`);
+    assert.equal(r.length, 2, `comillas ${q}`);
+    assert.equal(r[0].contado, 1473990);
+    assert.equal(r[0].url, "https://www.venex.com.ar/componentes-de-pc/placas-de-video/placa-de-video-powercolor-amd-radeon-rx-9070-xt-reaper-16gb-gddr6.html");
+    assert.match(r[0].titulo, /RX 9070 XT Reaper/);
+    assert.match(r[0].imagen, /rx9070\.jpg/);
+    assert.equal(r[1].contado, 1500000);
+  }
+});
+
+test("parseFullH4rd lee contado y precio de lista", () => {
+  const html = `<div class="item product-list"><a href="/prod/31234/placa-rx-9070-xt"><div class="image"><img src="/img/productos/1/rx.jpg"></div><div class="info"><h3>Placa de Video ASUS RX 9070 XT Prime 16GB</h3><div class="price">$1.507.747 <span class="price-promo">$1.658.522</span></div></div></a></div>`;
+  const [o] = parseFullH4rd(html);
+  assert.equal(o.contado, 1507747);
+  assert.equal(o.lista, 1658522);
+  assert.equal(o.url, "https://www.fullh4rd.com.ar/prod/31234/placa-rx-9070-xt");
+});
+
+test("parseCompraGamer lee el catálogo", () => {
+  const cat = JSON.stringify([{ id_producto: 9, nombre: "Placa de Video ASUS RX 9070 XT", precioEspecial: 1869100, precioLista: 2076778, vendible: 1, stock: 3, imagenes: [] }]);
+  const r = parseCompraGamer(JSON.parse(cat));
+  assert.equal(r.length, 1);
+  assert.equal(r[0].contado, 1869100);
 });
