@@ -1,22 +1,22 @@
 {
  "version": 1,
- "actualizado": "2026-11-21T05:46:44.625Z",
+ "actualizado": "2026-11-21T05:49:31.640Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
    "nombre": "Mercado Libre",
-   "ok": false,
-   "metodo": null,
-   "ofertas": 0,
+   "ok": true,
+   "metodo": "extra",
+   "ofertas": 3,
    "error": null,
-   "ultimaOk": null
+   "ultimaOk": "2026-11-21T05:49:31.640Z"
   },
   "fravega": {
    "nombre": "Frávega",
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "html: HTTP 403",
    "ultimaOk": null
   },
   "garbarino": {
@@ -24,7 +24,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "html: fetch failed",
    "ultimaOk": null
   },
   "musimundo": {
@@ -40,7 +40,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "html: HTTP 404",
    "ultimaOk": null
   },
   "cetrohogar": {
@@ -48,7 +48,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "html: fetch failed",
    "ultimaOk": null
   },
   "compragamer": {
@@ -56,7 +56,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "Sin lectura automática (solo enlace)",
    "ultimaOk": null
   },
   "venex": {
@@ -64,7 +64,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "html: HTTP 403",
    "ultimaOk": null
   },
   "fullh4rd": {
@@ -72,7 +72,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "html: HTTP 403",
    "ultimaOk": null
   },
   "mexx": {
@@ -400,7 +400,25 @@
    "pieza": "placa de video",
    "busqueda": "RX 9070 XT",
    "nota": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Mercado Libre",
+     "tiendaId": "mercadolibre",
+     "titulo": "Placa De Video Radeon XFX Rx 9070 Xt 16GB GDDR6 HDMI DP AMD PCIe 5.0",
+     "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
+     "contado": 2113580,
+     "lista": null,
+     "cuotas": {
+      "n": 12,
+      "monto": 176132,
+      "total": 2113584,
+      "sinInteres": true
+     },
+     "via": "mejorescompras.com.ar",
+     "fuente": "auto",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    }
+   ],
    "referencia": [
     {
      "tienda": "Mercado Libre",
@@ -414,10 +432,27 @@
     }
    ],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 2113580,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    },
+    "cuotas": {
+     "n": 12,
+     "monto": 176132,
+     "total": 2113584,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T05",
+     2113580
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/rx-9070-xt",
     "fravega": "https://www.fravega.com/l/?keyword=RX%209070%20XT",
@@ -438,7 +473,25 @@
    "pieza": "motherboard",
    "busqueda": "Motherboard B650M AM5",
    "nota": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Mercado Libre",
+     "tiendaId": "mercadolibre",
+     "titulo": "Motherboard Msi Pro B650m-p Am5 3 Color Negro",
+     "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
+     "contado": 567699,
+     "lista": null,
+     "cuotas": {
+      "n": 12,
+      "monto": 47308,
+      "total": 567696,
+      "sinInteres": true
+     },
+     "via": "mejorescompras.com.ar",
+     "fuente": "auto",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    }
+   ],
    "referencia": [
     {
      "tienda": "Mercado Libre",
@@ -452,10 +505,27 @@
     }
    ],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 567699,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    },
+    "cuotas": {
+     "n": 12,
+     "monto": 47308,
+     "total": 567696,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T05",
+     567699
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/motherboard-b650m-am5",
     "fravega": "https://www.fravega.com/l/?keyword=Motherboard%20B650M%20AM5",
@@ -476,7 +546,25 @@
    "pieza": "memoria",
    "busqueda": "Memoria DDR5 32GB 6000",
    "nota": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Mercado Libre",
+     "tiendaId": "mercadolibre",
+     "titulo": "Memoria Ram Gamer CORSAIR VENGEANCE 2x16GB 32GB 6000 DDR5 NEGRA",
+     "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
+     "contado": 1136441,
+     "lista": null,
+     "cuotas": {
+      "n": 12,
+      "monto": 94703,
+      "total": 1136436,
+      "sinInteres": true
+     },
+     "via": "mejorescompras.com.ar",
+     "fuente": "auto",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    }
+   ],
    "referencia": [
     {
      "tienda": "Mercado Libre",
@@ -490,10 +578,27 @@
     }
    ],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 1136441,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    },
+    "cuotas": {
+     "n": 12,
+     "monto": 94703,
+     "total": 1136436,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
+     "fecha": "2026-11-21T05:49:31.640Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T05",
+     1136441
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/memoria-ddr5-32gb-6000",
     "fravega": "https://www.fravega.com/l/?keyword=Memoria%20DDR5%2032GB%206000",
@@ -625,6 +730,43 @@
    }
   }
  ],
- "alertas": [],
- "nuevasEstaVez": 0
+ "alertas": [
+  {
+   "id": "bwf7uc",
+   "fecha": "2026-11-21T05:49:31.640Z",
+   "productoId": "gpu-9070xt",
+   "producto": "Placa de video Radeon RX 9070 XT 16 GB",
+   "tipo": "cuotas",
+   "titulo": "💳 Placa de video Radeon RX 9070 XT 16 GB: 12 cuotas sin interés",
+   "mensaje": "12 × $176.132 (total $2.113.584) en Mercado Libre.",
+   "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
+   "tienda": "Mercado Libre",
+   "precio": 2113580
+  },
+  {
+   "id": "1p1h4b7",
+   "fecha": "2026-11-21T05:49:31.640Z",
+   "productoId": "mb-b650m",
+   "producto": "Motherboard B650M (AM5)",
+   "tipo": "cuotas",
+   "titulo": "💳 Motherboard B650M (AM5): 12 cuotas sin interés",
+   "mensaje": "12 × $47.308 (total $567.696) en Mercado Libre.",
+   "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
+   "tienda": "Mercado Libre",
+   "precio": 567699
+  },
+  {
+   "id": "yz5lnh",
+   "fecha": "2026-11-21T05:49:31.640Z",
+   "productoId": "ram-32-ddr5",
+   "producto": "Memoria 32 GB DDR5 6000 (2x16)",
+   "tipo": "cuotas",
+   "titulo": "💳 Memoria 32 GB DDR5 6000 (2x16): 12 cuotas sin interés",
+   "mensaje": "12 × $94.703 (total $1.136.436) en Mercado Libre.",
+   "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
+   "tienda": "Mercado Libre",
+   "precio": 1136441
+  }
+ ],
+ "nuevasEstaVez": 3
 }
