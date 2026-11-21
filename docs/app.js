@@ -78,10 +78,10 @@
     if (!o.cuotas.sinInteres) return { cls: "con", label: "Con interés", rec: null };
     const base = o.contado || mejorContado;
     const rec = base && o.cuotas.total ? o.cuotas.total / base - 1 : null;
-    if (rec != null && rec > 0.01) return { cls: "lista", label: `Sin interés, ${pct(rec)} sobre ${o.contado ? "su contado" : "el mejor contado"}`, rec };
+    if (rec != null && rec > 0.01) return { cls: "lista", label: `Sin interés, ${pct(rec)} sobre ${o.contado ? "su contado" : "el mejor contado"}`, corto: `Sin interés ${pct(rec)}`, rec };
     return { cls: "sin", label: "Sin interés real", rec };
   }
-  const chip = (t) => (t ? `<span class="chip ${t.cls}">${esc(t.label)}</span>` : "");
+  const chip = (t, corto) => (t ? `<span class="chip ${t.cls}" title="${esc(t.label)}">${esc(corto && t.corto ? t.corto : t.label)}</span>` : "");
 
   function linkOr(text, url) {
     const u = safe(url);
@@ -125,16 +125,27 @@
       }
     }
     const nPlanes = opciones(p).todas.filter((o) => o.cuotas && o.cuotas.sinInteres).length;
+    const ribbon = destacado ? `<span class="ribbon">Recomendada</span>` : "";
+    if (!c && !q) {
+      // Sin ningún precio: tarjeta corta con los botones para buscarla en cada tienda
+      return `<article class="card sin-datos ${destacado ? "top-pick" : ""}">
+        ${media(p, "media chica", ribbon)}
+        <div class="card-body">
+          <h3>${esc(p.nombre)}</h3>${p.nota ? `<p class="nota">${esc(p.nota)}</p>` : ""}
+          <div class="aguardando"><b>Sin precio de tienda todavía.</b> Aparece en la próxima lectura de tu Edge. Mientras, buscala acá:</div>
+          ${linksTiendas(p)}
+        </div></article>`;
+    }
     return `<article class="card ${destacado ? "top-pick" : ""}">
-      ${media(p, "media", destacado ? `<span class="ribbon">Recomendada</span>` : "")}
+      ${media(p, "media", ribbon)}
       <div class="card-body">
         <h3>${esc(p.nombre)}</h3>${p.nota ? `<p class="nota">${esc(p.nota)}</p>` : ""}
         <div><div class="price-label">De contado</div>
           <div class="price-row"><span class="price-big">${c ? linkOr(money(c.contado), c.url) : "—"}</span>${c ? tag(c.fuente) : ""}</div>
-          ${c ? `<div class="where">en ${esc(c.tienda)} · ${fecha(c.fecha)}</div>` : `<div class="where">Todavía no hay precio de una tienda. Se completa en la próxima lectura (o activando el aporte desde tu Edge).</div>`}</div>
-        ${cuotaHtml}
+          ${c ? `<div class="where">en ${esc(c.tienda)} · ${fecha(c.fecha)}${c.url ? ` · ${linkOr("ver publicación", c.url)}` : ""}</div>` : `<div class="where">Sin precio de contado todavía.</div>`}</div>
+        ${q ? cuotaHtml : ""}
         ${verdict}
-        <details class="opts"><summary>Opciones para pagar sin interés (${nPlanes})</summary>${planesSinInteres(p, mejorC)}</details>
+        ${nPlanes ? `<details class="opts"><summary>Opciones para pagar sin interés (${nPlanes})</summary>${planesSinInteres(p, mejorC)}</details>` : ""}
         <details class="opts"><summary>Buscar en cada tienda</summary><div style="padding-top:8px">${linksTiendas(p)}</div></details>
       </div></article>`;
   }
@@ -157,7 +168,9 @@
 
   function renderGta() {
     const consolas = db.productos.filter((p) => p.grupo === "consola");
-    $("consolas").innerHTML = consolas.map((p) => cardConsola(p, p.id === "ps5-slim-digital")).join("");
+    const tienePrecio = (p) => (mejores(p).contado ? 1 : 0);
+    const orden = [...consolas].sort((a, b) => (b.id === "ps5-slim-digital") - (a.id === "ps5-slim-digital") || tienePrecio(b) - tienePrecio(a));
+    $("consolas").innerHTML = orden.map((p) => cardConsola(p, p.id === "ps5-slim-digital")).join("");
 
     const parts = piezasPc().map((p) => {
       const m = mejores(p);
@@ -166,7 +179,7 @@
       return `<div class="part">${media(p, "thumb")}<div><div class="n">${esc(p.nombre)}</div>
         <div class="p">${c ? linkOr(money(c.contado), c.url) : "—"}</div>
         <div class="w">${c ? (c.tienda === "Estimado" ? `Estimado, sin link de compra` : `${esc(c.tienda)} ${tag(c.fuente)}`) : "Sin precio de tienda todavía"}</div>
-        ${q ? `<div class="w">${q.cuotas.n} × ${money(q.cuotas.monto)} ${chip(t)}</div>` : `<div class="w">Sin plan sin interés conocido</div>`}</div></div>`;
+        ${q ? `<div class="w"><span>${q.cuotas.n} × ${money(q.cuotas.monto)}</span>${chip(t, true)}</div>` : `<div class="w">Sin plan sin interés conocido</div>`}</div></div>`;
     });
     const { total, cuotasTotal, estimadas } = totalPc();
     $("pc").innerHTML = `<div class="pc-grid">${parts.join("")}</div>
@@ -180,16 +193,41 @@
     const ps5 = db.productos.find((p) => p.id === "ps5-slim-digital");
     const m = ps5 ? mejores(ps5) : {};
     const { total } = totalPc();
-    const veces = m.contado ? total / m.contado.contado : null;
-    $("titular").textContent = `La forma más barata de jugar GTA 6: ${ps5 ? ps5.nombre : "una consola"}${m.contado ? ` desde ${money(m.contado.contado)}` : ""}`;
-    if (!m.contado) $("titular").textContent += " (esperando precio de tienda)";
-    $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. Una PC para 2K sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
+    // La consola más barata que hoy tiene precio de tienda
+    const conPrecio = db.productos.filter((p) => p.grupo === "consola").map((p) => ({ p, c: mejores(p).contado })).filter((x) => x.c && x.c.tienda !== "Estimado")
+      .sort((a, b) => a.c.contado - b.c.contado);
+    const barata = conPrecio[0];
+    const base = m.contado ? { p: ps5, c: m.contado } : barata;
+    const veces = base ? total / base.c.contado : null;
+    $("titular").textContent = base
+      ? `Jugar GTA 6 hoy: ${base.p.nombre} desde ${money(base.c.contado)}`
+      : "La forma más barata de jugar GTA 6";
+    $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. ${ps5 && !m.contado ? "La PS5 Slim Digital (la recomendada) todavía no tiene precio de tienda. " : ""}Una PC para 2K sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
     const t = m.cuotas ? tipoCuotas(m.cuotas, m.contado && m.contado.contado) : null;
     $("stats").innerHTML = [
-      { k: "PS5 Slim Digital de contado", v: m.contado ? money(m.contado.contado) : "—", s: m.contado ? `en ${m.contado.tienda}` : "todavía sin precio de tienda" },
-      { k: "PS5 en cuotas sin interés", v: m.cuotas ? `${m.cuotas.cuotas.n} × ${money(m.cuotas.cuotas.monto)}` : "—", s: m.cuotas ? `total ${money(m.cuotas.cuotas.total)} en ${m.cuotas.tienda}${t && t.rec > 0.01 ? ` (${pct(t.rec)} vs contado)` : ""}` : "" },
-      { k: "PC para 2K completa", v: money(total), s: "sin monitor ni Windows" }
-    ].map((x) => `<div class="stat"><div class="k">${esc(x.k)}</div><div class="v">${esc(x.v)}</div><div class="s">${esc(x.s)}</div></div>`).join("");
+      { k: "Consola más barata hoy", v: barata ? money(barata.c.contado) : "—", s: barata ? `${barata.p.nombre} en ${barata.c.tienda}` : "todavía sin precio de tienda", u: barata && barata.c.url },
+      { k: "PS5 Slim Digital (recomendada)", v: m.contado ? money(m.contado.contado) : "—", s: m.contado ? `de contado en ${m.contado.tienda}` : m.cuotas ? "" : "esperando precio de tienda", u: m.contado && m.contado.url },
+      { k: "PS5 en cuotas sin interés", v: m.cuotas ? `${m.cuotas.cuotas.n} × ${money(m.cuotas.cuotas.monto)}` : "—", s: m.cuotas ? `total ${money(m.cuotas.cuotas.total)} en ${m.cuotas.tienda}${t && t.rec > 0.01 ? ` (${pct(t.rec)} vs contado)` : ""}` : "sin plan conocido todavía", u: m.cuotas && m.cuotas.url },
+      { k: "PC para 2K completa", v: money(total), s: "sin monitor ni Windows", u: null, go: "pc" }
+    ].map((x) => {
+      const u = safe(x.u);
+      const inner = `<div class="k">${esc(x.k)}</div><div class="v">${esc(x.v)}</div><div class="s">${esc(x.s)}</div>`;
+      return u ? `<a class="stat link" href="${esc(u)}" target="_blank" rel="noopener">${inner}</a>` : x.go ? `<a class="stat link" href="#pc-titulo">${inner}</a>` : `<div class="stat">${inner}</div>`;
+    }).join("");
+    renderDestacadas();
+  }
+
+  // Últimas ofertas detectadas, arriba del comparador
+  function renderDestacadas() {
+    const el = $("destacadas");
+    if (!el) return;
+    const prod = Object.fromEntries(db.productos.map((p) => [p.id, p]));
+    const list = (db.alertas || []).filter((a) => safe(a.url)).slice(0, 4);
+    el.hidden = !list.length;
+    el.innerHTML = list.length ? `<div class="dest-head"><h2 class="section-title">Ofertas recientes</h2><a href="#ofertas" data-go="ofertas">Ver todas</a></div>
+      <div class="dest-grid">${list.map((a) => `<a class="dest" href="${esc(safe(a.url))}" target="_blank" rel="noopener">${prod[a.productoId] ? media(prod[a.productoId], "thumb") : ""}<div><div class="t">${esc(a.titulo)}</div><div class="small">${esc(a.mensaje)}</div><div class="muted small">${hace(a.fecha)}</div></div></a>`).join("")}</div>` : "";
+    const go = el.querySelector("[data-go]");
+    if (go) go.addEventListener("click", (e) => { e.preventDefault(); setTab("ofertas"); window.scrollTo({ top: 0 }); });
   }
 
   // ---------- ofertas nuevas ----------

@@ -201,10 +201,37 @@ td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
 code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
 footer { padding: 24px 16px 40px; }
 
+/* arreglos y agregados */
+.part > div { min-width: 0; }
+.part .n { overflow-wrap: anywhere; }
+.part .chip, .plan .chip, td .chip { white-space: normal; text-align: left; }
+.cards { align-items: start; }
+.media.chica { height: 110px; }
+.media.chica svg { width: 96px; height: 72px; }
+.card.sin-datos .card-body { gap: 8px; }
+.aguardando { font-size: 13px; color: var(--muted); background: var(--surface-2); border-radius: 10px; padding: 9px 11px; }
+.aguardando b { color: var(--text); }
+a.stat { color: inherit; display: block; transition: background .15s, border-color .15s; }
+a.stat:hover { text-decoration: none; background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
+.destacadas { margin-top: 6px; }
+.dest-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.dest-head a { font-weight: 600; font-size: 14px; }
+.dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.dest { display: flex; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid #ff5f6d; border-radius: 14px; padding: 10px 12px; color: inherit; box-shadow: var(--shadow); min-width: 0; }
+.dest > div { min-width: 0; }
+.dest:hover { border-color: var(--accent); border-left-color: #ff5f6d; text-decoration: none; }
+.dest .t { font-weight: 700; font-size: 14px; line-height: 1.3; }
+.dest .thumb { width: 52px; height: 52px; }
+.dest .thumb svg { width: 40px; height: 32px; }
+
 @media (max-width: 520px) {
   .top-in { padding: 8px 12px; }
   .tabs button { padding: 6px 9px; font-size: 13px; }
   .cards { grid-template-columns: 1fr; }
   .media { height: 150px; }
   .price-big { font-size: 25px; }
+  .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat { padding: 10px 12px; }
+  .stat .v { font-size: 19px; }
+  .stat .s { font-size: 11.5px; }
 }
