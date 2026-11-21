@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-21T05:49:31.640Z",
+ "actualizado": "2026-11-21T05:53:00.254Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -9,7 +9,7 @@
    "metodo": "extra",
    "ofertas": 3,
    "error": null,
-   "ultimaOk": "2026-11-21T05:49:31.640Z"
+   "ultimaOk": "2026-11-21T05:53:00.254Z"
   },
   "fravega": {
    "nombre": "Frávega",
@@ -416,7 +416,7 @@
      },
      "via": "mejorescompras.com.ar",
      "fuente": "auto",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     }
    ],
    "referencia": [
@@ -436,7 +436,7 @@
      "precio": 2113580,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     },
     "cuotas": {
      "n": 12,
@@ -444,10 +444,14 @@
      "total": 2113584,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     }
    },
    "historia": [
+    [
+     "2026-11-21T05",
+     2113580
+    ],
     [
      "2026-11-21T05",
      2113580
@@ -489,7 +493,7 @@
      },
      "via": "mejorescompras.com.ar",
      "fuente": "auto",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     }
    ],
    "referencia": [
@@ -509,7 +513,7 @@
      "precio": 567699,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     },
     "cuotas": {
      "n": 12,
@@ -517,10 +521,14 @@
      "total": 567696,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     }
    },
    "historia": [
+    [
+     "2026-11-21T05",
+     567699
+    ],
     [
      "2026-11-21T05",
      567699
@@ -562,7 +570,7 @@
      },
      "via": "mejorescompras.com.ar",
      "fuente": "auto",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     }
    ],
    "referencia": [
@@ -582,7 +590,7 @@
      "precio": 1136441,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     },
     "cuotas": {
      "n": 12,
@@ -590,10 +598,14 @@
      "total": 1136436,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T05:49:31.640Z"
+     "fecha": "2026-11-21T05:53:00.254Z"
     }
    },
    "historia": [
+    [
+     "2026-11-21T05",
+     1136441
+    ],
     [
      "2026-11-21T05",
      1136441
@@ -768,5 +780,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 3
+ "nuevasEstaVez": 0
 }
