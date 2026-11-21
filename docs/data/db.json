@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-21T19:05:36.748Z",
+ "actualizado": "2026-11-21T19:40:35.408Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -43,10 +43,10 @@
    "nombre": "Compra Gamer",
    "ok": true,
    "metodo": "catalogo",
-   "ofertas": 138,
+   "ofertas": 151,
    "error": null,
    "aporte": null,
-   "ultimaOk": "2026-11-21T19:05:36.748Z"
+   "ultimaOk": "2026-11-21T19:40:35.408Z"
   },
   "venex": {
    "nombre": "Venex",
@@ -351,10 +351,52 @@
    }
   },
   {
-   "id": "cpu-7800x3d",
-   "nombre": "Procesador AMD Ryzen 7 7800X3D",
+   "id": "cpu-9800x3d",
+   "nombre": "Procesador AMD Ryzen 7 9800X3D",
    "grupo": "pc",
    "pieza": "procesador",
+   "yaTengo": false,
+   "busqueda": "Ryzen 7 9800X3D",
+   "filtro": {
+    "debeTener": [
+     "9800x3d"
+    ],
+    "excluir": [
+     "notebook",
+     "pc armada",
+     "combo",
+     "kit",
+     "cooler para"
+    ],
+    "minimo": 400000,
+    "maximo": 3000000
+   },
+   "extra": [],
+   "nota": "El procesador más rápido para juegos. GTA 6 es pesado de procesador (en consola no pasa de 30 fps por eso).",
+   "imagen": null,
+   "ofertas": [],
+   "referencia": [],
+   "mejor": {
+    "contado": null,
+    "cuotas": null
+   },
+   "historia": [],
+   "enlaces": {
+    "mercadolibre": "https://listado.mercadolibre.com.ar/ryzen-7-9800x3d",
+    "fravega": "https://www.fravega.com/l/?keyword=Ryzen%207%209800X3D",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Ryzen%207%209800X3D",
+    "musimundo": "https://www.musimundo.com/search?text=Ryzen%207%209800X3D",
+    "compragamer": "https://compragamer.com/productos?criterio=Ryzen%207%209800X3D",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Ryzen%207%209800X3D",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Ryzen%207%209800X3D",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Ryzen%207%209800X3D"
+   }
+  },
+  {
+   "id": "cpu-7800x3d",
+   "nombre": "Procesador AMD Ryzen 7 7800X3D (opción más barata)",
+   "grupo": "pc",
+   "pieza": "procesador-barato",
    "yaTengo": false,
    "busqueda": "Ryzen 7 7800X3D",
    "filtro": {
@@ -381,7 +423,7 @@
      "url": "https://mejorescompras.com.ar/precio/MLA66263745--procesador-gamer-amd-ryzen-7-7800x3d-100-100000910tray-de-8-nucleos-y-5ghz-de-frecuencia"
     }
    ],
-   "nota": null,
+   "nota": "Entre 10% y 15% menos fps que el 9800X3D, con la misma placa madre.",
    "imagen": "https://http2.mlstatic.com/D_NQ_NP_754241-MLA108239681477_032026-F.jpg",
    "ofertas": [
     {
@@ -422,7 +464,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    ],
    "referencia": [
@@ -442,7 +484,7 @@
      "precio": 704282,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     },
     "cuotas": {
      "n": 12,
@@ -489,6 +531,10 @@
     [
      "2026-11-21T19",
      704282
+    ],
+    [
+     "2026-11-21T19",
+     704282
     ]
    ],
    "enlaces": {
@@ -503,175 +549,46 @@
    }
   },
   {
-   "id": "cpu-7600",
-   "nombre": "Procesador AMD Ryzen 5 7600 (opción barata)",
-   "grupo": "pc",
-   "pieza": "procesador-barato",
-   "yaTengo": false,
-   "busqueda": "Ryzen 5 7600",
-   "filtro": {
-    "debeTener": [
-     "7600"
-    ],
-    "excluir": [
-     "7600x3d",
-     "rx 7600",
-     "rx7600",
-     "notebook",
-     "pc armada",
-     "combo",
-     "kit",
-     "placa de video"
-    ],
-    "minimo": 150000,
-    "maximo": 1200000
-   },
-   "extra": [],
-   "nota": null,
-   "imagen": null,
-   "ofertas": [
-    {
-     "tienda": "Compra Gamer",
-     "tiendaId": "compragamer",
-     "titulo": "Procesador AMD Ryzen 5 7600X 5.3GHz Turbo AM5 - No incluye Cooler - C/VIDEO",
-     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
-     "contado": 389224,
-     "lista": 432471,
-     "cuotas": {
-      "n": 3,
-      "monto": 144157,
-      "total": 432471,
-      "sinInteres": true,
-      "medios": [
-       "Tarjetas de crédito (precio de lista)"
-      ]
-     },
-     "via": null,
-     "imagen": null,
-     "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
-    }
-   ],
-   "referencia": [],
-   "mejor": {
-    "contado": {
-     "precio": 389224,
-     "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
-     "fecha": "2026-11-21T19:05:36.748Z"
-    },
-    "cuotas": {
-     "n": 3,
-     "monto": 144157,
-     "total": 432471,
-     "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
-     "fecha": "2026-11-21T19:05:36.748Z"
-    }
-   },
-   "historia": [
-    [
-     "2026-11-21T07",
-     389224
-    ],
-    [
-     "2026-11-21T07",
-     389224
-    ],
-    [
-     "2026-11-21T13",
-     389224
-    ],
-    [
-     "2026-11-21T18",
-     389224
-    ],
-    [
-     "2026-11-21T18",
-     389224
-    ],
-    [
-     "2026-11-21T19",
-     389224
-    ]
-   ],
-   "enlaces": {
-    "mercadolibre": "https://listado.mercadolibre.com.ar/ryzen-5-7600",
-    "fravega": "https://www.fravega.com/l/?keyword=Ryzen%205%207600",
-    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Ryzen%205%207600",
-    "musimundo": "https://www.musimundo.com/search?text=Ryzen%205%207600",
-    "compragamer": "https://compragamer.com/productos?criterio=Ryzen%205%207600",
-    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Ryzen%205%207600",
-    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Ryzen%205%207600",
-    "mexx": "https://www.mexx.com.ar/buscar/?p=Ryzen%205%207600"
-   }
-  },
-  {
-   "id": "gpu-9070xt",
-   "nombre": "Placa de video Radeon RX 9070 XT 16 GB",
+   "id": "gpu-rtx5080",
+   "nombre": "Placa de video GeForce RTX 5080 16 GB",
    "grupo": "pc",
    "pieza": "placa de video",
    "yaTengo": false,
-   "busqueda": "RX 9070 XT",
+   "busqueda": "RTX 5080",
    "filtro": {
     "debeTener": [
-     "9070 xt|9070xt"
+     "5080"
     ],
     "excluir": [
      "notebook",
+     "laptop",
      "pc armada",
      "combo",
      "soporte",
      "cable",
      "backplate",
-     "waterblock"
+     "waterblock",
+     "5070",
+     "5090"
     ],
-    "minimo": 900000,
-    "maximo": 5000000
+    "minimo": 1500000,
+    "maximo": 9000000
    },
-   "extra": [
-    {
-     "tienda": "mercadolibre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA50971304"
-    },
-    {
-     "tienda": "mercadolibre",
-     "url": "https://mejorescompras.com.ar/precio/MLA50971304--placa-de-video-radeon-xfx-rx-9070-xt-16gb-gddr6-hdmi-dp-amd-pcie-50"
-    }
-   ],
-   "nota": null,
-   "imagen": "https://http2.mlstatic.com/D_NQ_NP_993259-MLA99499698400_112025-F.jpg",
+   "extra": [],
+   "nota": "Para 120 fps en 2K hace falta DLSS 4 con generación de cuadros, que solo tienen las RTX 50.",
+   "imagen": null,
    "ofertas": [
-    {
-     "tienda": "Mercado Libre",
-     "tiendaId": "mercadolibre",
-     "titulo": "Placa De Video Radeon XFX Rx 9070 Xt 16GB GDDR6 HDMI DP AMD PCIe 5.0",
-     "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "contado": 2113580,
-     "lista": null,
-     "cuotas": {
-      "n": 12,
-      "monto": 176132,
-      "total": 2113584,
-      "sinInteres": true
-     },
-     "via": "mejorescompras.com.ar",
-     "imagen": "https://http2.mlstatic.com/D_NQ_NP_993259-MLA99499698400_112025-F.jpg",
-     "fuente": "auto",
-     "fecha": "2026-11-21T06:09:08.913Z",
-     "viejo": true
-    },
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Placa de Video XFX Radeon RX 9070 XT 16GB GDDR6 Swift Triple Fan Gaming Edition",
-     "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
-     "contado": 1818150,
-     "lista": 2020167,
+     "titulo": "Placa de Video MSI GeForce RTX 5080 16GB GDDR7 VENTUS 3X OC",
+     "url": "https://compragamer.com/producto/Placa_de_Video_MSI_GeForce_RTX_5080_16GB_GDDR7_VENTUS_3X_OC_17090",
+     "contado": 3261950,
+     "lista": 3624389,
      "cuotas": {
       "n": 3,
-      "monto": 673389,
-      "total": 2020167,
+      "monto": 1208130,
+      "total": 3624389,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -680,100 +597,53 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    ],
-   "referencia": [
-    {
-     "tienda": "Mercado Libre",
-     "contado": 2308500,
-     "cuotas": 12,
-     "cuotaMonto": 192375,
-     "total": 2308500,
-     "sinInteres": true,
-     "fecha": "2026-11-21",
-     "fuente": "https://www.mercadolibre.com.ar/p/MLA50971304"
-    }
-   ],
+   "referencia": [],
    "mejor": {
     "contado": {
-     "precio": 1818150,
+     "precio": 3261950,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Placa_de_Video_MSI_GeForce_RTX_5080_16GB_GDDR7_VENTUS_3X_OC_17090",
+     "fecha": "2026-11-21T19:40:35.408Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 673389,
-     "total": 2020167,
+     "monto": 1208130,
+     "total": 3624389,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Placa_de_Video_MSI_GeForce_RTX_5080_16GB_GDDR7_VENTUS_3X_OC_17090",
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    },
    "historia": [
     [
-     "2026-11-21T05",
-     2113580
-    ],
-    [
-     "2026-11-21T05",
-     2113580
-    ],
-    [
-     "2026-11-21T06",
-     2113580
-    ],
-    [
-     "2026-11-21T06",
-     2113580
-    ],
-    [
-     "2026-11-21T07",
-     1818150
-    ],
-    [
-     "2026-11-21T07",
-     1818150
-    ],
-    [
-     "2026-11-21T13",
-     1818150
-    ],
-    [
-     "2026-11-21T18",
-     1818150
-    ],
-    [
-     "2026-11-21T18",
-     1818150
-    ],
-    [
      "2026-11-21T19",
-     1818150
+     3261950
     ]
    ],
    "enlaces": {
-    "mercadolibre": "https://listado.mercadolibre.com.ar/rx-9070-xt",
-    "fravega": "https://www.fravega.com/l/?keyword=RX%209070%20XT",
-    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=RX%209070%20XT",
-    "musimundo": "https://www.musimundo.com/search?text=RX%209070%20XT",
-    "compragamer": "https://compragamer.com/productos?criterio=RX%209070%20XT",
-    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=RX%209070%20XT",
-    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/RX%209070%20XT",
-    "mexx": "https://www.mexx.com.ar/buscar/?p=RX%209070%20XT"
+    "mercadolibre": "https://listado.mercadolibre.com.ar/rtx-5080",
+    "fravega": "https://www.fravega.com/l/?keyword=RTX%205080",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=RTX%205080",
+    "musimundo": "https://www.musimundo.com/search?text=RTX%205080",
+    "compragamer": "https://compragamer.com/productos?criterio=RTX%205080",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=RTX%205080",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/RTX%205080",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=RTX%205080"
    }
   },
   {
    "id": "mb-b650m",
-   "nombre": "Motherboard B650M (AM5)",
+   "nombre": "Motherboard B650M o B850M (AM5)",
    "grupo": "pc",
    "pieza": "motherboard",
    "yaTengo": false,
-   "busqueda": "Motherboard B650M AM5",
+   "busqueda": "Motherboard B850M AM5",
    "filtro": {
     "debeTener": [
-     "b650m"
+     "b650m|b850m"
     ],
     "excluir": [
      "combo",
@@ -794,7 +664,7 @@
      "url": "https://mejorescompras.com.ar/precio/MLA29226165--motherboard-msi-pro-b650m-p-am5-3-color-negro"
     }
    ],
-   "nota": null,
+   "nota": "Si es B650, que diga \"Ryzen 9000 ready\" o pedí que le actualicen la BIOS.",
    "imagen": "https://http2.mlstatic.com/D_NQ_NP_874435-MLA99508600998_112025-F.jpg",
    "ofertas": [
     {
@@ -819,14 +689,14 @@
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Mother ASUS PRIME B650M-A II AM5 DDR5",
-     "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
-     "contado": 207650,
-     "lista": 230722,
+     "titulo": "Mother Asrock B850M-X R2.0 WIFI AM5 DDR5",
+     "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
+     "contado": 204298,
+     "lista": 226998,
      "cuotas": {
       "n": 3,
-      "monto": 76907,
-      "total": 230722,
+      "monto": 75666,
+      "total": 226998,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -835,7 +705,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    ],
    "referencia": [
@@ -852,18 +722,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 207650,
+     "precio": 204298,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
+     "fecha": "2026-11-21T19:40:35.408Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 76907,
-     "total": 230722,
+     "monto": 75666,
+     "total": 226998,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    },
    "historia": [
@@ -910,17 +780,21 @@
     [
      "2026-11-21T19",
      207650
+    ],
+    [
+     "2026-11-21T19",
+     204298
     ]
    ],
    "enlaces": {
-    "mercadolibre": "https://listado.mercadolibre.com.ar/motherboard-b650m-am5",
-    "fravega": "https://www.fravega.com/l/?keyword=Motherboard%20B650M%20AM5",
-    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Motherboard%20B650M%20AM5",
-    "musimundo": "https://www.musimundo.com/search?text=Motherboard%20B650M%20AM5",
-    "compragamer": "https://compragamer.com/productos?criterio=Motherboard%20B650M%20AM5",
-    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Motherboard%20B650M%20AM5",
-    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Motherboard%20B650M%20AM5",
-    "mexx": "https://www.mexx.com.ar/buscar/?p=Motherboard%20B650M%20AM5"
+    "mercadolibre": "https://listado.mercadolibre.com.ar/motherboard-b850m-am5",
+    "fravega": "https://www.fravega.com/l/?keyword=Motherboard%20B850M%20AM5",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Motherboard%20B850M%20AM5",
+    "musimundo": "https://www.musimundo.com/search?text=Motherboard%20B850M%20AM5",
+    "compragamer": "https://compragamer.com/productos?criterio=Motherboard%20B850M%20AM5",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Motherboard%20B850M%20AM5",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Motherboard%20B850M%20AM5",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Motherboard%20B850M%20AM5"
    }
   },
   {
@@ -996,7 +870,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    ],
    "referencia": [
@@ -1016,7 +890,7 @@
      "precio": 697250,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_Patriot_DDR5_32GB_2x16GB_6000MHz_Viper_Venom_CL36_XMP_3_0_AMD_EXPO_OUTLET_22627",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     },
     "cuotas": {
      "n": 3,
@@ -1024,7 +898,7 @@
      "total": 774722,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_Patriot_DDR5_32GB_2x16GB_6000MHz_Viper_Venom_CL36_XMP_3_0_AMD_EXPO_OUTLET_22627",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    },
    "historia": [
@@ -1066,6 +940,10 @@
     ],
     [
      "2026-11-21T18",
+     697250
+    ],
+    [
+     "2026-11-21T19",
      697250
     ],
     [
@@ -1085,16 +963,16 @@
    }
   },
   {
-   "id": "ssd-1tb",
-   "nombre": "SSD NVMe 1 TB",
+   "id": "ssd-2tb",
+   "nombre": "SSD NVMe 2 TB",
    "grupo": "pc",
    "pieza": "disco",
    "yaTengo": false,
-   "busqueda": "SSD NVMe 1TB M.2",
+   "busqueda": "SSD NVMe 2TB M.2",
    "filtro": {
     "debeTener": [
      "ssd|nvme",
-     "1tb|1 tb",
+     "2tb|2 tb",
      "nvme|m.2|m2"
     ],
     "excluir": [
@@ -1105,24 +983,24 @@
      "usb",
      "gabinete"
     ],
-    "minimo": 60000,
-    "maximo": 900000
+    "minimo": 100000,
+    "maximo": 1500000
    },
    "extra": [],
-   "nota": null,
+   "nota": "GTA 6 ocupa más de 200 GB en consola.",
    "imagen": null,
    "ofertas": [
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Disco Sólido SSD M.2 Kingston 1TB NV3 6000MB/s NVMe PCI-E Gen4 x4",
-     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
-     "contado": 282900,
-     "lista": 314333,
+     "titulo": "Disco Solido SSD M.2 Crucial 2TB E100 5000MB/s NVMe PCI-E Gen4 x4",
+     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
+     "contado": 490362,
+     "lista": 544847,
      "cuotas": {
       "n": 3,
-      "monto": 104778,
-      "total": 314333,
+      "monto": 181616,
+      "total": 544847,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1131,13 +1009,13 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    ],
    "referencia": [
     {
      "tienda": "Estimado",
-     "contado": 280000,
+     "contado": 450000,
      "cuotas": null,
      "cuotaMonto": null,
      "total": null,
@@ -1149,68 +1027,48 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 282900,
+     "precio": 490362,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
+     "fecha": "2026-11-21T19:40:35.408Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 104778,
-     "total": 314333,
+     "monto": 181616,
+     "total": 544847,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    },
    "historia": [
     [
-     "2026-11-21T07",
-     282900
-    ],
-    [
-     "2026-11-21T07",
-     282900
-    ],
-    [
-     "2026-11-21T13",
-     282900
-    ],
-    [
-     "2026-11-21T18",
-     282900
-    ],
-    [
-     "2026-11-21T18",
-     282900
-    ],
-    [
      "2026-11-21T19",
-     282900
+     490362
     ]
    ],
    "enlaces": {
-    "mercadolibre": "https://listado.mercadolibre.com.ar/ssd-nvme-1tb-m.2",
-    "fravega": "https://www.fravega.com/l/?keyword=SSD%20NVMe%201TB%20M.2",
-    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=SSD%20NVMe%201TB%20M.2",
-    "musimundo": "https://www.musimundo.com/search?text=SSD%20NVMe%201TB%20M.2",
-    "compragamer": "https://compragamer.com/productos?criterio=SSD%20NVMe%201TB%20M.2",
-    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=SSD%20NVMe%201TB%20M.2",
-    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/SSD%20NVMe%201TB%20M.2",
-    "mexx": "https://www.mexx.com.ar/buscar/?p=SSD%20NVMe%201TB%20M.2"
+    "mercadolibre": "https://listado.mercadolibre.com.ar/ssd-nvme-2tb-m.2",
+    "fravega": "https://www.fravega.com/l/?keyword=SSD%20NVMe%202TB%20M.2",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=SSD%20NVMe%202TB%20M.2",
+    "musimundo": "https://www.musimundo.com/search?text=SSD%20NVMe%202TB%20M.2",
+    "compragamer": "https://compragamer.com/productos?criterio=SSD%20NVMe%202TB%20M.2",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=SSD%20NVMe%202TB%20M.2",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/SSD%20NVMe%202TB%20M.2",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=SSD%20NVMe%202TB%20M.2"
    }
   },
   {
    "id": "psu-750",
-   "nombre": "Fuente 750 W 80 Plus",
+   "nombre": "Fuente 850 W 80 Plus Gold",
    "grupo": "pc",
    "pieza": "fuente",
    "yaTengo": true,
-   "busqueda": "Fuente 750W 80 Plus",
+   "busqueda": "Fuente 850W 80 Plus Gold",
    "filtro": {
     "debeTener": [
      "fuente",
-     "750"
+     "850"
     ],
     "excluir": [
      "notebook",
@@ -1223,20 +1081,20 @@
     "maximo": 900000
    },
    "extra": [],
-   "nota": null,
+   "nota": "Ya la tenés. La RTX 5080 pide 850 W: si la tuya es de menos, conviene cambiarla.",
    "imagen": null,
    "ofertas": [
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Fuente Antec 750W 80 Plus Bronze ATX 3.1 PCIe 5.1 CSK750DC AR",
-     "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
-     "contado": 75050,
-     "lista": 83389,
+     "titulo": "Fuente Deepcool 850W 80 Plus Silver PF850D V2 ATX 3.1 PCIe 5.1",
+     "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
+     "contado": 125750,
+     "lista": 139722,
      "cuotas": {
       "n": 3,
-      "monto": 27796,
-      "total": 83389,
+      "monto": 46574,
+      "total": 139722,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1245,7 +1103,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    ],
    "referencia": [
@@ -1263,18 +1121,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 75050,
+     "precio": 125750,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
+     "fecha": "2026-11-21T19:40:35.408Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 27796,
-     "total": 83389,
+     "monto": 46574,
+     "total": 139722,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    },
    "historia": [
@@ -1301,17 +1159,21 @@
     [
      "2026-11-21T19",
      75050
+    ],
+    [
+     "2026-11-21T19",
+     125750
     ]
    ],
    "enlaces": {
-    "mercadolibre": "https://listado.mercadolibre.com.ar/fuente-750w-80-plus",
-    "fravega": "https://www.fravega.com/l/?keyword=Fuente%20750W%2080%20Plus",
-    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Fuente%20750W%2080%20Plus",
-    "musimundo": "https://www.musimundo.com/search?text=Fuente%20750W%2080%20Plus",
-    "compragamer": "https://compragamer.com/productos?criterio=Fuente%20750W%2080%20Plus",
-    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Fuente%20750W%2080%20Plus",
-    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Fuente%20750W%2080%20Plus",
-    "mexx": "https://www.mexx.com.ar/buscar/?p=Fuente%20750W%2080%20Plus"
+    "mercadolibre": "https://listado.mercadolibre.com.ar/fuente-850w-80-plus-gold",
+    "fravega": "https://www.fravega.com/l/?keyword=Fuente%20850W%2080%20Plus%20Gold",
+    "garbarino": "https://www.garbarino.com/shop/sort-by-price-low-to-high?search=Fuente%20850W%2080%20Plus%20Gold",
+    "musimundo": "https://www.musimundo.com/search?text=Fuente%20850W%2080%20Plus%20Gold",
+    "compragamer": "https://compragamer.com/productos?criterio=Fuente%20850W%2080%20Plus%20Gold",
+    "venex": "https://www.venex.com.ar/resultado-busqueda.htm?keywords=Fuente%20850W%2080%20Plus%20Gold",
+    "fullh4rd": "https://www.fullh4rd.com.ar/cat/search/Fuente%20850W%2080%20Plus%20Gold",
+    "mexx": "https://www.mexx.com.ar/buscar/?p=Fuente%20850W%2080%20Plus%20Gold"
    }
   },
   {
@@ -1359,7 +1221,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    ],
    "referencia": [
@@ -1380,7 +1242,7 @@
      "precio": 50950,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     },
     "cuotas": {
      "n": 3,
@@ -1388,7 +1250,7 @@
      "total": 56611,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
-     "fecha": "2026-11-21T19:05:36.748Z"
+     "fecha": "2026-11-21T19:40:35.408Z"
     }
    },
    "historia": [
@@ -1415,6 +1277,10 @@
     [
      "2026-11-21T19",
      50950
+    ],
+    [
+     "2026-11-21T19",
+     50950
     ]
    ],
    "enlaces": {
@@ -1430,6 +1296,18 @@
   }
  ],
  "alertas": [
+  {
+   "id": "ffrbvd",
+   "fecha": "2026-11-21T19:40:35.408Z",
+   "productoId": "mb-b650m",
+   "producto": "Motherboard B650M o B850M (AM5)",
+   "tipo": "minimo",
+   "titulo": "🏆 Motherboard B650M o B850M (AM5): mínimo histórico",
+   "mensaje": "$204.298 en Compra Gamer (antes el mínimo era $207.650).",
+   "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
+   "tienda": "Compra Gamer",
+   "precio": 204298
+  },
   {
    "id": "9qm4ae",
    "fecha": "2026-11-21T18:36:52.163Z",
@@ -1539,5 +1417,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 0
+ "nuevasEstaVez": 1
 }
