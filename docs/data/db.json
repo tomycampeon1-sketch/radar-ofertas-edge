@@ -1,15 +1,16 @@
 {
  "version": 1,
- "actualizado": "2026-11-21T05:53:00.254Z",
+ "actualizado": "2026-11-21T06:00:44.538Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
    "nombre": "Mercado Libre",
    "ok": true,
    "metodo": "extra",
-   "ofertas": 3,
+   "ofertas": 4,
    "error": null,
-   "ultimaOk": "2026-11-21T05:53:00.254Z"
+   "aporte": null,
+   "ultimaOk": "2026-11-21T06:00:44.538Z"
   },
   "fravega": {
    "nombre": "Frávega",
@@ -17,6 +18,7 @@
    "metodo": null,
    "ofertas": 0,
    "error": "html: HTTP 403",
+   "aporte": null,
    "ultimaOk": null
   },
   "garbarino": {
@@ -25,6 +27,7 @@
    "metodo": null,
    "ofertas": 0,
    "error": "html: fetch failed",
+   "aporte": null,
    "ultimaOk": null
   },
   "musimundo": {
@@ -32,7 +35,8 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "Ningún resultado coincidió con los productos",
+   "aporte": null,
    "ultimaOk": null
   },
   "megatone": {
@@ -41,6 +45,7 @@
    "metodo": null,
    "ofertas": 0,
    "error": "html: HTTP 404",
+   "aporte": null,
    "ultimaOk": null
   },
   "cetrohogar": {
@@ -49,6 +54,7 @@
    "metodo": null,
    "ofertas": 0,
    "error": "html: fetch failed",
+   "aporte": null,
    "ultimaOk": null
   },
   "compragamer": {
@@ -57,6 +63,7 @@
    "metodo": null,
    "ofertas": 0,
    "error": "Sin lectura automática (solo enlace)",
+   "aporte": null,
    "ultimaOk": null
   },
   "venex": {
@@ -65,6 +72,7 @@
    "metodo": null,
    "ofertas": 0,
    "error": "html: HTTP 403",
+   "aporte": null,
    "ultimaOk": null
   },
   "fullh4rd": {
@@ -73,6 +81,7 @@
    "metodo": null,
    "ofertas": 0,
    "error": "html: HTTP 403",
+   "aporte": null,
    "ultimaOk": null
   },
   "mexx": {
@@ -80,7 +89,8 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": null,
+   "error": "Ningún resultado coincidió con los productos",
+   "aporte": null,
    "ultimaOk": null
   }
  },
@@ -91,6 +101,27 @@
    "grupo": "consola",
    "pieza": null,
    "busqueda": "PlayStation 5 Slim Digital",
+   "filtro": {
+    "debeTener": [
+     "ps5|playstation 5|playstation5",
+     "digital"
+    ],
+    "excluir": [
+     "joystick",
+     "control",
+     "dualsense",
+     "funda",
+     "juego",
+     "soporte",
+     "cable",
+     "lectora",
+     "skin",
+     "cargador",
+     "base"
+    ],
+    "minimo": 800000,
+    "maximo": 4000000
+   },
    "nota": "Recomendada en la investigación: 1 TB y rendimiento confirmado.",
    "ofertas": [],
    "referencia": [
@@ -161,6 +192,28 @@
    "grupo": "consola",
    "pieza": null,
    "busqueda": "PlayStation 5 Slim",
+   "filtro": {
+    "debeTener": [
+     "ps5|playstation 5|playstation5",
+     "slim"
+    ],
+    "excluir": [
+     "digital",
+     "joystick",
+     "control",
+     "dualsense",
+     "funda",
+     "juego",
+     "soporte",
+     "cable",
+     "lectora externa",
+     "skin",
+     "cargador",
+     "base"
+    ],
+    "minimo": 900000,
+    "maximo": 4500000
+   },
    "nota": null,
    "ofertas": [],
    "referencia": [
@@ -199,6 +252,27 @@
    "grupo": "consola",
    "pieza": null,
    "busqueda": "PlayStation 5 Pro",
+   "filtro": {
+    "debeTener": [
+     "ps5|playstation 5|playstation5",
+     "pro"
+    ],
+    "excluir": [
+     "joystick",
+     "control",
+     "dualsense",
+     "funda",
+     "juego",
+     "soporte",
+     "cable",
+     "skin",
+     "cargador",
+     "base",
+     "lectora"
+    ],
+    "minimo": 1800000,
+    "maximo": 6000000
+   },
    "nota": null,
    "ofertas": [],
    "referencia": [
@@ -237,6 +311,27 @@
    "grupo": "consola",
    "pieza": null,
    "busqueda": "Xbox Series S",
+   "filtro": {
+    "debeTener": [
+     "xbox",
+     "series s"
+    ],
+    "excluir": [
+     "joystick",
+     "control",
+     "funda",
+     "juego",
+     "soporte",
+     "cable",
+     "skin",
+     "cargador",
+     "1tb",
+     "1 tb",
+     "game pass"
+    ],
+    "minimo": 500000,
+    "maximo": 3000000
+   },
    "nota": "La más barata, pero 512 GB para un juego de 212 GB.",
    "ofertas": [],
    "referencia": [
@@ -285,6 +380,25 @@
    "grupo": "consola",
    "pieza": null,
    "busqueda": "Xbox Series X",
+   "filtro": {
+    "debeTener": [
+     "xbox",
+     "series x"
+    ],
+    "excluir": [
+     "joystick",
+     "control",
+     "funda",
+     "juego",
+     "soporte",
+     "cable",
+     "skin",
+     "cargador",
+     "game pass"
+    ],
+    "minimo": 1000000,
+    "maximo": 5000000
+   },
    "nota": null,
    "ofertas": [],
    "referencia": [
@@ -323,8 +437,40 @@
    "grupo": "pc",
    "pieza": "procesador",
    "busqueda": "Ryzen 7 7800X3D",
+   "filtro": {
+    "debeTener": [
+     "7800x3d"
+    ],
+    "excluir": [
+     "notebook",
+     "pc armada",
+     "combo",
+     "kit",
+     "cooler para"
+    ],
+    "minimo": 300000,
+    "maximo": 2000000
+   },
    "nota": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Mercado Libre",
+     "tiendaId": "mercadolibre",
+     "titulo": "Procesador gamer AMD Ryzen 7 7800X3D 100-100000910TRAY de 8 núcleos y 5GHz de frecuencia",
+     "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
+     "contado": 710399.36,
+     "lista": null,
+     "cuotas": {
+      "n": 12,
+      "monto": 59200,
+      "total": 710400,
+      "sinInteres": true
+     },
+     "via": "mejorescompras.com.ar",
+     "fuente": "auto",
+     "fecha": "2026-11-21T06:00:44.538Z"
+    }
+   ],
    "referencia": [
     {
      "tienda": "Mercado Libre",
@@ -338,10 +484,27 @@
     }
    ],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 710399.36,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
+     "fecha": "2026-11-21T06:00:44.538Z"
+    },
+    "cuotas": {
+     "n": 12,
+     "monto": 59200,
+     "total": 710400,
+     "tienda": "Mercado Libre",
+     "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
+     "fecha": "2026-11-21T06:00:44.538Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T06",
+     710399.36
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/ryzen-7-7800x3d",
     "fravega": "https://www.fravega.com/l/?keyword=Ryzen%207%207800X3D",
@@ -361,6 +524,23 @@
    "grupo": "pc",
    "pieza": "procesador-barato",
    "busqueda": "Ryzen 5 7600",
+   "filtro": {
+    "debeTener": [
+     "7600"
+    ],
+    "excluir": [
+     "7600x3d",
+     "rx 7600",
+     "rx7600",
+     "notebook",
+     "pc armada",
+     "combo",
+     "kit",
+     "placa de video"
+    ],
+    "minimo": 150000,
+    "maximo": 1200000
+   },
    "nota": null,
    "ofertas": [],
    "referencia": [
@@ -399,6 +579,22 @@
    "grupo": "pc",
    "pieza": "placa de video",
    "busqueda": "RX 9070 XT",
+   "filtro": {
+    "debeTener": [
+     "9070 xt|9070xt"
+    ],
+    "excluir": [
+     "notebook",
+     "pc armada",
+     "combo",
+     "soporte",
+     "cable",
+     "backplate",
+     "waterblock"
+    ],
+    "minimo": 900000,
+    "maximo": 5000000
+   },
    "nota": null,
    "ofertas": [
     {
@@ -416,7 +612,7 @@
      },
      "via": "mejorescompras.com.ar",
      "fuente": "auto",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     }
    ],
    "referencia": [
@@ -436,7 +632,7 @@
      "precio": 2113580,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     },
     "cuotas": {
      "n": 12,
@@ -444,7 +640,7 @@
      "total": 2113584,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     }
    },
    "historia": [
@@ -454,6 +650,10 @@
     ],
     [
      "2026-11-21T05",
+     2113580
+    ],
+    [
+     "2026-11-21T06",
      2113580
     ]
    ],
@@ -476,6 +676,19 @@
    "grupo": "pc",
    "pieza": "motherboard",
    "busqueda": "Motherboard B650M AM5",
+   "filtro": {
+    "debeTener": [
+     "b650m"
+    ],
+    "excluir": [
+     "combo",
+     "kit",
+     "notebook",
+     "pc armada"
+    ],
+    "minimo": 200000,
+    "maximo": 1500000
+   },
    "nota": null,
    "ofertas": [
     {
@@ -493,7 +706,7 @@
      },
      "via": "mejorescompras.com.ar",
      "fuente": "auto",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     }
    ],
    "referencia": [
@@ -513,7 +726,7 @@
      "precio": 567699,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     },
     "cuotas": {
      "n": 12,
@@ -521,7 +734,7 @@
      "total": 567696,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     }
    },
    "historia": [
@@ -531,6 +744,10 @@
     ],
     [
      "2026-11-21T05",
+     567699
+    ],
+    [
+     "2026-11-21T06",
      567699
     ]
    ],
@@ -553,6 +770,21 @@
    "grupo": "pc",
    "pieza": "memoria",
    "busqueda": "Memoria DDR5 32GB 6000",
+   "filtro": {
+    "debeTener": [
+     "ddr5",
+     "32gb|32 gb|2x16"
+    ],
+    "excluir": [
+     "notebook",
+     "sodimm",
+     "so-dimm",
+     "pc armada",
+     "combo"
+    ],
+    "minimo": 250000,
+    "maximo": 2500000
+   },
    "nota": null,
    "ofertas": [
     {
@@ -570,7 +802,7 @@
      },
      "via": "mejorescompras.com.ar",
      "fuente": "auto",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     }
    ],
    "referencia": [
@@ -590,7 +822,7 @@
      "precio": 1136441,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     },
     "cuotas": {
      "n": 12,
@@ -598,7 +830,7 @@
      "total": 1136436,
      "tienda": "Mercado Libre",
      "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T05:53:00.254Z"
+     "fecha": "2026-11-21T06:00:44.538Z"
     }
    },
    "historia": [
@@ -608,6 +840,10 @@
     ],
     [
      "2026-11-21T05",
+     1136441
+    ],
+    [
+     "2026-11-21T06",
      1136441
     ]
    ],
@@ -630,6 +866,23 @@
    "grupo": "pc",
    "pieza": "disco",
    "busqueda": "SSD NVMe 1TB M.2",
+   "filtro": {
+    "debeTener": [
+     "ssd|nvme",
+     "1tb|1 tb",
+     "nvme|m.2|m2"
+    ],
+    "excluir": [
+     "externo",
+     "carry",
+     "adaptador",
+     "notebook",
+     "usb",
+     "gabinete"
+    ],
+    "minimo": 60000,
+    "maximo": 900000
+   },
    "nota": null,
    "ofertas": [],
    "referencia": [
@@ -669,6 +922,21 @@
    "grupo": "pc",
    "pieza": "fuente",
    "busqueda": "Fuente 750W 80 Plus",
+   "filtro": {
+    "debeTener": [
+     "fuente",
+     "750"
+    ],
+    "excluir": [
+     "notebook",
+     "cargador",
+     "cable",
+     "combo",
+     "gabinete con"
+    ],
+    "minimo": 60000,
+    "maximo": 900000
+   },
    "nota": null,
    "ofertas": [],
    "referencia": [
@@ -708,6 +976,21 @@
    "grupo": "pc",
    "pieza": "gabinete",
    "busqueda": "Gabinete gamer mesh ATX",
+   "filtro": {
+    "debeTener": [
+     "gabinete"
+    ],
+    "excluir": [
+     "pc armada",
+     "computadora",
+     "ryzen",
+     "intel core",
+     "rtx",
+     "fuente incluida"
+    ],
+    "minimo": 50000,
+    "maximo": 800000
+   },
    "nota": null,
    "ofertas": [],
    "referencia": [
@@ -743,6 +1026,18 @@
   }
  ],
  "alertas": [
+  {
+   "id": "jc7vau",
+   "fecha": "2026-11-21T06:00:44.538Z",
+   "productoId": "cpu-7800x3d",
+   "producto": "Procesador AMD Ryzen 7 7800X3D",
+   "tipo": "cuotas",
+   "titulo": "💳 Procesador AMD Ryzen 7 7800X3D: 12 cuotas sin interés",
+   "mensaje": "12 × $59.200 (total $710.400) en Mercado Libre.",
+   "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
+   "tienda": "Mercado Libre",
+   "precio": 710399.36
+  },
   {
    "id": "bwf7uc",
    "fecha": "2026-11-21T05:49:31.640Z",
@@ -780,5 +1075,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 0
+ "nuevasEstaVez": 1
 }
