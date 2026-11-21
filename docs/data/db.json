@@ -1,14 +1,14 @@
 {
  "version": 1,
- "actualizado": "2026-11-21T06:43:08.233Z",
+ "actualizado": "2026-11-21T07:10:20.533Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
    "nombre": "Mercado Libre",
-   "ok": true,
-   "metodo": "extra",
-   "ofertas": 3,
-   "error": null,
+   "ok": false,
+   "metodo": null,
+   "ofertas": 0,
+   "error": "listado: pide iniciar sesión",
    "aporte": null,
    "ultimaOk": "2026-11-21T06:43:08.233Z"
   },
@@ -41,19 +41,19 @@
   },
   "compragamer": {
    "nombre": "Compra Gamer",
-   "ok": false,
-   "metodo": null,
-   "ofertas": 0,
-   "error": "Sin lectura automática (solo enlace)",
+   "ok": true,
+   "metodo": "catalogo",
+   "ofertas": 135,
+   "error": null,
    "aporte": null,
-   "ultimaOk": null
+   "ultimaOk": "2026-11-21T07:10:20.533Z"
   },
   "venex": {
    "nombre": "Venex",
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": "html: HTTP 403",
+   "error": "venex: HTTP 403",
    "aporte": null,
    "ultimaOk": null
   },
@@ -62,7 +62,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": "html: HTTP 403",
+   "error": "fullh4rd: HTTP 403",
    "aporte": null,
    "ultimaOk": null
   },
@@ -394,7 +394,29 @@
      "via": "mejorescompras.com.ar",
      "imagen": "https://http2.mlstatic.com/D_NQ_NP_754241-MLA108239681477_032026-F.jpg",
      "fuente": "auto",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "fecha": "2026-11-21T06:43:08.233Z",
+     "viejo": true
+    },
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Procesador AMD Ryzen 7 7800X3D 5.0GHz Turbo AM5 - No incluye cooler",
+     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
+     "contado": 704282,
+     "lista": 782536,
+     "cuotas": {
+      "n": 3,
+      "monto": 260845,
+      "total": 782536,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
     }
    ],
    "referencia": [
@@ -411,10 +433,10 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 710399.36,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "precio": 704282,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
+     "fecha": "2026-11-21T07:10:20.533Z"
     },
     "cuotas": {
      "n": 12,
@@ -437,6 +459,10 @@
     [
      "2026-11-21T06",
      710399.36
+    ],
+    [
+     "2026-11-21T07",
+     704282
     ]
    ],
    "enlaces": {
@@ -476,13 +502,52 @@
    "extra": [],
    "nota": null,
    "imagen": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Procesador AMD Ryzen 5 7600X 5.3GHz Turbo AM5 - No incluye Cooler - C/VIDEO",
+     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
+     "contado": 389224,
+     "lista": 432471,
+     "cuotas": {
+      "n": 3,
+      "monto": 144157,
+      "total": 432471,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
+   ],
    "referencia": [],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 389224,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    },
+    "cuotas": {
+     "n": 3,
+     "monto": 144157,
+     "total": 432471,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_5_7600X_5_3GHz_Turbo_AM5_No_incluye_Cooler_C_VIDEO_14066",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T07",
+     389224
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/ryzen-5-7600",
     "fravega": "https://www.fravega.com/l/?keyword=Ryzen%205%207600",
@@ -547,6 +612,27 @@
      "fuente": "auto",
      "fecha": "2026-11-21T06:09:08.913Z",
      "viejo": true
+    },
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Placa de Video XFX Radeon RX 9070 XT 16GB GDDR6 Swift Triple Fan Gaming Edition",
+     "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
+     "contado": 1818150,
+     "lista": 2020167,
+     "cuotas": {
+      "n": 3,
+      "monto": 673389,
+      "total": 2020167,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
     }
    ],
    "referencia": [
@@ -563,18 +649,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 2113580,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T06:09:08.913Z"
+     "precio": 1818150,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
+     "fecha": "2026-11-21T07:10:20.533Z"
     },
     "cuotas": {
-     "n": 12,
-     "monto": 176132,
-     "total": 2113584,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA50971304",
-     "fecha": "2026-11-21T06:09:08.913Z"
+     "n": 3,
+     "monto": 673389,
+     "total": 2020167,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
+     "fecha": "2026-11-21T07:10:20.533Z"
     }
    },
    "historia": [
@@ -593,6 +679,10 @@
     [
      "2026-11-21T06",
      2113580
+    ],
+    [
+     "2026-11-21T07",
+     1818150
     ]
    ],
    "enlaces": {
@@ -654,7 +744,29 @@
      "via": "mejorescompras.com.ar",
      "imagen": "https://http2.mlstatic.com/D_NQ_NP_874435-MLA99508600998_112025-F.jpg",
      "fuente": "auto",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "fecha": "2026-11-21T06:43:08.233Z",
+     "viejo": true
+    },
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Mother ASUS PRIME B650M-A II AM5 DDR5",
+     "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
+     "contado": 207650,
+     "lista": 230722,
+     "cuotas": {
+      "n": 3,
+      "monto": 76907,
+      "total": 230722,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
     }
    ],
    "referencia": [
@@ -671,18 +783,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 567699,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "precio": 207650,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
+     "fecha": "2026-11-21T07:10:20.533Z"
     },
     "cuotas": {
-     "n": 12,
-     "monto": 47308,
-     "total": 567696,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "n": 3,
+     "monto": 76907,
+     "total": 230722,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
+     "fecha": "2026-11-21T07:10:20.533Z"
     }
    },
    "historia": [
@@ -705,6 +817,10 @@
     [
      "2026-11-21T06",
      567699
+    ],
+    [
+     "2026-11-21T07",
+     207650
     ]
    ],
    "enlaces": {
@@ -768,7 +884,29 @@
      "via": "mejorescompras.com.ar",
      "imagen": "https://http2.mlstatic.com/D_NQ_NP_895826-MLA117096062821_092026-F.jpg",
      "fuente": "auto",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "fecha": "2026-11-21T06:43:08.233Z",
+     "viejo": true
+    },
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Memoria KLEVV DDR5 32GB (2x16GB) 6000MHz FIT V CL30 IC Hynix White ",
+     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
+     "contado": 973500,
+     "lista": 1081667,
+     "cuotas": {
+      "n": 3,
+      "monto": 360556,
+      "total": 1081667,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
     }
    ],
    "referencia": [
@@ -785,18 +923,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 1136441,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "precio": 973500,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
+     "fecha": "2026-11-21T07:10:20.533Z"
     },
     "cuotas": {
-     "n": 12,
-     "monto": 94703,
-     "total": 1136436,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "n": 3,
+     "monto": 360556,
+     "total": 1081667,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
+     "fecha": "2026-11-21T07:10:20.533Z"
     }
    },
    "historia": [
@@ -819,6 +957,10 @@
     [
      "2026-11-21T06",
      1136441
+    ],
+    [
+     "2026-11-21T07",
+     973500
     ]
    ],
    "enlaces": {
@@ -858,7 +1000,29 @@
    "extra": [],
    "nota": null,
    "imagen": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Disco Sólido SSD M.2 Kingston 1TB NV3 6000MB/s NVMe PCI-E Gen4 x4",
+     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
+     "contado": 282900,
+     "lista": 314333,
+     "cuotas": {
+      "n": 3,
+      "monto": 104778,
+      "total": 314333,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
+   ],
    "referencia": [
     {
      "tienda": "Estimado",
@@ -873,10 +1037,27 @@
     }
    ],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 282900,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    },
+    "cuotas": {
+     "n": 3,
+     "monto": 104778,
+     "total": 314333,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Kingston_1TB_NV3_6000MB_s_NVMe_PCI_E_Gen4_x4_16872",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T07",
+     282900
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/ssd-nvme-1tb-m.2",
     "fravega": "https://www.fravega.com/l/?keyword=SSD%20NVMe%201TB%20M.2",
@@ -912,7 +1093,29 @@
    "extra": [],
    "nota": null,
    "imagen": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Fuente Antec 750W 80 Plus Bronze ATX 3.1 PCIe 5.1 CSK750DC AR",
+     "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
+     "contado": 75050,
+     "lista": 83389,
+     "cuotas": {
+      "n": 3,
+      "monto": 27796,
+      "total": 83389,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
+   ],
    "referencia": [
     {
      "tienda": "Estimado",
@@ -927,10 +1130,27 @@
     }
    ],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 75050,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    },
+    "cuotas": {
+     "n": 3,
+     "monto": 27796,
+     "total": 83389,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Fuente_Antec_750W_80_Plus_Bronze_ATX_3_1_PCIe_5_1_CSK750DC_AR_18258",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T07",
+     75050
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/fuente-750w-80-plus",
     "fravega": "https://www.fravega.com/l/?keyword=Fuente%20750W%2080%20Plus",
@@ -966,7 +1186,29 @@
    "extra": [],
    "nota": null,
    "imagen": null,
-   "ofertas": [],
+   "ofertas": [
+    {
+     "tienda": "Compra Gamer",
+     "tiendaId": "compragamer",
+     "titulo": "Gabinete Antec VX310 RGB Black 4x120mm Vidrio Templado ",
+     "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
+     "contado": 50950,
+     "lista": 56611,
+     "cuotas": {
+      "n": 3,
+      "monto": 18870,
+      "total": 56611,
+      "sinInteres": true,
+      "medios": [
+       "Tarjetas de crédito (precio de lista)"
+      ]
+     },
+     "via": null,
+     "imagen": null,
+     "fuente": "auto",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
+   ],
    "referencia": [
     {
      "tienda": "Estimado",
@@ -981,10 +1223,27 @@
     }
    ],
    "mejor": {
-    "contado": null,
-    "cuotas": null
+    "contado": {
+     "precio": 50950,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    },
+    "cuotas": {
+     "n": 3,
+     "monto": 18870,
+     "total": 56611,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
+     "fecha": "2026-11-21T07:10:20.533Z"
+    }
    },
-   "historia": [],
+   "historia": [
+    [
+     "2026-11-21T07",
+     50950
+    ]
+   ],
    "enlaces": {
     "mercadolibre": "https://listado.mercadolibre.com.ar/gabinete-gamer-mesh-atx",
     "fravega": "https://www.fravega.com/l/?keyword=Gabinete%20gamer%20mesh%20ATX",
@@ -998,6 +1257,54 @@
   }
  ],
  "alertas": [
+  {
+   "id": "66ipe4",
+   "fecha": "2026-11-21T07:10:20.533Z",
+   "productoId": "cpu-7800x3d",
+   "producto": "Procesador AMD Ryzen 7 7800X3D",
+   "tipo": "minimo",
+   "titulo": "🏆 Procesador AMD Ryzen 7 7800X3D: mínimo histórico",
+   "mensaje": "$704.282 en Compra Gamer (antes el mínimo era $710.399).",
+   "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
+   "tienda": "Compra Gamer",
+   "precio": 704282
+  },
+  {
+   "id": "cvs2as",
+   "fecha": "2026-11-21T07:10:20.533Z",
+   "productoId": "gpu-9070xt",
+   "producto": "Placa de video Radeon RX 9070 XT 16 GB",
+   "tipo": "baja",
+   "titulo": "📉 Placa de video Radeon RX 9070 XT 16 GB: $1.818.150",
+   "mensaje": "Bajó de $2.113.580 a $1.818.150 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Placa_de_Video_XFX_Radeon_RX_9070_XT_16GB_GDDR6_Swift_Triple_Fan_Gaming_Edition_17383",
+   "tienda": "Compra Gamer",
+   "precio": 1818150
+  },
+  {
+   "id": "1pianvd",
+   "fecha": "2026-11-21T07:10:20.533Z",
+   "productoId": "mb-b650m",
+   "producto": "Motherboard B650M (AM5)",
+   "tipo": "baja",
+   "titulo": "📉 Motherboard B650M (AM5): $207.650",
+   "mensaje": "Bajó de $567.699 a $207.650 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Mother_ASUS_PRIME_B650M_A_II_AM5_DDR5_14799",
+   "tienda": "Compra Gamer",
+   "precio": 207650
+  },
+  {
+   "id": "1t02oal",
+   "fecha": "2026-11-21T07:10:20.533Z",
+   "productoId": "ram-32-ddr5",
+   "producto": "Memoria 32 GB DDR5 6000 (2x16)",
+   "tipo": "baja",
+   "titulo": "📉 Memoria 32 GB DDR5 6000 (2x16): $973.500",
+   "mensaje": "Bajó de $1.136.441 a $973.500 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
+   "tienda": "Compra Gamer",
+   "precio": 973500
+  },
   {
    "id": "jc7vau",
    "fecha": "2026-11-21T06:00:44.538Z",
@@ -1047,5 +1354,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 0
+ "nuevasEstaVez": 4
 }
