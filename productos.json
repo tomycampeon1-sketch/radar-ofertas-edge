@@ -217,7 +217,17 @@
       "minimo": 400000,
       "maximo": 3000000,
       "nota": "El procesador más rápido para juegos. GTA 6 es pesado de procesador (en consola no pasa de 30 fps por eso).",
-      "referencia": []
+      "referencia": [],
+      "extra": [
+        {
+          "tienda": "mercadolibre",
+          "url": "https://www.mercadolibre.com.ar/p/MLA44455598"
+        },
+        {
+          "tienda": "mercadolibre",
+          "url": "https://mejorescompras.com.ar/precio/MLA44455598--procesador-amd-ryzen-7-9800x3d-am5-de-47-ghz-turbo-de-52-ghz"
+        }
+      ]
     },
     {
       "id": "cpu-7800x3d",
