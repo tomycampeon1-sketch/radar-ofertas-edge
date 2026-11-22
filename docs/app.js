@@ -208,13 +208,13 @@
     $("titular").textContent = base
       ? `Jugar GTA 6 hoy: ${base.p.nombre} desde ${money(base.c.contado)}`
       : "La forma más barata de jugar GTA 6";
-    $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. ${ps5 && !m.contado ? "La PS5 Slim Digital (la recomendada) todavía no tiene precio de tienda. " : ""}Armar la PC para 2K a 120 fps (ya tenés monitor y fuente) sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
+    $("bajada").textContent = `GTA 6 salió el 19/11/2026 solo para PS5 y Xbox Series. ${ps5 && !m.contado ? "La PS5 Slim Digital (la recomendada) todavía no tiene precio de tienda. " : ""}Armar la PC para 2K a 120 fps (ya tenés monitor) sale ${money(total)}${veces ? `, ${veces.toFixed(1).replace(".", ",")} veces más` : ""}, y todavía no hay versión de PC anunciada.`;
     const t = m.cuotas ? tipoCuotas(m.cuotas, m.contado && m.contado.contado) : null;
     $("stats").innerHTML = [
       { k: "Consola más barata hoy", v: barata ? money(barata.c.contado) : "—", s: barata ? `${barata.p.nombre} en ${barata.c.tienda}` : "todavía sin precio de tienda", u: barata && barata.c.url },
       { k: "PS5 Slim Digital (recomendada)", v: m.contado ? money(m.contado.contado) : "—", s: m.contado ? `de contado en ${m.contado.tienda}` : m.cuotas ? "" : "esperando precio de tienda", u: m.contado && m.contado.url },
       { k: "PS5 en cuotas sin interés", v: m.cuotas ? `${m.cuotas.cuotas.n} × ${money(m.cuotas.cuotas.monto)}` : "—", s: m.cuotas ? `total ${money(m.cuotas.cuotas.total)} en ${m.cuotas.tienda}${t && t.rec > 0.01 ? ` (${pct(t.rec)} vs contado)` : ""}` : "sin plan conocido todavía", u: m.cuotas && m.cuotas.url },
-      { k: "Te falta para la PC 2K 120 fps", v: money(total), s: "ya tenés monitor 2K y fuente", u: null, go: "pc" }
+      { k: "Te falta para la PC 2K 120 fps", v: money(total), s: "ya tenés el monitor 2K", u: null, go: "pc" }
     ].map((x) => {
       const u = safe(x.u);
       const inner = `<div class="k">${esc(x.k)}</div><div class="v">${esc(x.v)}</div><div class="s">${esc(x.s)}</div>`;

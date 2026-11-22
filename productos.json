@@ -421,7 +421,6 @@
       "nombre": "Fuente 850 W 80 Plus Gold",
       "grupo": "pc",
       "pieza": "fuente",
-      "yaTengo": true,
       "busqueda": "Fuente 850W 80 Plus Gold",
       "debeTener": [
         "fuente",
@@ -434,7 +433,7 @@
         "combo",
         "gabinete con"
       ],
-      "minimo": 60000,
+      "minimo": 90000,
       "maximo": 900000,
       "referencia": [
         {
@@ -449,7 +448,7 @@
           "aviso": "Precio estimado, sin link de compra."
         }
       ],
-      "nota": "Ya la tenés. La RTX 5080 pide 850 W: si la tuya es de menos, conviene cambiarla."
+      "nota": "La RTX 5080 pide 850 W y conector 12V-2x6 (o el adaptador de la placa). Una 600 W no alcanza."
     },
     {
       "id": "gabinete",
