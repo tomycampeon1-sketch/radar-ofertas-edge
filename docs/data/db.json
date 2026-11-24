@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-24T01:32:18.326Z",
+ "actualizado": "2026-11-24T07:41:06.536Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -43,10 +43,10 @@
    "nombre": "Compra Gamer",
    "ok": true,
    "metodo": "catalogo",
-   "ofertas": 148,
+   "ofertas": 149,
    "error": null,
    "aporte": null,
-   "ultimaOk": "2026-11-24T01:32:18.326Z"
+   "ultimaOk": "2026-11-24T07:41:06.536Z"
   },
   "venex": {
    "nombre": "Venex",
@@ -436,25 +436,6 @@
    "imagen": "https://http2.mlstatic.com/D_NQ_NP_754241-MLA108239681477_032026-F.jpg",
    "ofertas": [
     {
-     "tienda": "Mercado Libre",
-     "tiendaId": "mercadolibre",
-     "titulo": "Procesador gamer AMD Ryzen 7 7800X3D 100-100000910TRAY de 8 núcleos y 5GHz de frecuencia",
-     "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
-     "contado": 710399.36,
-     "lista": null,
-     "cuotas": {
-      "n": 12,
-      "monto": 59200,
-      "total": 710400,
-      "sinInteres": true
-     },
-     "via": "mejorescompras.com.ar",
-     "imagen": "https://http2.mlstatic.com/D_NQ_NP_754241-MLA108239681477_032026-F.jpg",
-     "fuente": "auto",
-     "fecha": "2026-11-21T06:43:08.233Z",
-     "viejo": true
-    },
-    {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
      "titulo": "Procesador AMD Ryzen 7 7800X3D 5.0GHz Turbo AM5 - No incluye cooler",
@@ -473,7 +454,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    ],
    "referencia": [
@@ -493,15 +474,15 @@
      "precio": 704282,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     },
     "cuotas": {
-     "n": 12,
-     "monto": 59200,
-     "total": 710400,
-     "tienda": "Mercado Libre",
-     "url": "https://www.mercadolibre.com.ar/p/MLA66263745",
-     "fecha": "2026-11-21T06:43:08.233Z"
+     "n": 3,
+     "monto": 260845,
+     "total": 782536,
+     "tienda": "Compra Gamer",
+     "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    },
    "historia": [
@@ -587,6 +568,10 @@
     ],
     [
      "2026-11-24T01",
+     704282
+    ],
+    [
+     "2026-11-24T07",
      704282
     ]
    ],
@@ -650,7 +635,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    ],
    "referencia": [],
@@ -659,7 +644,7 @@
      "precio": 3261950,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_MSI_GeForce_RTX_5080_16GB_GDDR7_VENTUS_3X_OC_17090",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     },
     "cuotas": {
      "n": 3,
@@ -667,7 +652,7 @@
      "total": 3624389,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_MSI_GeForce_RTX_5080_16GB_GDDR7_VENTUS_3X_OC_17090",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    },
    "historia": [
@@ -718,6 +703,10 @@
     [
      "2026-11-24T01",
      3261950
+    ],
+    [
+     "2026-11-24T07",
+     3261950
     ]
    ],
    "enlaces": {
@@ -765,25 +754,6 @@
    "imagen": "https://http2.mlstatic.com/D_NQ_NP_874435-MLA99508600998_112025-F.jpg",
    "ofertas": [
     {
-     "tienda": "Mercado Libre",
-     "tiendaId": "mercadolibre",
-     "titulo": "Motherboard Msi Pro B650m-p Am5 3 Color Negro",
-     "url": "https://www.mercadolibre.com.ar/p/MLA29226165",
-     "contado": 567699,
-     "lista": null,
-     "cuotas": {
-      "n": 12,
-      "monto": 47308,
-      "total": 567696,
-      "sinInteres": true
-     },
-     "via": "mejorescompras.com.ar",
-     "imagen": "https://http2.mlstatic.com/D_NQ_NP_874435-MLA99508600998_112025-F.jpg",
-     "fuente": "auto",
-     "fecha": "2026-11-21T06:43:08.233Z",
-     "viejo": true
-    },
-    {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
      "titulo": "Mother Asrock B850M-X R2.0 WIFI AM5 DDR5",
@@ -802,7 +772,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    ],
    "referencia": [
@@ -822,7 +792,7 @@
      "precio": 204298,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     },
     "cuotas": {
      "n": 3,
@@ -830,7 +800,7 @@
      "total": 226998,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    },
    "historia": [
@@ -924,6 +894,10 @@
     ],
     [
      "2026-11-24T01",
+     204298
+    ],
+    [
+     "2026-11-24T07",
      204298
     ]
    ],
@@ -974,25 +948,6 @@
    "imagen": "https://http2.mlstatic.com/D_NQ_NP_895826-MLA117096062821_092026-F.jpg",
    "ofertas": [
     {
-     "tienda": "Mercado Libre",
-     "tiendaId": "mercadolibre",
-     "titulo": "Memoria Ram Gamer CORSAIR VENGEANCE 2x16GB 32GB 6000 DDR5 NEGRA",
-     "url": "https://www.mercadolibre.com.ar/p/MLA78854862",
-     "contado": 1136441,
-     "lista": null,
-     "cuotas": {
-      "n": 12,
-      "monto": 94703,
-      "total": 1136436,
-      "sinInteres": true
-     },
-     "via": "mejorescompras.com.ar",
-     "imagen": "https://http2.mlstatic.com/D_NQ_NP_895826-MLA117096062821_092026-F.jpg",
-     "fuente": "auto",
-     "fecha": "2026-11-21T06:43:08.233Z",
-     "viejo": true
-    },
-    {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
      "titulo": "Memoria KLEVV DDR5 32GB (2x16GB) 6000MHz FIT V CL30 IC Hynix White ",
@@ -1011,7 +966,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    ],
    "referencia": [
@@ -1031,7 +986,7 @@
      "precio": 973500,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     },
     "cuotas": {
      "n": 3,
@@ -1039,7 +994,7 @@
      "total": 1081667,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    },
    "historia": [
@@ -1133,6 +1088,10 @@
     ],
     [
      "2026-11-24T01",
+     973500
+    ],
+    [
+     "2026-11-24T07",
      973500
     ]
    ],
@@ -1194,7 +1153,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    ],
    "referencia": [
@@ -1215,7 +1174,7 @@
      "precio": 490362,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     },
     "cuotas": {
      "n": 3,
@@ -1223,7 +1182,7 @@
      "total": 544847,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    },
    "historia": [
@@ -1274,6 +1233,10 @@
     [
      "2026-11-24T01",
      490362
+    ],
+    [
+     "2026-11-24T07",
+     490362
     ]
    ],
    "enlaces": {
@@ -1318,12 +1281,12 @@
      "tiendaId": "compragamer",
      "titulo": "Fuente Deepcool 850W 80 Plus Silver PF850D V2 ATX 3.1 PCIe 5.1",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "contado": 139210,
-     "lista": 154678,
+     "contado": 112264,
+     "lista": 124738,
      "cuotas": {
       "n": 3,
-      "monto": 51559,
-      "total": 154678,
+      "monto": 41579,
+      "total": 124738,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1332,7 +1295,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    ],
    "referencia": [
@@ -1350,18 +1313,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 139210,
+     "precio": 112264,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 51559,
-     "total": 154678,
+     "monto": 41579,
+     "total": 124738,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    },
    "historia": [
@@ -1436,6 +1399,10 @@
     [
      "2026-11-24T01",
      139210
+    ],
+    [
+     "2026-11-24T07",
+     112264
     ]
    ],
    "enlaces": {
@@ -1478,14 +1445,14 @@
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Gabinete Cooler Master Masterbox NR200P White Mini ITX",
-     "url": "https://compragamer.com/producto/Gabinete_Cooler_Master_Masterbox_NR200P_White_Mini_ITX_13237",
-     "contado": 56568,
-     "lista": 62853,
+     "titulo": "Gabinete Deepcool CC550 4F ARGB 4x120mm ARGB Fans Vidrio Templado",
+     "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
+     "contado": 53491,
+     "lista": 59434,
      "cuotas": {
       "n": 3,
-      "monto": 20951,
-      "total": 62853,
+      "monto": 19811,
+      "total": 59434,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1494,7 +1461,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    ],
    "referencia": [
@@ -1512,18 +1479,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 56568,
+     "precio": 53491,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Gabinete_Cooler_Master_Masterbox_NR200P_White_Mini_ITX_13237",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
+     "fecha": "2026-11-24T07:41:06.536Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 20951,
-     "total": 62853,
+     "monto": 19811,
+     "total": 59434,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Gabinete_Cooler_Master_Masterbox_NR200P_White_Mini_ITX_13237",
-     "fecha": "2026-11-24T01:32:18.326Z"
+     "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
+     "fecha": "2026-11-24T07:41:06.536Z"
     }
    },
    "historia": [
@@ -1598,6 +1565,10 @@
     [
      "2026-11-24T01",
      56568
+    ],
+    [
+     "2026-11-24T07",
+     53491
     ]
    ],
    "enlaces": {
@@ -1613,6 +1584,30 @@
   }
  ],
  "alertas": [
+  {
+   "id": "18eb7cg",
+   "fecha": "2026-11-24T07:41:06.536Z",
+   "productoId": "psu-750",
+   "producto": "Fuente 850 W 80 Plus Gold",
+   "tipo": "baja",
+   "titulo": "📉 Fuente 850 W 80 Plus Gold: $112.264",
+   "mensaje": "Bajó de $139.210 a $112.264 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
+   "tienda": "Compra Gamer",
+   "precio": 112264
+  },
+  {
+   "id": "1vtapo8",
+   "fecha": "2026-11-24T07:41:06.536Z",
+   "productoId": "gabinete",
+   "producto": "Gabinete con buen flujo de aire + cooler",
+   "tipo": "baja",
+   "titulo": "📉 Gabinete con buen flujo de aire + cooler: $53.491",
+   "mensaje": "Bajó de $56.568 a $53.491 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
+   "tienda": "Compra Gamer",
+   "precio": 53491
+  },
   {
    "id": "ffrbvd",
    "fecha": "2026-11-21T19:40:35.408Z",
@@ -1734,5 +1729,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 0
+ "nuevasEstaVez": 2
 }
