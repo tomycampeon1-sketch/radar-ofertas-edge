@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-24T07:41:06.536Z",
+ "actualizado": "2026-11-24T13:35:38.690Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -43,10 +43,10 @@
    "nombre": "Compra Gamer",
    "ok": true,
    "metodo": "catalogo",
-   "ofertas": 149,
+   "ofertas": 148,
    "error": null,
    "aporte": null,
-   "ultimaOk": "2026-11-24T07:41:06.536Z"
+   "ultimaOk": "2026-11-24T13:35:38.690Z"
   },
   "venex": {
    "nombre": "Venex",
@@ -454,7 +454,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    ],
    "referencia": [
@@ -474,7 +474,7 @@
      "precio": 704282,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     },
     "cuotas": {
      "n": 3,
@@ -482,7 +482,7 @@
      "total": 782536,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    },
    "historia": [
@@ -573,6 +573,10 @@
     [
      "2026-11-24T07",
      704282
+    ],
+    [
+     "2026-11-24T13",
+     704282
     ]
    ],
    "enlaces": {
@@ -635,7 +639,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    ],
    "referencia": [],
@@ -644,7 +648,7 @@
      "precio": 3261950,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_MSI_GeForce_RTX_5080_16GB_GDDR7_VENTUS_3X_OC_17090",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     },
     "cuotas": {
      "n": 3,
@@ -652,7 +656,7 @@
      "total": 3624389,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_MSI_GeForce_RTX_5080_16GB_GDDR7_VENTUS_3X_OC_17090",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    },
    "historia": [
@@ -706,6 +710,10 @@
     ],
     [
      "2026-11-24T07",
+     3261950
+    ],
+    [
+     "2026-11-24T13",
      3261950
     ]
    ],
@@ -772,7 +780,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    ],
    "referencia": [
@@ -792,7 +800,7 @@
      "precio": 204298,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     },
     "cuotas": {
      "n": 3,
@@ -800,7 +808,7 @@
      "total": 226998,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    },
    "historia": [
@@ -898,6 +906,10 @@
     ],
     [
      "2026-11-24T07",
+     204298
+    ],
+    [
+     "2026-11-24T13",
      204298
     ]
    ],
@@ -966,7 +978,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    ],
    "referencia": [
@@ -986,7 +998,7 @@
      "precio": 973500,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     },
     "cuotas": {
      "n": 3,
@@ -994,7 +1006,7 @@
      "total": 1081667,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_White_20202",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    },
    "historia": [
@@ -1093,6 +1105,10 @@
     [
      "2026-11-24T07",
      973500
+    ],
+    [
+     "2026-11-24T13",
+     973500
     ]
    ],
    "enlaces": {
@@ -1153,7 +1169,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    ],
    "referencia": [
@@ -1174,7 +1190,7 @@
      "precio": 490362,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     },
     "cuotas": {
      "n": 3,
@@ -1182,7 +1198,7 @@
      "total": 544847,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    },
    "historia": [
@@ -1236,6 +1252,10 @@
     ],
     [
      "2026-11-24T07",
+     490362
+    ],
+    [
+     "2026-11-24T13",
      490362
     ]
    ],
@@ -1295,7 +1315,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    ],
    "referencia": [
@@ -1316,7 +1336,7 @@
      "precio": 112264,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     },
     "cuotas": {
      "n": 3,
@@ -1324,7 +1344,7 @@
      "total": 124738,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    },
    "historia": [
@@ -1403,6 +1423,10 @@
     [
      "2026-11-24T07",
      112264
+    ],
+    [
+     "2026-11-24T13",
+     112264
     ]
    ],
    "enlaces": {
@@ -1461,7 +1485,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    ],
    "referencia": [
@@ -1482,7 +1506,7 @@
      "precio": 53491,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     },
     "cuotas": {
      "n": 3,
@@ -1490,7 +1514,7 @@
      "total": 59434,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
-     "fecha": "2026-11-24T07:41:06.536Z"
+     "fecha": "2026-11-24T13:35:38.690Z"
     }
    },
    "historia": [
@@ -1568,6 +1592,10 @@
     ],
     [
      "2026-11-24T07",
+     53491
+    ],
+    [
+     "2026-11-24T13",
      53491
     ]
    ],
@@ -1729,5 +1757,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 2
+ "nuevasEstaVez": 0
 }
