@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-25T13:41:22.220Z",
+ "actualizado": "2026-11-25T19:14:11.245Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -43,10 +43,10 @@
    "nombre": "Compra Gamer",
    "ok": true,
    "metodo": "catalogo",
-   "ofertas": 144,
+   "ofertas": 142,
    "error": null,
    "aporte": null,
-   "ultimaOk": "2026-11-25T13:41:22.220Z"
+   "ultimaOk": "2026-11-25T19:14:11.245Z"
   },
   "venex": {
    "nombre": "Venex",
@@ -71,7 +71,7 @@
    "ok": false,
    "metodo": null,
    "ofertas": 0,
-   "error": "Ningún resultado coincidió con los productos",
+   "error": "html: terminated",
    "aporte": null,
    "ultimaOk": null
   }
@@ -389,12 +389,12 @@
      "tiendaId": "compragamer",
      "titulo": "Procesador AMD Ryzen 7 9800X3D 5.2GHz Turbo AM5 - No Incluye Cooler",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_9800X3D_5_2GHz_Turbo_AM5_No_Incluye_Cooler_16708",
-     "contado": 844761,
-     "lista": 938623,
+     "contado": 852603,
+     "lista": 947337,
      "cuotas": {
       "n": 3,
-      "monto": 312874,
-      "total": 938623,
+      "monto": 315779,
+      "total": 947337,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -403,24 +403,24 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [],
    "mejor": {
     "contado": {
-     "precio": 844761,
+     "precio": 852603,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_9800X3D_5_2GHz_Turbo_AM5_No_Incluye_Cooler_16708",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 312874,
-     "total": 938623,
+     "monto": 315779,
+     "total": 947337,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_9800X3D_5_2GHz_Turbo_AM5_No_Incluye_Cooler_16708",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -435,6 +435,10 @@
     [
      "2026-11-25T13",
      844761
+    ],
+    [
+     "2026-11-25T19",
+     852603
     ]
    ],
    "enlaces": {
@@ -487,12 +491,12 @@
      "tiendaId": "compragamer",
      "titulo": "Procesador AMD Ryzen 7 7800X3D 5.0GHz Turbo AM5 - No incluye cooler",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "contado": 710896,
-     "lista": 789884,
+     "contado": 717510,
+     "lista": 797233,
      "cuotas": {
       "n": 3,
-      "monto": 263295,
-      "total": 789884,
+      "monto": 265744,
+      "total": 797233,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -501,7 +505,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [
@@ -518,18 +522,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 710896,
+     "precio": 717510,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 263295,
-     "total": 789884,
+     "monto": 265744,
+     "total": 797233,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -640,6 +644,10 @@
     [
      "2026-11-25T13",
      710896
+    ],
+    [
+     "2026-11-25T19",
+     717510
     ]
    ],
    "enlaces": {
@@ -688,12 +696,12 @@
      "tiendaId": "compragamer",
      "titulo": "Placa de Video ASUS PRIME GeForce RTX 5080 16GB GDDR7 OC",
      "url": "https://compragamer.com/producto/Placa_de_Video_ASUS_PRIME_GeForce_RTX_5080_16GB_GDDR7_OC_17111",
-     "contado": 3284990,
-     "lista": 3649989,
+     "contado": 3315500,
+     "lista": 3683889,
      "cuotas": {
       "n": 3,
-      "monto": 1216663,
-      "total": 3649989,
+      "monto": 1227963,
+      "total": 3683889,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -702,24 +710,24 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [],
    "mejor": {
     "contado": {
-     "precio": 3284990,
+     "precio": 3315500,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_ASUS_PRIME_GeForce_RTX_5080_16GB_GDDR7_OC_17111",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 1216663,
-     "total": 3649989,
+     "monto": 1227963,
+     "total": 3683889,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_ASUS_PRIME_GeForce_RTX_5080_16GB_GDDR7_OC_17111",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -794,6 +802,10 @@
     [
      "2026-11-25T13",
      3284990
+    ],
+    [
+     "2026-11-25T19",
+     3315500
     ]
    ],
    "enlaces": {
@@ -845,12 +857,12 @@
      "tiendaId": "compragamer",
      "titulo": "Mother Asrock B850M-X R2.0 WIFI AM5 DDR5",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "contado": 206198,
-     "lista": 229109,
+     "contado": 208145,
+     "lista": 231272,
      "cuotas": {
       "n": 3,
-      "monto": 76370,
-      "total": 229109,
+      "monto": 77091,
+      "total": 231272,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -859,7 +871,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [
@@ -876,18 +888,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 206198,
+     "precio": 208145,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 76370,
-     "total": 229109,
+     "monto": 77091,
+     "total": 231272,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -1006,6 +1018,10 @@
     [
      "2026-11-25T13",
      206198
+    ],
+    [
+     "2026-11-25T19",
+     208145
     ]
    ],
    "enlaces": {
@@ -1059,12 +1075,12 @@
      "tiendaId": "compragamer",
      "titulo": "Memoria KLEVV DDR5 32GB (2x16GB) 6000MHz FIT V CL30 IC Hynix",
      "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_20201",
-     "contado": 941085,
-     "lista": 1045650,
+     "contado": 949835,
+     "lista": 1055372,
      "cuotas": {
       "n": 3,
-      "monto": 348550,
-      "total": 1045650,
+      "monto": 351791,
+      "total": 1055372,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1073,7 +1089,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [
@@ -1090,18 +1106,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 941085,
+     "precio": 949835,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_20201",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 348550,
-     "total": 1045650,
+     "monto": 351791,
+     "total": 1055372,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_20201",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -1220,6 +1236,10 @@
     [
      "2026-11-25T13",
      941085
+    ],
+    [
+     "2026-11-25T19",
+     949835
     ]
    ],
    "enlaces": {
@@ -1266,12 +1286,12 @@
      "tiendaId": "compragamer",
      "titulo": "Disco Solido SSD M.2 Crucial 2TB E100 5000MB/s NVMe PCI-E Gen4 x4",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "contado": 494971,
-     "lista": 549968,
+     "contado": 499572,
+     "lista": 555080,
      "cuotas": {
       "n": 3,
-      "monto": 183323,
-      "total": 549968,
+      "monto": 185027,
+      "total": 555080,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1280,7 +1300,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [
@@ -1298,18 +1318,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 494971,
+     "precio": 499572,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 183323,
-     "total": 549968,
+     "monto": 185027,
+     "total": 555080,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -1384,6 +1404,10 @@
     [
      "2026-11-25T13",
      494971
+    ],
+    [
+     "2026-11-25T19",
+     499572
     ]
    ],
    "enlaces": {
@@ -1428,12 +1452,12 @@
      "tiendaId": "compragamer",
      "titulo": "Fuente Deepcool 850W 80 Plus Silver PF850D V2 ATX 3.1 PCIe 5.1",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "contado": 113304,
-     "lista": 125893,
+     "contado": 114352,
+     "lista": 127058,
      "cuotas": {
       "n": 3,
-      "monto": 41964,
-      "total": 125893,
+      "monto": 42353,
+      "total": 127058,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1442,7 +1466,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [
@@ -1460,18 +1484,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 113304,
+     "precio": 114352,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 41964,
-     "total": 125893,
+     "monto": 42353,
+     "total": 127058,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -1570,6 +1594,10 @@
     [
      "2026-11-25T13",
      113304
+    ],
+    [
+     "2026-11-25T19",
+     114352
     ]
    ],
    "enlaces": {
@@ -1612,14 +1640,14 @@
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Gabinete Deepcool CC550 4F ARGB 4x120mm ARGB Fans Vidrio Templado",
-     "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
-     "contado": 53978,
-     "lista": 59976,
+     "titulo": "Gabinete Antec VX310 RGB Black 4x120mm Vidrio Templado ",
+     "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
+     "contado": 50117,
+     "lista": 55686,
      "cuotas": {
       "n": 3,
-      "monto": 19992,
-      "total": 59976,
+      "monto": 18562,
+      "total": 55686,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1628,7 +1656,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    ],
    "referencia": [
@@ -1646,18 +1674,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 53978,
+     "precio": 50117,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
+     "fecha": "2026-11-25T19:14:11.245Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 19992,
-     "total": 59976,
+     "monto": 18562,
+     "total": 55686,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Gabinete_Deepcool_CC550_4F_ARGB_4x120mm_ARGB_Fans_Vidrio_Templado_20799",
-     "fecha": "2026-11-25T13:41:22.220Z"
+     "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
+     "fecha": "2026-11-25T19:14:11.245Z"
     }
    },
    "historia": [
@@ -1756,6 +1784,10 @@
     [
      "2026-11-25T13",
      53978
+    ],
+    [
+     "2026-11-25T19",
+     50117
     ]
    ],
    "enlaces": {
@@ -1771,6 +1803,18 @@
   }
  ],
  "alertas": [
+  {
+   "id": "1ucdh9i",
+   "fecha": "2026-11-25T19:14:11.245Z",
+   "productoId": "gabinete",
+   "producto": "Gabinete con buen flujo de aire + cooler",
+   "tipo": "baja",
+   "titulo": "📉 Gabinete con buen flujo de aire + cooler: $50.117",
+   "mensaje": "Bajó de $53.978 a $50.117 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
+   "tienda": "Compra Gamer",
+   "precio": 50117
+  },
   {
    "id": "jy6th0",
    "fecha": "2026-11-24T19:19:18.537Z",
@@ -1928,5 +1972,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 0
+ "nuevasEstaVez": 1
 }
