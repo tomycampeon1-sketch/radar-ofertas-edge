@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-26T01:38:07.254Z",
+ "actualizado": "2026-11-26T07:42:31.739Z",
  "inflacionMensual": 2,
  "tiendas": {
   "mercadolibre": {
@@ -43,10 +43,10 @@
    "nombre": "Compra Gamer",
    "ok": true,
    "metodo": "catalogo",
-   "ofertas": 141,
+   "ofertas": 142,
    "error": null,
    "aporte": null,
-   "ultimaOk": "2026-11-26T01:38:07.254Z"
+   "ultimaOk": "2026-11-26T07:42:31.739Z"
   },
   "venex": {
    "nombre": "Venex",
@@ -403,7 +403,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [],
@@ -412,7 +412,7 @@
      "precio": 852603,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_9800X3D_5_2GHz_Turbo_AM5_No_Incluye_Cooler_16708",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
@@ -420,7 +420,7 @@
      "total": 947337,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_9800X3D_5_2GHz_Turbo_AM5_No_Incluye_Cooler_16708",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -446,6 +446,10 @@
     ],
     [
      "2026-11-26T01",
+     852603
+    ],
+    [
+     "2026-11-26T07",
      852603
     ]
    ],
@@ -513,7 +517,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [
@@ -533,7 +537,7 @@
      "precio": 717510,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
@@ -541,7 +545,7 @@
      "total": 797233,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Procesador_AMD_Ryzen_7_7800X3D_5_0GHz_Turbo_AM5_No_incluye_cooler_14664",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -664,6 +668,10 @@
     [
      "2026-11-26T01",
      717510
+    ],
+    [
+     "2026-11-26T07",
+     717510
     ]
    ],
    "enlaces": {
@@ -726,7 +734,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [],
@@ -735,7 +743,7 @@
      "precio": 3315500,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_ASUS_PRIME_GeForce_RTX_5080_16GB_GDDR7_OC_17111",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
@@ -743,7 +751,7 @@
      "total": 3683889,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Placa_de_Video_ASUS_PRIME_GeForce_RTX_5080_16GB_GDDR7_OC_17111",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -829,6 +837,10 @@
     ],
     [
      "2026-11-26T01",
+     3315500
+    ],
+    [
+     "2026-11-26T07",
      3315500
     ]
    ],
@@ -895,7 +907,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [
@@ -915,7 +927,7 @@
      "precio": 208145,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
@@ -923,7 +935,7 @@
      "total": 231272,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Mother_Asrock_B850M_X_R2_0_WIFI_AM5_DDR5_18917",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -1053,6 +1065,10 @@
     ],
     [
      "2026-11-26T01",
+     208145
+    ],
+    [
+     "2026-11-26T07",
      208145
     ]
    ],
@@ -1105,14 +1121,14 @@
     {
      "tienda": "Compra Gamer",
      "tiendaId": "compragamer",
-     "titulo": "Memoria KLEVV DDR5 32GB (2x16GB) 6000MHz FIT V CL30 IC Hynix",
-     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_20201",
-     "contado": 949835,
-     "lista": 1055372,
+     "titulo": "Memoria ADATA DDR5 32GB (2x16GB) 6000MHz XPG Lancer Blade RGB Black CL30 Intel XMP 3.0/AMD EXPO - OUTLET",
+     "url": "https://compragamer.com/producto/Memoria_ADATA_DDR5_32GB_2x16GB_6000MHz_XPG_Lancer_Blade_RGB_Black_CL30_Intel_XMP_3_0_AMD_EXPO_OUTLET_22662",
+     "contado": 849650,
+     "lista": 944056,
      "cuotas": {
       "n": 3,
-      "monto": 351791,
-      "total": 1055372,
+      "monto": 314685,
+      "total": 944056,
       "sinInteres": true,
       "medios": [
        "Tarjetas de crédito (precio de lista)"
@@ -1121,7 +1137,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [
@@ -1138,18 +1154,18 @@
    ],
    "mejor": {
     "contado": {
-     "precio": 949835,
+     "precio": 849650,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_20201",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "url": "https://compragamer.com/producto/Memoria_ADATA_DDR5_32GB_2x16GB_6000MHz_XPG_Lancer_Blade_RGB_Black_CL30_Intel_XMP_3_0_AMD_EXPO_OUTLET_22662",
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
-     "monto": 351791,
-     "total": 1055372,
+     "monto": 314685,
+     "total": 944056,
      "tienda": "Compra Gamer",
-     "url": "https://compragamer.com/producto/Memoria_KLEVV_DDR5_32GB_2x16GB_6000MHz_FIT_V_CL30_IC_Hynix_20201",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "url": "https://compragamer.com/producto/Memoria_ADATA_DDR5_32GB_2x16GB_6000MHz_XPG_Lancer_Blade_RGB_Black_CL30_Intel_XMP_3_0_AMD_EXPO_OUTLET_22662",
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -1280,6 +1296,10 @@
     [
      "2026-11-26T01",
      949835
+    ],
+    [
+     "2026-11-26T07",
+     849650
     ]
    ],
    "enlaces": {
@@ -1340,7 +1360,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [
@@ -1361,7 +1381,7 @@
      "precio": 499572,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
@@ -1369,7 +1389,7 @@
      "total": 555080,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Disco_Solido_SSD_M_2_Crucial_2TB_E100_5000MB_s_NVMe_PCI_E_Gen4_x4_19558",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -1456,6 +1476,10 @@
     [
      "2026-11-26T01",
      499572
+    ],
+    [
+     "2026-11-26T07",
+     499572
     ]
    ],
    "enlaces": {
@@ -1514,7 +1538,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [
@@ -1535,7 +1559,7 @@
      "precio": 114352,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
@@ -1543,7 +1567,7 @@
      "total": 127058,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Fuente_Deepcool_850W_80_Plus_Silver_PF850D_V2_ATX_3_1_PCIe_5_1_22412",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -1654,6 +1678,10 @@
     [
      "2026-11-26T01",
      114352
+    ],
+    [
+     "2026-11-26T07",
+     114352
     ]
    ],
    "enlaces": {
@@ -1712,7 +1740,7 @@
      "via": null,
      "imagen": null,
      "fuente": "auto",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    ],
    "referencia": [
@@ -1733,7 +1761,7 @@
      "precio": 50117,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     },
     "cuotas": {
      "n": 3,
@@ -1741,7 +1769,7 @@
      "total": 55686,
      "tienda": "Compra Gamer",
      "url": "https://compragamer.com/producto/Gabinete_Antec_VX310_RGB_Black_4x120mm_Vidrio_Templado_18607",
-     "fecha": "2026-11-26T01:38:07.254Z"
+     "fecha": "2026-11-26T07:42:31.739Z"
     }
    },
    "historia": [
@@ -1852,6 +1880,10 @@
     [
      "2026-11-26T01",
      50117
+    ],
+    [
+     "2026-11-26T07",
+     50117
     ]
    ],
    "enlaces": {
@@ -1867,6 +1899,18 @@
   }
  ],
  "alertas": [
+  {
+   "id": "1u1a4fl",
+   "fecha": "2026-11-26T07:42:31.739Z",
+   "productoId": "ram-32-ddr5",
+   "producto": "Memoria 32 GB DDR5 6000 (2x16)",
+   "tipo": "baja",
+   "titulo": "📉 Memoria 32 GB DDR5 6000 (2x16): $849.650",
+   "mensaje": "Bajó de $949.835 a $849.650 en Compra Gamer.",
+   "url": "https://compragamer.com/producto/Memoria_ADATA_DDR5_32GB_2x16GB_6000MHz_XPG_Lancer_Blade_RGB_Black_CL30_Intel_XMP_3_0_AMD_EXPO_OUTLET_22662",
+   "tienda": "Compra Gamer",
+   "precio": 849650
+  },
   {
    "id": "1ucdh9i",
    "fecha": "2026-11-25T19:14:11.245Z",
@@ -2036,5 +2080,5 @@
    "precio": 1136441
   }
  ],
- "nuevasEstaVez": 0
+ "nuevasEstaVez": 1
 }
