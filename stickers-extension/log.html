@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title id="t"></title>
+  <style>
+    body { max-width: 1100px; margin: 0 auto; padding: 16px; font: 13px system-ui, "Segoe UI", sans-serif; background: #fff; color: #111b21; }
+    @media (prefers-color-scheme: dark) { body { background: #111b21; color: #e9edef; } #log { background: #202c33 !important; } }
+    h1 { font-size: 15px; margin: 0 0 6px; }
+    .row { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+    button { padding: 6px 12px; border-radius: 14px; border: 1px solid #8696a0; background: transparent; color: inherit; cursor: pointer; }
+    button.main { background: #00a884; color: #fff; border: none; }
+    #summary { font-size: 12px; }
+    #log { direction: ltr; text-align: left; height: calc(100vh - 150px); overflow: auto; font: 11px/1.35 ui-monospace, Consolas, monospace; background: #f0f2f5; padding: 6px; border-radius: 6px; white-space: pre-wrap; }
+    .e { color: #d13b3b; } .w { color: #b7791f; }
+    #langsw button { border: none; padding: 4px 10px; min-width: 38px; font-weight: 700; color: #8696a0; }
+    #langsw button.on { background: #00a884; color: #fff; cursor: default; }
+  </style>
+</head>
+<body>
+  <div style="display:flex;align-items:center;gap:8px"><h1 id="h" style="margin:0"></h1><span id="langsw" style="margin-inline-start:auto;display:inline-flex;gap:2px;padding:3px;border-radius:16px;background:rgba(134,150,160,.18)"><button id="lang-es" lang="es" title="Español">ES</button><button id="lang-en" lang="en" title="English">EN</button><button id="lang-ar" lang="ar" title="العربية">ع</button></span></div>
+  <div id="intro" style="font-size:12px;margin-bottom:6px"></div>
+  <div id="summary"></div>
+  <div class="row">
+    <button class="main" id="dl"></button>
+    <button id="copy"></button>
+    <button id="errors"></button>
+    <button id="clear"></button>
+  </div>
+  <div id="log"></div>
+  <script src="log.js"></script>
+</body>
+</html>

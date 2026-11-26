@@ -1,0 +1,5 @@
+{
+  "name": { "message": "Audio Stickers for WhatsApp Web" },
+  "description": { "message": "Make animated WhatsApp stickers with sound from a video, image or GIF and send them from WhatsApp Web. Unofficial extension." },
+  "action": { "message": "Make an audio sticker" }
+}

@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Stickers con Sonido para WhatsApp Web"
+  },
+  "description": {
+    "message": "Creá stickers de WhatsApp con sonido desde un video, una imagen o un GIF y mandalos desde WhatsApp Web. Extensión no oficial."
+  },
+  "action": {
+    "message": "Crear sticker con sonido"
+  }
+}
