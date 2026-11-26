@@ -322,10 +322,11 @@ function loadVideo(file) {
     v.style.cssText = 'width:2px;height:2px';
     videoHost.replaceChildren(v);
     let done = false;
-    const fail = msg => { if (done) return; done = true; clearTimeout(tMeta); clearTimeout(tData); reject(new Error(msg)); };
+    const tap = $('tapLoad');
+    const fail = msg => { if (done) return; done = true; tap.hidden = true; clearTimeout(tMeta); clearTimeout(tData); reject(new Error(msg)); };
     const ok = () => {
       if (done || !v.videoWidth) return;
-      done = true; clearTimeout(tMeta); clearTimeout(tData);
+      done = true; tap.hidden = true; clearTimeout(tMeta); clearTimeout(tData);
       v.pause();
       st.media = { type: 'video', el: v, w: v.videoWidth, h: v.videoHeight, duration: v.duration, file };
       resolve();
@@ -343,7 +344,18 @@ function loadVideo(file) {
       }
       // En iPhone el video no carga cuadros hasta que se reproduce
       v.play().catch(() => {});
-      tData = setTimeout(() => (v.readyState >= 2 ? ok() : fail(UNSUPPORTED_VIDEO)), 8000);
+      // Si Safari no lo deja reproducirse solo (p. ej. con Ahorro de batería), pedir un toque
+      tData = setTimeout(() => {
+        if (v.readyState >= 2) return ok();
+        tap.hidden = false;
+        $('emptyHint').hidden = true;
+        $('mediaInfo').textContent = '👆 Tocá el botón verde de la vista previa para cargar el video';
+        tap.onclick = () => {
+          tap.textContent = '⏳ Cargando…';
+          v.play().catch(() => {});
+          tData = setTimeout(() => (v.readyState >= 2 ? ok() : fail(UNSUPPORTED_VIDEO)), 10000);
+        };
+      }, 2500);
     };
     v.onloadeddata = ok;
     v.oncanplay = ok;
@@ -473,54 +485,59 @@ function setProgress(p, text) {
   el.lastElementChild.textContent = text;
 }
 
-/** Lista de cuadros de la fuente para exportar (ImageBitmaps / imagen fija). */
-async function sourceFrames(fps, onProg) {
-  const m = st.media;
-  if (m.type === 'image') return [m.src];
-  const n = Math.max(1, Math.round(st.clipLen * fps));
-  if (m.type === 'anim') {
-    return Array.from({ length: n }, (_, i) => animFrameAt(st.clipStart + i / fps));
-  }
-  // video: buscar cada cuadro
-  const v = m.el;
-  v.pause();
-  const k = Math.min(1, 640 / Math.max(m.w, m.h));
-  const out = [];
-  for (let i = 0; i < n; i++) {
-    await seek(v, Math.min(m.duration - 0.01, st.clipStart + i / fps));
-    out.push(await createImageBitmap(v, { resizeWidth: Math.round(m.w * k), resizeHeight: Math.round(m.h * k), resizeQuality: 'medium' }).catch(() => createImageBitmap(v)));
-    onProg?.(i / n);
-  }
-  return out;
-}
-
 function seek(v, t) {
   return new Promise(res => {
     const done = () => { v.removeEventListener('seeked', done); res(); };
     v.addEventListener('seeked', done);
     v.currentTime = t;
-    setTimeout(done, 1500);
+    setTimeout(done, 2500);
   });
 }
 
-/** Dibuja cada cuadro del sticker una sola vez (transparente). */
-async function renderAll(frames, onProg) {
+/**
+ * Dibuja todos los cuadros del sticker (512×512, transparentes) y los guarda
+ * como ImageBitmap. Así nunca se guardan cuadros 4K completos en memoria:
+ * Safari en iPhone corta la página si los canvas pasan ~384 MB.
+ */
+const exportCanvas = mk(S, S);
+async function buildFrames(fps, onProg) {
   const m = st.media;
-  const fw = frames[0].width || m.w, fh = frames[0].height || m.h;
+  const g = exportCanvas.getContext('2d');
+  const snap = () => createImageBitmap(exportCanvas);
+  if (m.type === 'image') {
+    renderSticker(g, m.src, m.w, m.h, { cacheable: true });
+    return [await snap()];
+  }
+  const n = Math.max(1, Math.round(st.clipLen * fps));
   const out = [];
-  for (let i = 0; i < frames.length; i++) {
-    const c = mk(S, S);
-    renderSticker(c.getContext('2d'), frames[i], fw, fh, { cacheable: m.type === 'image' });
-    out.push(c);
-    if (i % 5 === 4) { onProg?.(i / frames.length); await new Promise(r => setTimeout(r)); }
+  const v = m.type === 'video' ? m.el : null;
+  v?.pause();
+  for (let i = 0; i < n; i++) {
+    const t = st.clipStart + i / fps;
+    if (v) {
+      await seek(v, Math.min(m.duration - 0.05, t));
+      renderSticker(g, v, m.w, m.h);
+    } else {
+      renderSticker(g, animFrameAt(t), m.w, m.h);
+    }
+    out.push(await snap());
+    onProg?.(i / n);
+    if (!v && i % 5 === 4) await new Promise(r => setTimeout(r));
   }
   return out;
+}
+
+function frameCanvas(bmp) {
+  const g = exportCanvas.getContext('2d');
+  g.clearRect(0, 0, S, S);
+  g.drawImage(bmp, 0, 0);
+  return exportCanvas;
 }
 
 async function makeWebP(drawn, fps, onProg) {
   const canWebP = webpEncodeSupported();
   if (drawn.length === 1) {
-    const c = drawn[0];
+    const c = frameCanvas(drawn[0]);
     if (!canWebP) return { blob: await canvasToBlob(c, 'image/png'), ext: 'png', note: 'Tu navegador no genera WebP; usá Chrome para el formato sticker.' };
     for (const q of [0.92, 0.8, 0.65, 0.5, 0.35, 0.2]) {
       const b = await canvasToBlob(c, 'image/webp', q);
@@ -540,12 +557,12 @@ async function makeWebP(drawn, fps, onProg) {
     if (t < tries.length - 1 && idx.length > 12) {
       const probe = idx.filter((_, k) => k % Math.ceil(idx.length / 6) === 0);
       let bytes = 0;
-      for (const i of probe) bytes += (await encodeFrameChunks(drawn[i], q)).reduce((n, c) => n + c.data.length + 8, 0);
+      for (const i of probe) bytes += (await encodeFrameChunks(frameCanvas(drawn[i]), q)).reduce((n, c) => n + c.data.length + 8, 0);
       if ((bytes / probe.length) * idx.length > 560 * 1024) continue;
     }
     const parts = [];
     for (let k = 0; k < idx.length; k++) {
-      parts.push({ chunks: await encodeFrameChunks(drawn[idx[k]], q), duration: 1000 / f });
+      parts.push({ chunks: await encodeFrameChunks(frameCanvas(drawn[idx[k]]), q), duration: 1000 / f });
       onProg?.(k / idx.length);
     }
     const blob = muxAnimatedWebP(parts, S, S);
@@ -568,13 +585,9 @@ async function makeVideo(stickers, fps, audioBuf, onProg) {
   const mime = pickVideoMime();
   const dur = hasMotion() ? Math.min(st.clipLen, MAX_CLIP) : Math.min(Math.max(audioBuf ? audioBuf.duration : 3, 1), MAX_CLIP);
   const c = mk(S, S), g = c.getContext('2d');
-  // Cuadros con el fondo ya puesto (así la grabación no se traba)
-  const drawn = stickers.map(sc => {
-    const fc = mk(S, S), fg = fc.getContext('2d');
-    fg.fillStyle = st.bg; fg.fillRect(0, 0, S, S); fg.drawImage(sc, 0, 0);
-    return fc;
-  });
-  g.drawImage(drawn[0], 0, 0);
+  const paint = bmp => { g.fillStyle = st.bg; g.fillRect(0, 0, S, S); g.drawImage(bmp, 0, 0); };
+  const drawn = stickers;
+  paint(drawn[0]);
 
   const ac = audioCtx();
   await ac.resume();
@@ -601,7 +614,7 @@ async function makeVideo(stickers, fps, audioBuf, onProg) {
       const t = (performance.now() - t0) / 1000;
       if (t >= dur) return resolve();
       const idx = t < 0 ? 0 : Math.floor(t * fps) % drawn.length;
-      g.drawImage(drawn[idx], 0, 0);
+      paint(drawn[idx]);
       // forzar un cuadro nuevo aunque la imagen sea fija
       g.fillStyle = (tick++ & 1) ? 'rgba(0,0,0,0.004)' : 'rgba(255,255,255,0.004)';
       g.fillRect(0, 0, 1, 1);
@@ -625,10 +638,11 @@ async function create() {
   $('results').innerHTML = '';
   $('comboWrap').hidden = true;
   const res = [];
+  let drawn = [];
   try {
     setProgress(0.02, 'Preparando…');
     const audioBuf = await processed();
-    const frames = await sourceFrames(FPS, p => setProgress(0.02 + p * 0.25, 'Leyendo el video…'));
+    drawn = await buildFrames(FPS, p => setProgress(0.02 + p * 0.33, st.media.type === 'video' ? 'Leyendo el video…' : 'Dibujando el sticker…'));
 
     // 1) Audio
     let audioFile = null;
@@ -640,7 +654,6 @@ async function create() {
     }
 
     // 2) Sticker WebP
-    const drawn = await renderAll(frames, p => setProgress(0.3 + p * 0.1, 'Dibujando el sticker…'));
     const wp = await makeWebP(drawn, FPS, p => setProgress(0.4 + p * 0.1, 'Creando el sticker…'));
     let webpFile = null;
     if (wp) webpFile = new File([wp.blob], `sticker-${stamp()}.${wp.ext}`, { type: wp.blob.type });
@@ -648,7 +661,7 @@ async function create() {
     // 3) PNG transparente (para sticker con sonido desde imagen)
     let pngFile = null;
     if (st.media.type === 'image') {
-      const b = await canvasToBlob(drawn[0], 'image/png');
+      const b = await canvasToBlob(frameCanvas(drawn[0]), 'image/png');
       pngFile = new File([b], `sticker-${stamp()}.png`, { type: 'image/png' });
     }
 
@@ -680,6 +693,7 @@ async function create() {
     setProgress(null);
     toast('Algo falló al crear: ' + e.message, 5000);
   } finally {
+    drawn.forEach(b => b.close?.());
     btn.disabled = false;
     if (st.media?.type === 'video') st.media.el.play().catch(() => {});
   }
@@ -826,9 +840,77 @@ $('audioInput').addEventListener('change', async e => {
   try { await setAudio(await decodeFile(f), f.name); clearFx(); }
   catch (err) { toast(err.message); }
 });
+// Plan B para el sonido del video: reproducirlo (sin que se escuche) y grabarlo.
+// Sirve cuando el navegador no puede decodificar el archivo entero (videos 4K enormes del iPhone).
+let capturing = false;
+function captureVideoAudio() {
+  if (capturing) return;
+  const m = st.media;
+  const start = st.clipStart;
+  const len = Math.min(MAX_AUDIO, Math.max(st.clipLen, 3), m.duration - start);
+  const v = document.createElement('video');
+  v.playsInline = true; v.setAttribute('playsinline', ''); v.preload = 'auto';
+  v.style.cssText = 'width:2px;height:2px';
+  v.src = URL.createObjectURL(m.file);
+  videoHost.appendChild(v);
+  const ac = audioCtx();
+  ac.resume();
+  const node = ac.createMediaElementSource(v);
+  const dest = ac.createMediaStreamDestination();
+  node.connect(dest);           // va solo a la grabación, no a los parlantes
+  v.play().catch(() => {});     // tiene que ser dentro del toque
+  capturing = true;
+  const btn = $('videoAudioBtn');
+  btn.disabled = true;
+  const cleanup = () => { capturing = false; btn.disabled = false; v.pause(); node.disconnect(); URL.revokeObjectURL(v.src); v.remove(); };
+  let rec = null;
+  const chunks = [];
+  const finish = async () => {
+    if (!rec || rec.state === 'inactive') return;
+    rec.onstop = async () => {
+      cleanup();
+      try {
+        const blob = new Blob(chunks, { type: chunks[0]?.type || rec.mimeType || 'audio/mp4' });
+        await setAudio(await decodeFile(blob), 'Sonido del video');
+        st.aStart = 0; $('aStart').value = 0; syncOutputs(); redrawWave();
+        clearFx();
+      } catch (e) { toast('No pude sacar el sonido de ese video: ' + e.message, 6000); $('audioInfo').textContent = 'O elegí un efecto:'; }
+    };
+    rec.stop();
+  };
+  v.addEventListener('loadedmetadata', async () => {
+    if (start > 0.05) await seek(v, start);
+    if (v.paused) await v.play().catch(() => {});
+    rec = new MediaRecorder(dest.stream);
+    rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+    rec.start(200);
+    const t0 = v.currentTime;
+    const tick = () => {
+      if (!capturing) return;
+      const got = v.currentTime - t0;
+      $('audioInfo').textContent = `🎬 Sacando el sonido del video… ${got.toFixed(1)} / ${len.toFixed(1)} s`;
+      if (got >= len || v.ended) finish(); else setTimeout(tick, 100);
+    };
+    tick();
+  }, { once: true });
+  v.addEventListener('error', () => { cleanup(); toast('No pude reproducir ese video para sacarle el sonido.'); }, { once: true });
+  setTimeout(() => { if (capturing && !rec) { cleanup(); toast('El video no arrancó. Probá tocar de nuevo.'); } }, 15000);
+}
+
+let preferCapture = false;
 $('videoAudioBtn').addEventListener('click', async () => {
-  try { await setAudio(await decodeFile(st.media.file), 'Sonido del video'); clearFx(); }
-  catch { toast('Ese video no tiene sonido o el navegador no lo puede leer.'); }
+  const file = st.media.file;
+  // Archivos grandes: directo al plan B (decodificar 100+ MB puede colgar Safari)
+  if (preferCapture || file.size > 60 * 1024 * 1024) return captureVideoAudio();
+  try {
+    $('audioInfo').textContent = '⏳ Leyendo el sonido del video…';
+    await setAudio(await decodeFile(file), 'Sonido del video');
+    clearFx();
+  } catch {
+    preferCapture = true;
+    $('audioInfo').textContent = 'O elegí un efecto:';
+    toast('Tocá otra vez "Usar sonido del video": lo voy a grabar mientras se reproduce el clip (tarda unos segundos).', 8000);
+  }
 });
 $('recBtn').addEventListener('click', toggleRecord);
 
