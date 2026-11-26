@@ -59,3 +59,13 @@ node scraper/run.mjs          # actualiza docs/data/db.json
 node scraper/run.mjs --sin-red  # rearma la base solo con las referencias
 python3 -m http.server -d docs  # ver la página en http://localhost:8000
 ```
+
+## 🔊 Extra: Stickers con Sonido para WhatsApp
+
+App aparte, en `docs/stickers/`, que se abre desde el celular en https://tomycampeon1-sketch.github.io/radar-ofertas-edge/stickers/ y se puede instalar como app.
+
+- Arranca de una imagen, GIF animado, video o la cámara, y permite quitar el fondo liso, agregar borde de sticker, texto, zoom, giro y forma.
+- El sonido sale de tu voz grabada, un audio, el sonido del video o 14 efectos generados en la app. Tiene efectos de voz (ardilla, monstruo, robot, eco, radio…) y deja recortar hasta 10 s.
+- Genera el video MP4 512×512 con sonido (5 s como máximo), el PNG transparente, el audio MP3 y el sticker WebP (estático ≤100 KB o animado ≤500 KB).
+- WhatsApp está activando los *stickers con sonido* (Android beta 2.26.47.1+, iPhone por TestFlight). Se crean en su editor de stickers con el video o la imagen más el audio, y la app trae la guía paso a paso.
+- Todo se procesa en el celular, no se sube nada. Funciona sin internet y aparece en "Compartir" de Android cuando está instalada.
