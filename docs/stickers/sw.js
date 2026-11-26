@@ -1,5 +1,5 @@
 // Funciona sin internet y recibe archivos desde "Compartir" de Android.
-const VERSION = 'stickers-v1';
+const VERSION = 'stickers-v2';
 const APP = ['./', 'index.html', 'styles.css', 'app.js', 'audio.js', 'webp.js', 'vendor/lame.min.js',
   'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png'];
 

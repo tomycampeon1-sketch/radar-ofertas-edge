@@ -217,8 +217,10 @@ async function loadMedia(file) {
   srcCache = { key: null, src: null, canvas: null };
   st.x = 0; st.y = 0; st.zoom = 1; st.rot = 0;
   ['zoom', 'rot'].forEach(id => { $(id).value = st[id]; });
+  $('mediaInfo').textContent = `⏳ Cargando ${file.name}…`;
+  $('emptyHint').querySelector('p').textContent = 'Cargando…';
   try {
-    if (file.type.startsWith('video/') || /\.(mp4|mov|webm|m4v|3gp|mkv)$/i.test(file.name)) {
+    if (file.type.startsWith('video/') || /\.(mp4|mov|webm|m4v|3gp|3g2|mkv|avi|hevc)$/i.test(file.name)) {
       await loadVideo(file);
     } else {
       const anim = await tryAnimated(file);
@@ -229,7 +231,12 @@ async function loadMedia(file) {
     }
   } catch (e) {
     console.error(e);
-    toast('No pude abrir ese archivo: ' + e.message);
+    st.media = null;
+    $('mediaInfo').textContent = '❌ No pude abrir ese archivo: ' + e.message;
+    $('emptyHint').hidden = false;
+    $('emptyHint').querySelector('p').textContent = 'Elegí una imagen, GIF o video';
+    toast('No pude abrir ese archivo: ' + e.message, 9000);
+    updateButtons();
     return;
   }
   const m = st.media;
@@ -298,23 +305,57 @@ async function tryAnimated(file) {
   }
 }
 
+// Contenedor invisible: algunos celulares (iPhone sobre todo) no cargan ni dibujan
+// un video que no está en la página.
+const videoHost = document.createElement('div');
+videoHost.style.cssText = 'position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none;overflow:hidden;z-index:-1';
+document.body.appendChild(videoHost);
+
+const UNSUPPORTED_VIDEO = 'este navegador no puede abrir ese video (puede ser HEVC/H.265 del iPhone). ' +
+  'Probá con Chrome, o en el iPhone: Ajustes > Cámara > Formatos > "Más compatible", o mandate el video por WhatsApp y usá el que te llega.';
+
 function loadVideo(file) {
   return new Promise((resolve, reject) => {
     const v = document.createElement('video');
-    v.muted = true; v.playsInline = true; v.preload = 'auto';
-    v.setAttribute('playsinline', '');
-    v.src = URL.createObjectURL(file);
-    v.onloadeddata = () => {
+    v.muted = true; v.defaultMuted = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
+    v.style.cssText = 'width:2px;height:2px';
+    videoHost.replaceChildren(v);
+    let done = false;
+    const fail = msg => { if (done) return; done = true; clearTimeout(tMeta); clearTimeout(tData); reject(new Error(msg)); };
+    const ok = () => {
+      if (done || !v.videoWidth) return;
+      done = true; clearTimeout(tMeta); clearTimeout(tData);
+      v.pause();
       st.media = { type: 'video', el: v, w: v.videoWidth, h: v.videoHeight, duration: v.duration, file };
       resolve();
     };
-    v.onerror = () => reject(new Error('formato de video no soportado por el navegador'));
+    const tMeta = setTimeout(() => fail(UNSUPPORTED_VIDEO), 15000);
+    let tData;
+    v.onloadedmetadata = async () => {
+      clearTimeout(tMeta);
+      if (!v.videoWidth) return fail('ese archivo no tiene imagen de video');
+      // Videos sin duración (algunos WebM): forzar a que el navegador la calcule
+      if (!isFinite(v.duration)) {
+        await new Promise(r => { v.ondurationchange = () => isFinite(v.duration) && r(); v.currentTime = 1e7; setTimeout(r, 3000); });
+        v.ondurationchange = null;
+        v.currentTime = 0;
+      }
+      // En iPhone el video no carga cuadros hasta que se reproduce
+      v.play().catch(() => {});
+      tData = setTimeout(() => (v.readyState >= 2 ? ok() : fail(UNSUPPORTED_VIDEO)), 8000);
+    };
+    v.onloadeddata = ok;
+    v.oncanplay = ok;
+    v.ontimeupdate = () => { if (v.readyState >= 2) ok(); };
+    v.onerror = () => fail(UNSUPPORTED_VIDEO);
+    v.src = URL.createObjectURL(file);
     v.load();
   });
 }
 
 function stopVideo() {
-  if (st.media?.type === 'video') { st.media.el.pause(); URL.revokeObjectURL(st.media.el.src); }
+  if (st.media?.type === 'video') { st.media.el.pause(); URL.revokeObjectURL(st.media.el.src); st.media.el.remove(); }
 }
 
 // ---------------- Sonido ----------------
